@@ -2,7 +2,7 @@
 
 ## Personenaufteilung
 
-Frei: Person 9, Lucas
+Frei: Person 9
 
 ### Projektmanagement:
 * Manuel
@@ -10,7 +10,7 @@ Frei: Person 9, Lucas
 
 ### Vertriebsmanagement:
 * Amier
-* _Frei_
+* Lucas
 
 ### Techmanagement:
 * Baran
