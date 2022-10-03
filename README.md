@@ -1,6 +1,6 @@
 # Software Engineering B4 Projekt Repo
 
-## Personenaufteilung 2
+## Personenaufteilung
 
 Frei: Person 9
 
