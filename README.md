@@ -1,9 +1,5 @@
 # Software Engineering B4 Projekt Repo
 
-## Personenaufteilung
-
-Frei: Person 9
-
 ### Projektmanagement:
 * Manuel
 * Leon, 
@@ -19,4 +15,3 @@ Frei: Person 9
 ### Qualitätmanagement:
 * Nam
 * Ikram
-* _Frei_
