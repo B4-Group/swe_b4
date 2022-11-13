@@ -7,6 +7,10 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 5f;
 
     public Rigidbody2D rb;
+
+    [SerializeField]
+    private float testHello = 2f; 
+
     public Animator animator;
 
     bool facingRight = true;
@@ -14,14 +18,12 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -32,8 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(movement.x == -1) {
             facingRight = false;
-        } else if(movement.x == 1)
-        {
+        } else if(movement.x == 1) {
             facingRight = true;
         }
 
@@ -41,8 +42,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         // Movement     
         rb.MovePosition(rb.position + movementSpeed * Time.fixedDeltaTime * movement);
     }
