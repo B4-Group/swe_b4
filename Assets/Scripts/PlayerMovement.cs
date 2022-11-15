@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
-    bool facingRight = true;
+    public bool facingRight = true;
 
     Vector2 movement;
 
