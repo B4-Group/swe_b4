@@ -9,7 +9,7 @@ using UnityEngine;
  * edit: 15.11.2022
  * 
  * Status: Fertig
- * Erklärung: Script muss bei Player vorhanden sein
+ * Erklï¿½rung: Script muss bei Player vorhanden sein
  *          Erstellt neues "Prefab" Objekt: Bullet
  *          Richtung und Geschwindigkeit werden hier bearbeitet
  *         
@@ -35,15 +35,15 @@ public class Shooting : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //schieï¿½t durch Animation Aufruf
     {
-        if (Input.GetButtonDown("Fire1") && !isShooting && !Pausenmenu.GameIsPaused)
-        {
-            StartCoroutine(shoot());
-        }
+        //if (Input.GetButtonDown("Fire1") && !isShooting)
+        //{
+        //    StartCoroutine(shoot());
+        //}
     }
 
-    private IEnumerator shoot()
+    public IEnumerator shoot()
 
     {
         int direction()

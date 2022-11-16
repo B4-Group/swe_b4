@@ -6,6 +6,7 @@ using Pathfinding;
 public class EnemyGFX : MonoBehaviour
 {
 
+
     public AIPath aiPath;
     // Update is called once per frame
     void Update()
@@ -18,7 +19,9 @@ public class EnemyGFX : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-
+         
+        
+    
     }
     
     
