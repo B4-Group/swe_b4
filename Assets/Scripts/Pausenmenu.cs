@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class Pausenmenü : MonoBehaviour
+public class Pausenmenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     private IMGUIContainer pauseMenu;
@@ -12,6 +12,7 @@ public class Pausenmenü : MonoBehaviour
     public Button restart;
     public Button levelAuswahl;
     public Button hauptMenu;
+    public Button pauseButton;
 
 
     void Start()
@@ -20,17 +21,20 @@ public class Pausenmenü : MonoBehaviour
 
         pauseMenu = root.Q<IMGUIContainer>("pauseMenu");
 
+
         resume = root.Q<Button>("resume");
         restart = root.Q<Button>("restart");
         levelAuswahl = root.Q<Button>("levelAuswahl");
         hauptMenu = root.Q<Button>("hauptMenu");
+        pauseButton = root.Q<Button>("pauseButton");
 
         resume.clicked += Resume;
         restart.clicked += NeueStarten;
         levelAuswahl.clicked += LoadLevelauswahl;
         hauptMenu.clicked += HauptMenu;
+        pauseButton.clicked += Pause;
 
-        Debug.Log(pauseMenu);
+        pauseMenu.style.visibility = Visibility.Hidden;
     }
     // Update is called once per frame
     void Update()
@@ -50,11 +54,13 @@ public class Pausenmenü : MonoBehaviour
     }
     public void Resume()
     {
+        pauseMenu.style.visibility = Visibility.Hidden;
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
     void Pause()
     {
+        pauseMenu.style.visibility = Visibility.Visible;
         Time.timeScale = 0f;
         GameIsPaused = true;
 
@@ -62,6 +68,9 @@ public class Pausenmenü : MonoBehaviour
     public void NeueStarten()
     {
         Debug.Log("...NeuStarten");
+        Stars.ResetStar();
+        Timer.ResetTimer();
+        pauseMenu.style.visibility = Visibility.Hidden;
     }
     public void LoadLevelauswahl()
     {
