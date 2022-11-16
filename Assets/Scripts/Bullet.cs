@@ -40,9 +40,9 @@ public class Bullet : MonoBehaviour
         GameObject collisionGameObject = collision.gameObject;
         if(collisionGameObject.name != "Player")
         {
-            if(collisionGameObject.GetComponent<HealthController>()!= null)
+            if(collisionGameObject.GetComponent<EnemyHealth>()!= null)
             {
-                collisionGameObject.GetComponent<HealthController>().TakeDamage(10); // damage uebergabe an den Enemy mit einem HealthController Script 
+                collisionGameObject.GetComponent<EnemyHealth>().TakeDamage(10); // damage uebergabe an den Enemy mit einem HealthController Script 
                 print("hit![Bullet]"); //consol debug
             }
             Die();

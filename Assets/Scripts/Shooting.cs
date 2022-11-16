@@ -35,15 +35,15 @@ public class Shooting : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //schieﬂt durch Animation Aufruf
     {
-        if (Input.GetButtonDown("Fire1") && !isShooting)
-        {
-            StartCoroutine(shoot());
-        }
+        //if (Input.GetButtonDown("Fire1") && !isShooting)
+        //{
+        //    StartCoroutine(shoot());
+        //}
     }
 
-    private IEnumerator shoot()
+    public IEnumerator shoot()
 
     {
         int direction()

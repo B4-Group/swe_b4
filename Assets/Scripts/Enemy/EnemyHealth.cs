@@ -13,7 +13,7 @@ using UnityEngine;
  *          
  */
 
-public class HealthController : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
 
     public float startHealth;
