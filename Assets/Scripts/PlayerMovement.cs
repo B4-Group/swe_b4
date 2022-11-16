@@ -8,9 +8,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    [SerializeField]
-    private float testHello = 2f; 
-
     public Animator animator;
 
     public bool facingRight = true;
