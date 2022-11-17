@@ -769,12 +769,17 @@ AnimatorStateMachine:
     m_Position: {x: 690, y: 250, z: 0}
   - serializedVersion: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_State: {fileID: -6592391404024695465}
     m_Position: {x: 725, y: 315, z: 0}
 =======
     m_State: {fileID: -4314073890033216176}
     m_Position: {x: -330, y: 200, z: 0}
 >>>>>>> 6c9ad37... EnemyAI + Playeranimation updated
+=======
+    m_State: {fileID: -4314073890033216176}
+    m_Position: {x: -330, y: 200, z: 0}
+>>>>>>> df772b4e5e79efbf7c80a8919fa9daf0b1267820
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
