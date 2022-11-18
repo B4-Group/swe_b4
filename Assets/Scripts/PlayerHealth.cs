@@ -13,12 +13,14 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHearts;
     public Sprite emptyHearts;
 
+    private Rigidbody2D rb;
     private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         curHealth = maxHealth;
         numOfHearts = maxHealth;
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -49,15 +51,15 @@ public class PlayerHealth : MonoBehaviour
 
 
         //Plays the Hurting-Animation
-        if (anim.GetFloat("TakeDamage") < 0){
+        if (anim.GetFloat("TakeDamage") < 0 && curHealth != 0){
             anim.SetFloat("TakeDamage", hurt);
         }
         anim.SetFloat("TakeDamage", 0);
 
         //Set anim parameter "IsDead" on true if player has no life
         //Plays the Dying-Animation
-        if (curHealth == 0){
-            anim.SetBool("IsDead", true);
+        if (curHealth <= 0){
+            Death();
         }
 
         //Keyboard Input -> Will be removed later
@@ -70,6 +72,11 @@ public class PlayerHealth : MonoBehaviour
     public void SendDamage(int damageValue = 1){
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
+    }
+
+    public void Death(){
+        rb.bodyType = RigidbodyType2D.Static;
+        anim.SetBool("IsDead", true);
     }
 
 }
