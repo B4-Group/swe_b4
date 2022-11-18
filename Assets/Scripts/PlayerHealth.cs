@@ -24,12 +24,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Heartsbar: Num of Hearts is equal to curHealth
         for (int i = 0; i < hearts.Length; i++){
-
-
-            if (curHealth > numOfHearts)
-            {
+            if (curHealth > numOfHearts){
                 numOfHearts = curHealth;
             }
 
@@ -49,23 +46,26 @@ public class PlayerHealth : MonoBehaviour
 
         float hurt = anim.GetFloat("TakeDamage");
 
-        if (true)
-        {
+
+        //Plays the Hurting-Animation
+        if (false){
             anim.SetFloat("TakeDamage", hurt);
         }
-
-        if (hurt == 3)
-        {
+        
+        //Set anim parameter "IsDead" on true if player has no life
+        //Plays the Dying-Animation
+        if (curHealth == 0){
             anim.SetBool("IsDead", true);
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
+
+        //Keyboard Input -> Will be removed later
+        if (Input.GetKeyUp(KeyCode.Space)){
             SendDamage();
         }
     }
 
-    public void SendDamage(int damageValue = 1)
-    {
+    //Damages hisself with clicking on space
+    public void SendDamage(int damageValue = 1){
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
     }
