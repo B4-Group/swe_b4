@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public float numOfHearts;
     public Image[] hearts;
     public Sprite fullHearts;
+    public Sprite emptyHearts;
 
     private Animator anim;
     // Start is called before the first frame update
@@ -33,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
             if (i < curHealth){
                 hearts[i].sprite = fullHearts;
             } else {
-                hearts[i].sprite = null;
+                hearts[i].sprite = emptyHearts;
             }
 
             if (i < numOfHearts){
@@ -48,10 +49,11 @@ public class PlayerHealth : MonoBehaviour
 
 
         //Plays the Hurting-Animation
-        if (false){
+        if (anim.GetFloat("TakeDamage") < 0){
             anim.SetFloat("TakeDamage", hurt);
         }
-        
+        anim.SetFloat("TakeDamage", 0);
+
         //Set anim parameter "IsDead" on true if player has no life
         //Plays the Dying-Animation
         if (curHealth == 0){
