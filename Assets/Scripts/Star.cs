@@ -5,12 +5,12 @@ using System;
 
 public class Star : MonoBehaviour, ICollectible
 {
-    public static event Action onStarCollected;
+    public static event Action OnStarCollected;
     public void collect()
     {
         Debug.Log("Star collected");
+        OnStarCollected?.Invoke();
         Destroy(gameObject);
-        onStarCollected?.Invoke();
     }
 
 
