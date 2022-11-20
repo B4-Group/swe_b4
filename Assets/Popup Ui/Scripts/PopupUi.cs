@@ -7,6 +7,10 @@ public class PopupUi : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
     [SerializeField] Button closeUiButton;
+    [SerializeField] Text title;
+    [SerializeField] GameObject simonSaysPanel;
+    [SerializeField] GameObject calculaterPanel;
+    [SerializeField] GameObject informationPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,7 @@ public class PopupUi : MonoBehaviour
 
         closeUiButton.onClick.RemoveAllListeners();
         closeUiButton.onClick.AddListener(Hide);
+        setQuiz(1);
     }
 
     public void Show()
@@ -37,5 +42,24 @@ public class PopupUi : MonoBehaviour
     public void Hide()
     {
         canvas.SetActive(false);
+    }
+
+    public void setQuiz(int i)
+    {
+        if(i == 0)
+        {
+            title.text = "Hieroglyphen Rechner";
+            
+
+        }
+        else if (i == 1)
+        {
+            title.text = "Simon Says";
+            simonSaysPanel.SetActive(true);
+        }
+        else if (i == 2)
+        {
+            title.text = "Informationsabfrage";
+        }
     }
 }
