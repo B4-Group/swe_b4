@@ -458,7 +458,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slashing in The Air
+  m_Name: Slashing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -471,7 +471,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4537947019063574101, guid: 6bb2829104d3dd548973e13bfbb49062, type: 3}
+  m_Motion: {fileID: -1861297070909555880, guid: 6bb2829104d3dd548973e13bfbb49062, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
