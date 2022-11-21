@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -12,8 +14,8 @@ public class PlayerHealth : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHearts;
     public Sprite emptyHearts;
+    private float time = 0.4f;
 
-    private Rigidbody2D rb;
     private Animator anim;
 
     // Start is called before the first frame update
@@ -21,63 +23,63 @@ public class PlayerHealth : MonoBehaviour
     {
         curHealth = maxHealth;
         numOfHearts = maxHealth;
-        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Heartsbar: Num of Hearts is equal to curHealth
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (curHealth > numOfHearts)
+            //Heartsbar: Num of Hearts is equal to curHealth
+            for (int i = 0; i < hearts.Length; i++)
             {
-                numOfHearts = curHealth;
+                if (curHealth > numOfHearts)
+                {
+                    numOfHearts = curHealth;
+                }
+
+                if (i < curHealth)
+                {
+                    hearts[i].sprite = fullHearts;
+                }
+                else
+                {
+                    hearts[i].sprite = emptyHearts;
+                }
+
+                if (i < numOfHearts)
+                {
+                    hearts[i].enabled = true;
+                }
+                else
+                {
+                    hearts[i].enabled = false;
+                }
             }
 
-            if (i < curHealth)
+
+            float hurt = anim.GetFloat("TakeDamage");
+
+
+            //Plays the Hurting-Animation
+            if (anim.GetFloat("TakeDamage") < 0 && curHealth != 0)
             {
-                hearts[i].sprite = fullHearts;
+                anim.SetFloat("TakeDamage", hurt);
             }
-            else
+            anim.SetFloat("TakeDamage", 0);
+
+            //Set anim parameter "IsDead" on true if player has no life
+            //Plays the Dying-Animation
+            if (curHealth <= 0)
             {
-                hearts[i].sprite = emptyHearts;
+                time -= Time.deltaTime;
+                Death();
             }
 
-            if (i < numOfHearts)
+            //Keyboard Input -> Will be removed later
+            if (Input.GetKeyUp(KeyCode.Space))
             {
-                hearts[i].enabled = true;
+                SendDamage();
             }
-            else
-            {
-                hearts[i].enabled = false;
-            }
-        }
-
-
-        float hurt = anim.GetFloat("TakeDamage");
-
-
-        //Plays the Hurting-Animation
-        if (anim.GetFloat("TakeDamage") < 0 && curHealth != 0)
-        {
-            anim.SetFloat("TakeDamage", hurt);
-        }
-        anim.SetFloat("TakeDamage", 0);
-
-        //Set anim parameter "IsDead" on true if player has no life
-        //Plays the Dying-Animation
-        if (curHealth <= 0)
-        {
-            Death();
-        }
-
-        //Keyboard Input -> Will be removed later
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            SendDamage();
-        }
     }
 
     //Damages hisself with clicking on space
@@ -90,8 +92,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void Death()
     {
-        rb.bodyType = RigidbodyType2D.Static;
+        GetComponent<Rigidbody2D>().simulated = true; 
         anim.SetBool("IsDead", true);
+
+        if (time <= 0f)
+        {
+            Time.timeScale = 0f;
+        }
+        
     }
 
 }
