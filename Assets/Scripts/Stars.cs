@@ -9,8 +9,7 @@ public class Stars : MonoBehaviour
     public static Button secondStar;
     public static Button thirdStar;
 
-    private static int countStars;
-
+    private static int countStars = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,32 +22,37 @@ public class Stars : MonoBehaviour
         firstStar.style.visibility = Visibility.Hidden;
         secondStar.style.visibility = Visibility.Hidden;
         thirdStar.style.visibility = Visibility.Hidden;
-        countStars = 0;
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        Debug.Log("Adding listener");
+        Star.OnStarCollected += CollectedStars;
     }
+
+    private void OnDisable()
+    {
+        Star.OnStarCollected -= CollectedStars;
+    }
+
     public static void CollectedStars()
     {
-        if (countStars == 0)
+        Debug.Log("Adding star");
+        countStars += 1;
+        Debug.Log($"Current star count: {countStars}");
+
+        if (countStars <= 1)
         {
             firstStar.style.visibility = Visibility.Visible;
-            countStars++;
-
         }
-        else if (countStars == 1)
+        if (countStars == 2)
         {
             secondStar.style.visibility = Visibility.Visible;
-            countStars++;
         }
-        else if (countStars == 2)
+        if (countStars >= 3)
         {
             thirdStar.style.visibility = Visibility.Visible;
-            countStars++;
         }
     }
 
