@@ -38,7 +38,7 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update() //schie�t durch Animation Aufruf
     {
-        if (Input.GetButtonDown("Fire1") && !isShooting)
+        if (Input.GetButtonDown("Fire1") && !isShooting && !Pausenmenu.GameIsPaused)
         {
             StartCoroutine(Shoot());
         }
