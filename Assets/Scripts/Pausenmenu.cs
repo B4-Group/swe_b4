@@ -70,16 +70,18 @@ public class Pausenmenu : MonoBehaviour
         Debug.Log("...NeuStarten");
         Stars.ResetStar();
         Timer.ResetTimer();
-        pauseMenu.style.visibility = Visibility.Hidden;
+        Resume();
     }
     public void LoadLevelauswahl()
     {
         Debug.Log("Loading levelauswahl");
         SceneManager.LoadScene("Levelauswahl");
+        Resume();
     }
     public void HauptMenu()
     {
         Debug.Log("....Hauptmenü");
         SceneManager.LoadScene("MainMenu");
+        Resume();
     }
 }
