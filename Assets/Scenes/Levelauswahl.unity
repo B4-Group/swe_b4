@@ -387,6 +387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneList:
-  - SampleScene
-  - SampleScene2
+  - Level1
+  - Level2
   buttonPreset: {fileID: 0}
