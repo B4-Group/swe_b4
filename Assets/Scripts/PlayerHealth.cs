@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float curHealth;
+    public static float curHealth;
     public float maxHealth;
 
     private HealthbarUI m_HealthbarUI;
@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
         curHealth = maxHealth;
 
         m_HealthbarUI = GetComponent<HealthbarUI>();
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
