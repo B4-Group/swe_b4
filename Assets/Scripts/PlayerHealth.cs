@@ -85,6 +85,7 @@ public class PlayerHealth : MonoBehaviour
     {
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
+        Debug.Log("player get dmg [Playerhealth]");
     }
 
     public void Death()
