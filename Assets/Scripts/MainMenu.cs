@@ -17,7 +17,6 @@ public class MainMenu : MonoBehaviour
 
         startButton.clicked += LoadLevelauswahl;
         exitButton.clicked += ExitGame;
-
     }
 
     public void LoadLevelauswahl()

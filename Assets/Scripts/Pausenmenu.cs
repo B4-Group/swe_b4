@@ -58,28 +58,29 @@ public class Pausenmenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
-    void Pause()
+    public void Pause()
     {
         pauseMenu.style.visibility = Visibility.Visible;
         Time.timeScale = 0f;
         GameIsPaused = true;
-
     }
     public void NeueStarten()
     {
         Debug.Log("...NeuStarten");
         Stars.ResetStar();
         Timer.ResetTimer();
-        pauseMenu.style.visibility = Visibility.Hidden;
+        Resume();
     }
     public void LoadLevelauswahl()
     {
         Debug.Log("Loading levelauswahl");
         SceneManager.LoadScene("Levelauswahl");
+        Resume();
     }
     public void HauptMenu()
     {
         Debug.Log("....Hauptmenü");
         SceneManager.LoadScene("MainMenu");
+        Resume();
     }
 }
