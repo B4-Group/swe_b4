@@ -77,11 +77,11 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
 
-        //Keyboard Input -> Will be removed later
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            SendDamage();
-        }
+        ////Keyboard Input -> Will be removed later
+        //if (Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    SendDamage();
+        //}
     }
 
     //Damages hisself with clicking on space
