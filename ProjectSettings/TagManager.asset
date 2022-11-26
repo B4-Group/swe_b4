@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PuzzelObject
   - Enemy
+  - MainTorch
   layers:
   - Default
   - TransparentFX

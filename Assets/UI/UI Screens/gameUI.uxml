@@ -6,6 +6,9 @@
         <ui:Label text="0" display-tooltip-when-elided="true" name="firstSecond" style="font-size: 20px;" />
         <ui:Label text="0" display-tooltip-when-elided="true" name="secondSecond" style="font-size: 20px;" />
     </ui:IMGUIContainer>
+    <ui:VisualElement name="helpContainer" style="height: 34px; width: 47px; position: absolute; top: 0; left: 727px;">
+        <ui:Button text="?" display-tooltip-when-elided="true" name="helpButton" style="background-color: rgb(185, 134, 107); -unity-text-outline-color: rgb(94, 76, 67); color: rgb(199, 186, 184); -unity-text-outline-width: 0.5px; font-size: 24px; padding-top: 6px; padding-bottom: 6px; height: 30px; width: 41px; -unity-font: resource(&apos;FlatSkin/Font/Roboto-Black&apos;); -unity-font-style: bold;" />
+    </ui:VisualElement>
     <ui:IMGUIContainer name="starsContainer" style="flex-direction: row-reverse; position: absolute; right: 0; bottom: 0;">
         <ui:Button display-tooltip-when-elided="false" name="firstStar" enable-rich-text="false" style="background-image: url(&apos;project://database/Assets/UI/UI%20Toolkit/Game%20Icon/Cartoon%20RPG%20UI_Game%20Icon%20-%20Critical%20Hit%20Gem.png?fileID=2800000&amp;guid=61345f772ff2d9f48a804f79a1b0e0bd&amp;type=3#Cartoon RPG UI_Game Icon - Critical Hit Gem&apos;); position: relative; right: 0; bottom: 0; width: 30px; height: 30px; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(88, 88, 88, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0);" />
         <ui:Button display-tooltip-when-elided="false" name="secondStar" enable-rich-text="false" style="background-image: url(&apos;project://database/Assets/UI/UI%20Toolkit/Game%20Icon/Cartoon%20RPG%20UI_Game%20Icon%20-%20Critical%20Hit%20Gem.png?fileID=2800000&amp;guid=61345f772ff2d9f48a804f79a1b0e0bd&amp;type=3#Cartoon RPG UI_Game Icon - Critical Hit Gem&apos;); position: relative; right: 0; bottom: 0; width: 30px; height: 30px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); background-color: rgba(88, 88, 88, 0);" />
@@ -24,5 +27,6 @@
             <ui:Button text="Level Auswahl" display-tooltip-when-elided="true" name="levelAuswahl" enable-rich-text="false" style="margin-bottom: 20px;" />
             <ui:Button text="Hauptmenü" display-tooltip-when-elided="true" name="hauptMenu" />
         </ui:GroupBox>
+        <ui:Label text="Label" display-tooltip-when-elided="true" />
     </ui:IMGUIContainer>
 </ui:UXML>
