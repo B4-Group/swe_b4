@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PuzzelObject
   - Enemy
+  - MainTorch
+  - GenerateShadowCasters
   layers:
   - Default
   - TransparentFX
@@ -13,6 +15,7 @@ TagManager:
   - SolidObjectsTest
   - Water
   - UI
+  - Enemy
   - 
   - 
   - 
@@ -36,8 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Post Processing
   - 
   m_SortingLayers:
   - name: Default
