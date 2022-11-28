@@ -20,6 +20,15 @@ public class EnemyHealth : MonoBehaviour
     public float hp;
     public GameObject diePEffect; //VFX
 
+    private Sound enemyBreathingSound, enemyDieSound;
+
+    private void Start()
+    {
+        enemyBreathingSound = FindObjectOfType<AudioManager>().getSound("enemyBreathing");
+        enemyBreathingSound.source.Play();
+
+        enemyDieSound = FindObjectOfType<AudioManager>().getSound("enemyDying");
+    }
 
     public void TakeDamage(float damage)
     {
@@ -32,6 +41,8 @@ public class EnemyHealth : MonoBehaviour
     }
     void Die()
     {
+        enemyBreathingSound.source.Stop();
+        enemyDieSound.source.Play();
         if (diePEffect != null)
         {
             Instantiate(diePEffect, transform.position, Quaternion.identity); //VFX
