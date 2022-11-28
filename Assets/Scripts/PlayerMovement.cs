@@ -14,9 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
+    private Sound stepSound;
+
     // Start is called before the first frame update
     void Start() {
-        
     }
 
     // Update is called once per frame
@@ -29,6 +30,19 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
+        stepSound = FindObjectOfType<AudioManager>().getSound("step");
+        if (movement.sqrMagnitude >= 0.01)
+        {
+            if(!stepSound.source.isPlaying)
+            {
+                stepSound.source.Play();
+            }
+        }
+        else
+        {
+            stepSound.source.Stop();
+        }
+
         if(movement.x == -1) {
             facingRight = false;
         } else if(movement.x == 1) {
@@ -36,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.localScale = new Vector3((float)(movement.x != 0 ? movement.x * 0.25 : facingRight ? 0.25 : -0.25), transform.localScale.y, transform.localScale.z);
-        
     }
 
     private void FixedUpdate() {

@@ -28,20 +28,21 @@ public class Shooting : MonoBehaviour
     public GameObject bullet;
     public Animator animator;
 
-
+    private Sound shootSound;
 
     void Start()
     {
         isShooting = false;
+        shootSound = FindObjectOfType<AudioManager>().getSound("shootBullet");
     }
 
     // Update is called once per frame
     void Update() //schie�t durch Animation Aufruf
     {
-        if (Input.GetButtonDown("Fire1") && !isShooting && !Pausenmenu.GameIsPaused)
-        {
-            StartCoroutine(Shoot());
-        }
+        //if (Input.GetButtonDown("Fire1") && !isShooting && !Pausenmenu.GameIsPaused)
+        //{
+        //    StartCoroutine(Shoot());
+        //}
     }
 
     public IEnumerator Shoot()
@@ -61,7 +62,7 @@ public class Shooting : MonoBehaviour
         }
 
         isShooting = true;
-
+        shootSound.source.Play();
         GameObject newBullet = Instantiate(bullet, Shootpoint.position, Quaternion.identity);
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * direction() * Time.fixedDeltaTime, 0f);
 
@@ -69,13 +70,15 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
 
-        OnFire();
+        //OnFire();
 
     }
 
     void OnFire() // nur animation
     {
+
         animator.SetTrigger("Shooting");
+
     }
 
 

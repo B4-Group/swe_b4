@@ -63,7 +63,6 @@ public class Pausenmenu : MonoBehaviour
         pauseMenu.style.visibility = Visibility.Visible;
         Time.timeScale = 0f;
         GameIsPaused = true;
-
     }
     public void NeueStarten()
     {
