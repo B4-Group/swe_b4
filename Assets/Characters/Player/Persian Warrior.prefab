@@ -374,6 +374,8 @@ GameObject:
   - component: {fileID: 8815173818936107360}
   - component: {fileID: 3859004557307232205}
   - component: {fileID: 1249216505568245626}
+  - component: {fileID: 2832398886130251789}
+  - component: {fileID: 6980620496113266306}
   m_Layer: 0
   m_Name: Persian Warrior
   m_TagString: Untagged
@@ -436,6 +438,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOrder: 0
   applySpriterZOrder: 0
+--- !u!114 &2832398886130251789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107812878301581801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 457b38dc880b7fb468eaed55f24b167f, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: a944c4843fc0e0d48af9fa4010bc1572, type: 3}
+  m_SortingOrder: 0
+--- !u!114 &6980620496113266306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107812878301581801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04eafdeea9c4f2a4d83d54da506048e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
 --- !u!1 &2770523885689944109
 GameObject:
   m_ObjectHideFlags: 0

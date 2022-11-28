@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
 
-        ////Keyboard Input -> Will be removed later
+        //Keyboard Input -> Will be removed later
         //if (Input.GetKeyUp(KeyCode.Space))
         //{
         //    SendDamage();
