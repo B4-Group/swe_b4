@@ -14,6 +14,12 @@ public class Pausenmenu : MonoBehaviour
     public Button hauptMenu;
     public Button pauseButton;
 
+    [SerializeField]
+    private Rigidbody2D player;
+
+    private Vector3 origPosition;
+
+
 
     void Start()
     {
@@ -35,6 +41,9 @@ public class Pausenmenu : MonoBehaviour
         pauseButton.clicked += Pause;
 
         pauseMenu.style.visibility = Visibility.Hidden;
+
+        origPosition = player.transform.position;
+
     }
     // Update is called once per frame
     void Update()
@@ -69,6 +78,8 @@ public class Pausenmenu : MonoBehaviour
         Debug.Log("...NeuStarten");
         Stars.ResetStar();
         Timer.ResetTimer();
+        PlayerHealth.ResetHealth();
+        player.transform.position = origPosition;
         Resume();
     }
     public void LoadLevelauswahl()

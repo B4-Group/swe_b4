@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerHealth : MonoBehaviour
 {
     public static float curHealth;
-    public float maxHealth = 3;
+    public static float maxHealth = 3;
     
 
     private Rigidbody2D rb;
@@ -15,10 +15,10 @@ public class PlayerHealth : MonoBehaviour
 
 
     private VisualElement m_Bar;
-    private VisualElement[] m_Hearts;
+    private static VisualElement[] m_Hearts;
 
     private VisualElement em_Bar;
-    private VisualElement[] em_Hearts;
+    private static VisualElement[] em_Hearts;
 
 
     private Sound dieSound, loseHealthSound;
@@ -104,6 +104,16 @@ public class PlayerHealth : MonoBehaviour
         dieSound.source.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsDead", true);
+    }
+
+    public static void ResetHealth()
+    {
+        curHealth = 3;
+        for (int loop = (int)maxHealth; loop > 0; loop--)
+        {
+            m_Hearts[loop - 1].style.visibility = Visibility.Visible;
+            em_Hearts[loop - 1].style.visibility = Visibility.Hidden;
+        }
     }
 }
 
