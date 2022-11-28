@@ -5,6 +5,14 @@ public class DoorController : MonoBehaviour
     private Animator _animator;
     private bool isOpen = false;
 
+    private Sound doorOpen, doorClose;
+
+    private void Start()
+    {
+        doorOpen = FindObjectOfType<AudioManager>().getSound("doorOpen");
+        doorClose = FindObjectOfType<AudioManager>().getSound("doorClose");
+    }
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -13,6 +21,7 @@ public class DoorController : MonoBehaviour
     [ContextMenu(itemName:"OpenDoor")]
     public void Open()
     {
+        doorOpen.source.Play();
         isOpen = true;
         _animator.SetTrigger(name: "OpenDoor"); ;
     }
@@ -20,6 +29,7 @@ public class DoorController : MonoBehaviour
     [ContextMenu(itemName:"CloseDoor")]
     public void Close()
     {
+        doorClose.source.Play();
         isOpen = false;
         _animator.SetTrigger(name: "CloseDoor");
     }

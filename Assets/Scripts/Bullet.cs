@@ -19,10 +19,13 @@ public class Bullet : MonoBehaviour
    
     public float dietime;
     public GameObject diePEffect;
+    private Sound impactSoundWall, impactSoundEnemy;
   
     void Start()
     {
        StartCoroutine(Timer()); //timer init
+        impactSoundWall = FindObjectOfType<AudioManager>().getSound("bulletWallImpact");
+        impactSoundEnemy = FindObjectOfType<AudioManager>().getSound("bulletEnemyImpact");
     }
 
     //void OnTriggerEnter2D(Collider2D collision)
@@ -42,8 +45,12 @@ public class Bullet : MonoBehaviour
         {
             if(collisionGameObject.GetComponent<EnemyHealth>()!= null)
             {
+                impactSoundEnemy.source.Play();
                 collisionGameObject.GetComponent<EnemyHealth>().TakeDamage(10); // damage uebergabe an den Enemy mit einem HealthController Script 
                 print("hit![Bullet]"); //consol debug
+            } else
+            {
+                impactSoundWall.source.Play();
             }
             Die();
         }

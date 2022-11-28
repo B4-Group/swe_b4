@@ -28,11 +28,12 @@ public class Shooting : MonoBehaviour
     public GameObject bullet;
     public Animator animator;
 
-
+    private Sound shootSound;
 
     void Start()
     {
         isShooting = false;
+        shootSound = FindObjectOfType<AudioManager>().getSound("shootBullet");
     }
 
     // Update is called once per frame
@@ -61,7 +62,7 @@ public class Shooting : MonoBehaviour
         }
 
         isShooting = true;
-
+        shootSound.source.Play();
         GameObject newBullet = Instantiate(bullet, Shootpoint.position, Quaternion.identity);
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * direction() * Time.fixedDeltaTime, 0f);
 

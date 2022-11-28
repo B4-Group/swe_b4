@@ -19,6 +19,9 @@ public class PlayerHealth : MonoBehaviour
 
     private VisualElement em_Bar;
     private VisualElement[] em_Hearts;
+
+
+    private Sound dieSound, loseHealthSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,9 @@ public class PlayerHealth : MonoBehaviour
             m_Hearts[loop - 1].style.visibility = Visibility.Visible;
             em_Hearts[loop - 1].style.visibility = Visibility.Hidden;
         }
+
+        dieSound = FindObjectOfType<AudioManager>().getSound("playerDying");
+        loseHealthSound = FindObjectOfType<AudioManager>().getSound("playerLoseHealth");
     }
 
     // Update is called once per frame
@@ -78,10 +84,10 @@ public class PlayerHealth : MonoBehaviour
         }
 
         //Keyboard Input -> Will be removed later
-        //if (Input.GetKeyUp(KeyCode.Space))
-        //{
-        //    SendDamage();
-        //}
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            SendDamage();
+        }
     }
 
     //Damages hisself with clicking on space
@@ -89,11 +95,13 @@ public class PlayerHealth : MonoBehaviour
     {
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
+        loseHealthSound.source.Play();
         Debug.Log("player get dmg [Playerhealth]");
     }
 
     public void Death()
     {
+        dieSound.source.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsDead", true);
     }
