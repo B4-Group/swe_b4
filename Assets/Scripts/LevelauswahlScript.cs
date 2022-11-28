@@ -10,7 +10,7 @@ public class LevelauswahlScript : MonoBehaviour
     private IMGUIContainer levelContainer;
 
     // Array with Scene names of Levels to show
-    public string[] SceneList = { "SampleScene", "SampleScene2" };
+    public string[] SceneList = { "Level1", "Level2" };
 
     public GameObject buttonPreset;
 
