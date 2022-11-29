@@ -6,16 +6,16 @@ using UnityEngine;
 /**
  * using UnityEngine.UI;
  * Author: Nam
- * date: 15.11.2022
- * edit: 15.11.2022
+ * date: 29.11.2022
+ * edit: 29.11.2022
  * 
  * Status: Fertig
- * Einsatz: Script muss bei Enemy vorhanden sein
- *          TakeDamage wird von "Bullet.cs" aufgerufen
+ * Einsatz: Nur zum sterben die Entfernung
+ *          Nur zum sterben die Entfernung
  *          
  */
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyDyingVFX : MonoBehaviour
 {
 
     public float startHealth;
@@ -25,19 +25,13 @@ public class EnemyHealth : MonoBehaviour
 
     private Sound enemyBreathingSound, enemyDieSound;
 
-    public float interval = 1.0f;
+    public float interval = 3.0f;
     public float trackedTime = 0.0f;
-    public bool dead = false;
     void Update()
     {
         trackedTime += Time.deltaTime;
-        if(trackedTime > interval)
-        {
-            trackedTime = 0.0f;
-            if (dead) Destroy(gameObject);
-        }
     }
-        private void Start()
+    private void Start()
     {
         enemyBreathingSound = FindObjectOfType<AudioManager>().getSound("enemyBreathing");
         enemyBreathingSound.source.Play();
@@ -45,24 +39,7 @@ public class EnemyHealth : MonoBehaviour
         enemyDieSound = FindObjectOfType<AudioManager>().getSound("enemyDying");
     }
 
-    public void TakeDamage(float damage)
-    {
-        hp -= damage;
-        if (hp <= 0f)
-        {
-            Debug.Log("should die");
-            Die();
-        }
-        
-    }
-    public void Die()
-    {
-        enemyBreathingSound.source.Stop();
-        enemyDieSound.source.Play();
-        animator.SetTrigger("dying");
-        
-
-    }
+   
     public void Die2()
     {
         Debug.Log("should die2");
