@@ -66,14 +66,4 @@ public class EnemyHealth : MonoBehaviour
         dead = true;
 
     }
-    public void Die2()
-    {
-        Debug.Log("should die2");
-        if (diePEffect != null)
-        {
-            Instantiate(diePEffect, transform.position, Quaternion.identity); //VFX
-        }
-        FindObjectOfType<AudioManager>().Play("mummy_death");
-        Destroy(gameObject);
-    }
 }
