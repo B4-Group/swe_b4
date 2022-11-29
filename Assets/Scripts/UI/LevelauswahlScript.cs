@@ -8,6 +8,7 @@ public class LevelauswahlScript : MonoBehaviour
 {
     public Button mainMenu, backButton, sceneButton;
     private IMGUIContainer levelContainer;
+    public Sound MenuMusic;
 
     // Array with Scene names of Levels to show
     public string[] SceneList = { "Level1", "Level2" };
@@ -17,6 +18,10 @@ public class LevelauswahlScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // Music
+        MenuMusic = FindObjectOfType<AudioManager>().getSound("menuMusic");
+
         var root = GetComponent<UIDocument>().rootVisualElement;
         
         mainMenu = root.Q<Button>("mainMenu");
@@ -42,6 +47,7 @@ public class LevelauswahlScript : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
+        MenuMusic.source.Stop();
         Debug.Log("Loading level" + levelName);
         SceneManager.LoadScene(levelName);
     }
