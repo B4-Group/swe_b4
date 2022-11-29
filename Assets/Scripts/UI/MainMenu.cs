@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<AudioManager>().Play("select");
         var root = GetComponent<UIDocument>().rootVisualElement;
         startButton = root.Q<Button>("play");
         exitButton = root.Q<Button>("exit");
@@ -26,12 +27,14 @@ public class MainMenu : MonoBehaviour
 
     public void LoadLevelauswahl()
     {
+        FindObjectOfType<AudioManager>().Play("select");
         Debug.Log("Loading levelauswahl");
         SceneManager.LoadScene("Levelauswahl");
     }
 
     public void ExitGame()
     {
+        FindObjectOfType<AudioManager>().Play("exit");
         Debug.Log("Quit game");
         Application.Quit();
     }
