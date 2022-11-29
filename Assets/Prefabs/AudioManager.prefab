@@ -53,7 +53,85 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: step
     clip: {fileID: 8300000, guid: 932af2d772d20754b8eb6b1b13c1bf27, type: 3}
-    volume: 0.2
+    volume: 0.295
     pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: doorOpen
+    clip: {fileID: 8300000, guid: d08345b614e28354a892ba5f57aaacce, type: 3}
+    volume: 0.307
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: doorClose
+    clip: {fileID: 8300000, guid: 3a908657c4858c7439348c6204586a7f, type: 3}
+    volume: 0.136
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: shootBullet
+    clip: {fileID: 8300000, guid: 05ec0ca8c7199344bb6b1d1ad0d75b5d, type: 3}
+    volume: 0.136
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: bulletWallImpact
+    clip: {fileID: 8300000, guid: 6b4b49d7f450ffa45a302045dc77d030, type: 3}
+    volume: 0.136
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: bulletEnemyImpact
+    clip: {fileID: 8300000, guid: ff9ce5dba0bede44894a3bd8da58e462, type: 3}
+    volume: 0.136
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: starCollect
+    clip: {fileID: 8300000, guid: 381c2b5dd907a11429b5437b20efe8c6, type: 3}
+    volume: 0.136
+    pitch: 0.788
+    loop: 0
+    source: {fileID: 0}
+  - name: enemyBreathing
+    clip: {fileID: 8300000, guid: f172c66e4f2a04e40a345d8c5235deef, type: 3}
+    volume: 0.136
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: enemyDying
+    clip: {fileID: 8300000, guid: d1abd872ac092d243b00f96b956adc9e, type: 3}
+    volume: 0.136
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: level1Music
+    clip: {fileID: 8300000, guid: 5b56dcaf053a8c74693717ab0053904e, type: 3}
+    volume: 0.136
+    pitch: 0.69
+    loop: 0
+    source: {fileID: 0}
+  - name: playerDying
+    clip: {fileID: 8300000, guid: d1abd872ac092d243b00f96b956adc9e, type: 3}
+    volume: 0.136
+    pitch: 0.69
+    loop: 0
+    source: {fileID: 0}
+  - name: playerLoseHealth
+    clip: {fileID: 8300000, guid: 1b159a6c1f2f16445bb0d51621553045, type: 3}
+    volume: 0.136
+    pitch: 0.69
+    loop: 0
+    source: {fileID: 0}
+  - name: level2Music
+    clip: {fileID: 8300000, guid: 7aa48ab1af4aed547a5e0ad3327d16ea, type: 3}
+    volume: 0.136
+    pitch: 0.69
+    loop: 0
+    source: {fileID: 0}
+  - name: levelDoneSound
+    clip: {fileID: 8300000, guid: fcc7851377ee15d40ae9b73e7487ba52, type: 3}
+    volume: 0.518
+    pitch: 0.69
     loop: 0
     source: {fileID: 0}
