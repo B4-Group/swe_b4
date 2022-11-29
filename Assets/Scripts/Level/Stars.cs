@@ -39,6 +39,7 @@ public class Stars : MonoBehaviour
     public static void CollectedStars()
     {
         Debug.Log("Adding star");
+        FindObjectOfType<AudioManager>().Play("star_collected");
         countStars += 1;
         Debug.Log($"Current star count: {countStars}");
 

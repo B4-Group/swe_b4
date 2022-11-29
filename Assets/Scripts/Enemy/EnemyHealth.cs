@@ -47,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Instantiate(diePEffect, transform.position, Quaternion.identity); //VFX
         }
+        FindObjectOfType<AudioManager>().Play("mummy_death");
         Destroy(gameObject);
     }
 }

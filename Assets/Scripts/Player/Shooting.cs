@@ -39,10 +39,18 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update() //schie�t durch Animation Aufruf
     {
+<<<<<<< Updated upstream
         //if (Input.GetButtonDown("Fire1") && !isShooting && !Pausenmenu.GameIsPaused)
         //{
         //    StartCoroutine(Shoot());
         //}
+=======
+        if (Input.GetButtonDown("Fire1") && !isShooting && !Pausenmenu.GameIsPaused)
+        {
+            FindObjectOfType<AudioManager>().Play("throw");
+            StartCoroutine(Shoot());
+        }
+>>>>>>> Stashed changes
     }
 
     public IEnumerator Shoot()
