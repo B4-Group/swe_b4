@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
 
     private Sound enemyBreathingSound, enemyDieSound;
 
-    public float interval = 1.0f;
+    public float interval = 3.0f;
     public float trackedTime = 0.0f;
     public bool dead = false;
     void Update()
@@ -34,7 +34,10 @@ public class EnemyHealth : MonoBehaviour
         if(trackedTime > interval)
         {
             trackedTime = 0.0f;
-            if (dead) Destroy(gameObject);
+            if (dead == true) { 
+                Destroy(gameObject); Debug.Log("[EH] Dead Removed"); }
+            Debug.Log("[EH] dead request");
+
         }
     }
         private void Start()
@@ -60,7 +63,7 @@ public class EnemyHealth : MonoBehaviour
         enemyBreathingSound.source.Stop();
         enemyDieSound.source.Play();
         animator.SetTrigger("dying");
-        
+        dead = true;
 
     }
     public void Die2()

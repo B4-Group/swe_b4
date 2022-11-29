@@ -115,7 +115,7 @@ Transform:
   - {fileID: 3522117700539412942}
   m_Father: {fileID: 3522117701001778287}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13.047508}
 --- !u!1 &3522117699668646672
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ Transform:
   - {fileID: 3522117700783018934}
   m_Father: {fileID: 3522117700088426165}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.133847}
 --- !u!1 &3522117699770999245
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ Transform:
   - {fileID: 3522117700420458407}
   m_Father: {fileID: 3522117700088426165}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 174.81197}
 --- !u!1 &3522117699933462971
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ Transform:
   - {fileID: 3522117700016476544}
   m_Father: {fileID: 3522117701001778287}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -174.72829}
 --- !u!1 &3522117700420458406
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ Transform:
   - {fileID: 3522117701418183527}
   m_Father: {fileID: 3522117701001778287}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -23.54029}
 --- !u!1 &3522117701001778286
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +729,7 @@ GameObject:
   - component: {fileID: 3522117701001778287}
   - component: {fileID: 3522117701001778285}
   - component: {fileID: 3522117701001778284}
+  - component: {fileID: 1471864962}
   m_Layer: 6
   m_Name: Cartoon Mummy
   m_TagString: Untagged
@@ -788,6 +789,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingOrder: 2
   applySpriterZOrder: 0
+--- !u!114 &1471864962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522117701001778286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb72bedbbe9a0547a7442357c7f0359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 0
+  hp: 0
+  diePEffect: {fileID: 5466643701761102553, guid: e0f375e6679116843a1db8f430adf044, type: 3}
+  animator: {fileID: 3522117701001778285}
+  interval: 3
+  trackedTime: 0
 --- !u!1 &3522117701041480105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1179,10 @@ MonoBehaviour:
   startHealth: 2
   hp: 2
   diePEffect: {fileID: 5466643701761102553, guid: e0f375e6679116843a1db8f430adf044, type: 3}
+  animator: {fileID: 3522117701001778285}
+  interval: 3
+  trackedTime: 0
+  dead: 0
 --- !u!212 &3168590881205412766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1329,6 +1352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a7a9c6049a1de4ea3fe0677d8d1d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interval: 3
+  trackedTime: 0
   aiPath: {fileID: 3522117701437157153}
 --- !u!61 &3522117701437157154
 BoxCollider2D:
@@ -1389,7 +1414,7 @@ MonoBehaviour:
   - {x: -0.2195549, y: -0.5103427, z: 0}
   m_ShapePathHash: -1980718469
   m_Mesh: {fileID: 0}
-  m_InstanceId: -2596
+  m_InstanceId: -1596
 --- !u!114 &1215401492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1436,4 +1461,4 @@ Transform:
   - {fileID: 3522117701072735549}
   m_Father: {fileID: 3522117700088426165}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 169.6546}
