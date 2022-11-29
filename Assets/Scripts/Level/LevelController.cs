@@ -40,6 +40,6 @@ public class LevelController : MonoBehaviour
         LevelDoneSound = FindObjectOfType<AudioManager>().getSound("levelDoneSound");
         LevelDoneSound.source.Play();
         Debug.Log("Level is done");
-        SceneManager.LoadScene("Levelauswahl");
+        SceneManager.LoadScene("LevelDoneScene");
     }
 }

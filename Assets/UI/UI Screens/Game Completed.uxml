@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:IMGUIContainer name="GameOver" style="flex-direction: column; height: 100%; width: 100%; align-items: auto; justify-content: space-around; padding-left: 0; padding-right: 0; padding-top: 0; opacity: 1; background-color: rgba(45, 45, 45, 0); left: 0; -unity-text-align: upper-center; top: 0; right: 0; bottom: 0;">
+        <ui:VisualElement name="screen" style="left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; background-color: rgba(4, 248, 35, 0.5);">
+            <ui:VisualElement style="left: 10%; right: 10%; top: 0; bottom: 50%; position: absolute;">
+                <ui:Label text="Level Completed" display-tooltip-when-elided="true" style="-unity-font: resource(&apos;FlatSkin/Font/Roboto-Black&apos;); font-size: 48%; -unity-text-align: upper-center; top: 60%; color: rgba(255, 255, 255, 0.76);" />
+            </ui:VisualElement>
+            <ui:VisualElement style="bottom: 0; top: 50%; right: 10%; left: 10%; position: absolute; flex-direction: row; justify-content: center;">
+                <ui:Button text="Next Level" display-tooltip-when-elided="true" name="Nextlevel" class="button" />
+                <ui:Button text="Main menu" display-tooltip-when-elided="true" name="Hauptmenu" class="button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:IMGUIContainer>
+</ui:UXML>
