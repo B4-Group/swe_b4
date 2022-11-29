@@ -27,9 +27,11 @@ public class PopupUi : MonoBehaviour
 
     void Awake()
     {
-        canvas.SetActive(false);
-
-
+        canvas.SetActive(true);
+        Instance = this;
+        closeUiButton.onClick.RemoveAllListeners();
+        closeUiButton.onClick.AddListener(Hide);
+        setQuiz(0);
     }
 
     public void startPuzzle()
@@ -38,12 +40,7 @@ public class PopupUi : MonoBehaviour
         Instance = this;
         closeUiButton.onClick.RemoveAllListeners();
         closeUiButton.onClick.AddListener(Hide);
-        setQuiz(1);
-    }
-
-    public void Show()
-    {
-        
+        setQuiz(0);
     }
 
     public void Hide()
