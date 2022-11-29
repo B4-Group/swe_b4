@@ -104,6 +104,10 @@ public class PlayerHealth : MonoBehaviour
         dieSound.source.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsDead", true);
+
+        GameOver obj= FindObjectOfType<GameOver>();
+        obj.GameOverScreen();
+
     }
 
     public static void ResetHealth()

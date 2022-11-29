@@ -47,13 +47,14 @@ public class LevelauswahlScript : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
-        MenuMusic.source.Stop();
+        FindObjectOfType<AudioManager>().Play("select");
         Debug.Log("Loading level" + levelName);
         SceneManager.LoadScene(levelName);
     }
 
     public void LoadMainMenu()
     {
+        FindObjectOfType<AudioManager>().Play("select");
         Debug.Log("Loading main menu");
         SceneManager.LoadScene("mainMenu");
     }
