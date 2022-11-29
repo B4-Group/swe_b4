@@ -393,13 +393,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< Updated upstream
-    - target: {fileID: 2734263895329719960, guid: ca4fce94748ce6e478cde9316fa358c2, type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2734263895329719962, guid: ca4fce94748ce6e478cde9316fa358c2, type: 3}
-=======
     - target: {fileID: 3901122377654997067, guid: 31a443a02363dfe4b8816ba76c9c8b15, type: 3}
       propertyPath: sounds.Array.size
       value: 14
@@ -605,7 +598,6 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4358850796081693653, guid: 31a443a02363dfe4b8816ba76c9c8b15, type: 3}
->>>>>>> Stashed changes
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
