@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4621058947458593830}
   - component: {fileID: -516448528778320971}
   - component: {fileID: 1954722298741161851}
+  - component: {fileID: 1570607264}
   m_Layer: 0
   m_Name: Enemy(StaticRoute)
   m_TagString: Untagged
@@ -84,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9453ae06009fe0d41947a8a33c6e11f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!61 &1954722298741161851
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -110,6 +112,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 1.07}
   m_EdgeRadius: 0
+--- !u!114 &1570607264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621058947458593834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6daa312cf348843981fb054815570f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootSpeed: 700
+  shootTimer: 5
+  Shootpoint: {fileID: 4621058947458593832}
+  bullet: {fileID: 1745102596080137470, guid: 905639e52f810444daaf3a0b95cc1290, type: 3}
+  animator: {fileID: 5912762901164509900}
 --- !u!1001 &6006919562076699464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cde60abe2092e744bd0825306cea88b, type: 3}
+--- !u!95 &5912762901164509900 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95287027987771780, guid: 0cde60abe2092e744bd0825306cea88b, type: 3}
+  m_PrefabInstance: {fileID: 6006919562076699464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6004007270678460268 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4038821189241892, guid: 0cde60abe2092e744bd0825306cea88b, type: 3}
