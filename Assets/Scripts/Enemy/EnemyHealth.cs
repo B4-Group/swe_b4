@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     public float startHealth;
     public float hp;
     public GameObject diePEffect; //VFX
+    public Animator animator;
 
     private Sound enemyBreathingSound, enemyDieSound;
 
@@ -35,14 +37,16 @@ public class EnemyHealth : MonoBehaviour
         hp -= damage;
         if (hp <= 0f)
         {
-            Die();
+            StartCoroutine( Die());
         }
 
     }
-    void Die()
+    public IEnumerator Die()
     {
         enemyBreathingSound.source.Stop();
         enemyDieSound.source.Play();
+        animator.SetTrigger("dying");
+        yield return new WaitForSeconds(1);
         if (diePEffect != null)
         {
             Instantiate(diePEffect, transform.position, Quaternion.identity); //VFX

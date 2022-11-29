@@ -6,7 +6,7 @@ using UnityEngine;
  * using UnityEngine.UI;
  * Author: Nam
  * date: 15.11.2022
- * edit: 15.11.2022
+ * edit: 19.11.2022
  * 
  * Status: Fertig
  * Einsatz: Script muss bei Bullet / BulletPrefab vorhanden sein
