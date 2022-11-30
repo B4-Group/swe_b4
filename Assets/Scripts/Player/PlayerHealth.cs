@@ -44,8 +44,8 @@ public class PlayerHealth : MonoBehaviour
             em_Hearts[loop - 1].style.visibility = Visibility.Hidden;
         }
 
-        dieSound = FindObjectOfType<AudioManager>().getSound("playerDying");
-        loseHealthSound = FindObjectOfType<AudioManager>().getSound("playerLoseHealth");
+        dieSound = FindObjectOfType<AudioManager>().GetSound("playerDying");
+        loseHealthSound = FindObjectOfType<AudioManager>().GetSound("playerLoseHealth");
     }
 
     // Update is called once per frame
@@ -104,14 +104,16 @@ public class PlayerHealth : MonoBehaviour
         dieSound.source.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsDead", true);
-
         GameOver obj= FindObjectOfType<GameOver>();
         obj.GameOverScreen();
 
     }
 
-    public static void ResetHealth()
+    public void ResetHealth()
     {
+        anim.SetBool("IsDead", false);
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        anim.Play("Idle");
         curHealth = 3;
         for (int loop = (int)maxHealth; loop > 0; loop--)
         {

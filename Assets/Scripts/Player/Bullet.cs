@@ -24,8 +24,8 @@ public class Bullet : MonoBehaviour
     void Start()
     {
        StartCoroutine(Timer()); //timer init
-        impactSoundWall = FindObjectOfType<AudioManager>().getSound("bulletWallImpact");
-        impactSoundEnemy = FindObjectOfType<AudioManager>().getSound("bulletEnemyImpact");
+        impactSoundWall = FindObjectOfType<AudioManager>().GetSound("bulletWallImpact");
+        impactSoundEnemy = FindObjectOfType<AudioManager>().GetSound("bulletEnemyImpact");
     }
 
     //void OnTriggerEnter2D(Collider2D collision)

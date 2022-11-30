@@ -33,10 +33,10 @@ public class EnemyDyingVFX : MonoBehaviour
     }
     private void Start()
     {
-        enemyBreathingSound = FindObjectOfType<AudioManager>().getSound("enemyBreathing");
+        enemyBreathingSound = FindObjectOfType<AudioManager>().GetSound("enemyBreathing");
         enemyBreathingSound.source.Play();
 
-        enemyDieSound = FindObjectOfType<AudioManager>().getSound("enemyDying");
+        enemyDieSound = FindObjectOfType<AudioManager>().GetSound("enemyDying");
     }
 
    

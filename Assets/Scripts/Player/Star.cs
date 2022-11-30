@@ -10,7 +10,7 @@ public class Star : MonoBehaviour, ICollectible
 
     private void Start()
     {
-        collectSound = FindObjectOfType<AudioManager>().getSound("starCollect");
+        collectSound = FindObjectOfType<AudioManager>().GetSound("starCollect");
     }
 
     public void collect()

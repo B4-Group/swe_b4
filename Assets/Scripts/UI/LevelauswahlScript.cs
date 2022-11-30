@@ -19,8 +19,11 @@ public class LevelauswahlScript : MonoBehaviour
     void Start()
     {
 
-        // Music
-        MenuMusic = FindObjectOfType<AudioManager>().getSound("menuMusic");
+        // Play music only if hasn't been started yet
+        if(!FindObjectOfType<AudioManager>().IsPlaying("menuMusic"))
+        {
+            FindObjectOfType<AudioManager>().Play("menuMusic");
+        }
 
         var root = GetComponent<UIDocument>().rootVisualElement;
         
@@ -47,6 +50,7 @@ public class LevelauswahlScript : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
+        FindObjectOfType<AudioManager>().StopSound("menuMusic");
         FindObjectOfType<AudioManager>().Play("select");
         Debug.Log("Loading level" + levelName);
         SceneManager.LoadScene(levelName);

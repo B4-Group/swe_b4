@@ -33,7 +33,7 @@ public class EnemyShooting : MonoBehaviour
     void Start()
     {
         isShooting = false;
-        shootSound = FindObjectOfType<AudioManager>().getSound("shootBullet");
+        shootSound = FindObjectOfType<AudioManager>().GetSound("shootBullet");
     }
 
     // Update is called once per frame
