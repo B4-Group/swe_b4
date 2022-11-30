@@ -76,20 +76,29 @@ public class Pausenmenu : MonoBehaviour
     public void NeueStarten()
     {
         Debug.Log("...NeuStarten");
+     
+        player.transform.position = origPosition;
+
+        PlayerHealth playerHealthController = FindObjectOfType<PlayerHealth>();
+        playerHealthController.ResetHealth();
+
         Stars.ResetStar();
         Timer.ResetTimer();
-        PlayerHealth.ResetHealth();
-        player.transform.position = origPosition;
+
         Resume();
     }
     public void LoadLevelauswahl()
     {
+        LevelController levelController = FindObjectOfType<LevelController>();
+        levelController.StopLevelMusic();
         Debug.Log("Loading levelauswahl");
         SceneManager.LoadScene("Levelauswahl");
         Resume();
     }
     public void HauptMenu()
     {
+        LevelController levelController = FindObjectOfType<LevelController>();
+        levelController.StopLevelMusic();
         Debug.Log("....Hauptmenü");
         SceneManager.LoadScene("MainMenu");
         Resume();

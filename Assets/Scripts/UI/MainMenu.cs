@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
         exitButton.clicked += ExitGame;
 
         // Music
-        MenuMusic = FindObjectOfType<AudioManager>().getSound("menuMusic");
+        MenuMusic = FindObjectOfType<AudioManager>().GetSound("menuMusic");
         MenuMusic.source.Play();
     }
 

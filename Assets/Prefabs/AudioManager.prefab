@@ -107,8 +107,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: level1Music
     clip: {fileID: 8300000, guid: 5b56dcaf053a8c74693717ab0053904e, type: 3}
-    volume: 0.136
-    pitch: 0.69
+    volume: 0.207
+    pitch: 0.99
     loop: 0
     source: {fileID: 0}
   - name: playerDying
@@ -125,8 +125,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: level2Music
     clip: {fileID: 8300000, guid: 7aa48ab1af4aed547a5e0ad3327d16ea, type: 3}
-    volume: 0.136
-    pitch: 0.69
+    volume: 0.256
+    pitch: 1.02
     loop: 0
     source: {fileID: 0}
   - name: levelDoneSound

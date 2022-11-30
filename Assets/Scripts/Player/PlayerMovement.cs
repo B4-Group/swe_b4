@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        stepSound = FindObjectOfType<AudioManager>().getSound("step");
+        stepSound = FindObjectOfType<AudioManager>().GetSound("step");
         if (movement.sqrMagnitude >= 0.01)
         {
             if(!stepSound.source.isPlaying)

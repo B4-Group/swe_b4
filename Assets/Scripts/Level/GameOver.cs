@@ -38,6 +38,8 @@ public class GameOver : MonoBehaviour
 
     private void mainmenu()
     {
+        LevelController levelController = FindObjectOfType<LevelController>();
+        levelController.StopLevelMusic();
         Pausenmenu obj = FindObjectOfType<Pausenmenu>();
         obj.HauptMenu();
 

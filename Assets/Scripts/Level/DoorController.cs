@@ -9,8 +9,8 @@ public class DoorController : MonoBehaviour
 
     private void Start()
     {
-        doorOpen = FindObjectOfType<AudioManager>().getSound("doorOpen");
-        doorClose = FindObjectOfType<AudioManager>().getSound("doorClose");
+        doorOpen = FindObjectOfType<AudioManager>().GetSound("doorOpen");
+        doorClose = FindObjectOfType<AudioManager>().GetSound("doorClose");
     }
 
     private void Awake()
