@@ -60,7 +60,7 @@ public class CalculatorScript : MonoBehaviour
 
         if (tempResult1 == (Result1 / 2) && tempResult2 == ((Result1 / 2) + Result2))
         {
-            PopupUI.Hide();
+            PopupUI.PuzzleDone();
         }
         else
         {

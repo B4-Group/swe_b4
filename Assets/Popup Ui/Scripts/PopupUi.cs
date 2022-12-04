@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class PopupUi : MonoBehaviour
     [SerializeField] GameObject simonSaysPanel;
     [SerializeField] GameObject calculaterPanel;
     [SerializeField] GameObject informationPanel;
+
+    public static event Action OnPuzzleDone;
     [SerializeField] HintDialogue hintDialogue;
 
     // Start is called before the first frame update
@@ -57,6 +60,12 @@ public class PopupUi : MonoBehaviour
         canvas.SetActive(false);
     }
 
+    public void PuzzleDone()
+    {
+        Hide();
+        OnPuzzleDone.Invoke();
+    }
+
     public void setQuiz(int i)
     {
         hintDialogue.setPuzzleType(i);
@@ -73,6 +82,7 @@ public class PopupUi : MonoBehaviour
         }
         else if (i == 2)
         {
+            informationPanel.SetActive(true);
             title.text = "Informationsabfrage";
         }
     }

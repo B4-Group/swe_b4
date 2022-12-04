@@ -34,6 +34,11 @@ public class DoorController : MonoBehaviour
         _animator.SetTrigger(name: "CloseDoor");
     }
 
+    private void OnEnable()
+    {
+        PopupUi.OnPuzzleDone += Open;
+    }
+
     public void ToggleDoor()
     {
         if(isOpen)
