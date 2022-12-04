@@ -63,12 +63,14 @@ public class Pausenmenu : MonoBehaviour
     }
     public void Resume()
     {
+        FindObjectOfType<AudioManager>().Play("click");
         pauseMenu.style.visibility = Visibility.Hidden;
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
     public void Pause()
     {
+        FindObjectOfType<AudioManager>().Play("pause");
         pauseMenu.style.visibility = Visibility.Visible;
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -90,7 +92,6 @@ public class Pausenmenu : MonoBehaviour
     public void LoadLevelauswahl()
     {
         LevelController levelController = FindObjectOfType<LevelController>();
-        levelController.StopLevelMusic();
         Debug.Log("Loading levelauswahl");
         SceneManager.LoadScene("Levelauswahl");
         Resume();
@@ -98,7 +99,6 @@ public class Pausenmenu : MonoBehaviour
     public void HauptMenu()
     {
         LevelController levelController = FindObjectOfType<LevelController>();
-        levelController.StopLevelMusic();
         Debug.Log("....Hauptmenü");
         SceneManager.LoadScene("MainMenu");
         Resume();

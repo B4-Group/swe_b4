@@ -23,8 +23,6 @@ public class EnemyHealth : MonoBehaviour
     public GameObject diePEffect; //VFX
     public Animator animator;
 
-    private Sound enemyBreathingSound, enemyDieSound;
-
     public float interval = 3.0f;
     public float trackedTime = 0.0f;
     public bool dead = false;
@@ -40,13 +38,6 @@ public class EnemyHealth : MonoBehaviour
 
         }
     }
-        private void Start()
-    {
-        enemyBreathingSound = FindObjectOfType<AudioManager>().GetSound("enemyBreathing");
-        enemyBreathingSound.source.Play();
-
-        enemyDieSound = FindObjectOfType<AudioManager>().GetSound("enemyDying");
-    }
 
     public void TakeDamage(float damage)
     {
@@ -60,8 +51,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void Die()
     {
-        enemyBreathingSound.source.Stop();
-        enemyDieSound.source.Play();
+        FindObjectOfType<AudioManager>().Play("mummy_death");
         animator.SetTrigger("dying");
         dead = true;
 
