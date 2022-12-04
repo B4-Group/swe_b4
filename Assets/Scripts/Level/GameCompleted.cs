@@ -18,6 +18,7 @@ public class GameCompleted : MonoBehaviour
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Stop("step");
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         Button NextLevel = root.Q<Button>("Nextlevel");

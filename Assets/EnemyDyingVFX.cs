@@ -23,8 +23,6 @@ public class EnemyDyingVFX : MonoBehaviour
     public GameObject diePEffect; //VFX
     public Animator animator;
 
-    private Sound enemyBreathingSound, enemyDieSound;
-
     public float interval = 3.0f;
     public float trackedTime = 0.0f;
     void Update()
@@ -33,10 +31,7 @@ public class EnemyDyingVFX : MonoBehaviour
     }
     private void Start()
     {
-        enemyBreathingSound = FindObjectOfType<AudioManager>().GetSound("enemyBreathing");
-        enemyBreathingSound.source.Play();
 
-        enemyDieSound = FindObjectOfType<AudioManager>().GetSound("enemyDying");
     }
 
    
