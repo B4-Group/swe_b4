@@ -81,7 +81,7 @@ public class SimonsaysScript : MonoBehaviour
         }
         else
         {
-            PopupUI.Hide();
+            PopupUI.PuzzleDone();
         }
     }
 
