@@ -6,7 +6,7 @@ using UnityEngine;
  * using UnityEngine.UI;
  * Author: Nam
  * date: 15.11.2022
- * edit: 15.11.2022
+ * edit: 19.11.2022
  * 
  * Status: Fertig
  * Einsatz: Script muss bei Bullet / BulletPrefab vorhanden sein
@@ -24,8 +24,8 @@ public class Bullet : MonoBehaviour
     void Start()
     {
        StartCoroutine(Timer()); //timer init
-        impactSoundWall = FindObjectOfType<AudioManager>().getSound("bulletWallImpact");
-        impactSoundEnemy = FindObjectOfType<AudioManager>().getSound("bulletEnemyImpact");
+        impactSoundWall = FindObjectOfType<AudioManager>().GetSound("bulletWallImpact");
+        impactSoundEnemy = FindObjectOfType<AudioManager>().GetSound("bulletEnemyImpact");
     }
 
     //void OnTriggerEnter2D(Collider2D collision)

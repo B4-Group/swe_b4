@@ -33,5 +33,13 @@ public class Torch : MonoBehaviour
     {
         Debug.Log("Toggling Torch");
         _animator.SetBool("isOn", !_animator.GetBool("isOn"));
+        if(_animator.GetBool("isOn"))
+        {
+            FindObjectOfType<AudioManager>().Play("torch_lit");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("torch_extinguish");
+        }
     }
 }

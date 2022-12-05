@@ -20,13 +20,13 @@ public class PlayerHealth : MonoBehaviour
     private VisualElement em_Bar;
     private static VisualElement[] em_Hearts;
 
+    private bool death_sound_played;
 
-    private Sound dieSound, loseHealthSound;
     // Start is called before the first frame update
     void Start()
     {
+        death_sound_played = false;
         curHealth = maxHealth;
-
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -43,9 +43,6 @@ public class PlayerHealth : MonoBehaviour
             m_Hearts[loop - 1].style.visibility = Visibility.Visible;
             em_Hearts[loop - 1].style.visibility = Visibility.Hidden;
         }
-
-        dieSound = FindObjectOfType<AudioManager>().getSound("playerDying");
-        loseHealthSound = FindObjectOfType<AudioManager>().getSound("playerLoseHealth");
     }
 
     // Update is called once per frame
@@ -78,6 +75,12 @@ public class PlayerHealth : MonoBehaviour
         //Plays the Dying-Animation
         if (curHealth <= 0)
         {
+            if(!death_sound_played)
+            {
+                FindObjectOfType<AudioManager>().StopAll();
+                FindObjectOfType<AudioManager>().Play("lose");
+                death_sound_played = true;
+            }
             m_Hearts[2].style.visibility = Visibility.Hidden;
             em_Hearts[2].style.visibility = Visibility.Visible;
             Death();
@@ -93,25 +96,25 @@ public class PlayerHealth : MonoBehaviour
     //Damages hisself with clicking on space
     public void SendDamage(int damageValue = 1)
     {
+        FindObjectOfType<AudioManager>().Play("hurt");
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
-        loseHealthSound.source.Play();
         Debug.Log("player get dmg [Playerhealth]");
     }
 
     public void Death()
     {
-        dieSound.source.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsDead", true);
-
         GameOver obj= FindObjectOfType<GameOver>();
         obj.GameOverScreen();
-
     }
 
-    public static void ResetHealth()
+    public void ResetHealth()
     {
+        anim.SetBool("IsDead", false);
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        anim.Play("Idle");
         curHealth = 3;
         for (int loop = (int)maxHealth; loop > 0; loop--)
         {

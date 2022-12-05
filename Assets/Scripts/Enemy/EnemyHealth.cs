@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 /**
  * using UnityEngine.UI;
@@ -19,15 +21,22 @@ public class EnemyHealth : MonoBehaviour
     public float startHealth;
     public float hp;
     public GameObject diePEffect; //VFX
+    public Animator animator;
 
-    private Sound enemyBreathingSound, enemyDieSound;
-
-    private void Start()
+    public float interval = 3.0f;
+    public float trackedTime = 0.0f;
+    public bool dead = false;
+    void Update()
     {
-        enemyBreathingSound = FindObjectOfType<AudioManager>().getSound("enemyBreathing");
-        enemyBreathingSound.source.Play();
+        trackedTime += Time.deltaTime;
+        if(trackedTime > interval)
+        {
+            trackedTime = 0.0f;
+            if (dead == true) { 
+                Destroy(gameObject); Debug.Log("[EH] Dead Removed"); }
+            Debug.Log("[EH] dead request");
 
-        enemyDieSound = FindObjectOfType<AudioManager>().getSound("enemyDying");
+        }
     }
 
     public void TakeDamage(float damage)
@@ -35,19 +44,16 @@ public class EnemyHealth : MonoBehaviour
         hp -= damage;
         if (hp <= 0f)
         {
+            Debug.Log("should die");
             Die();
         }
-
+        
     }
-    void Die()
+    public void Die()
     {
-        enemyBreathingSound.source.Stop();
-        enemyDieSound.source.Play();
-        if (diePEffect != null)
-        {
-            Instantiate(diePEffect, transform.position, Quaternion.identity); //VFX
-        }
         FindObjectOfType<AudioManager>().Play("mummy_death");
-        Destroy(gameObject);
+        animator.SetTrigger("dying");
+        dead = true;
+
     }
 }

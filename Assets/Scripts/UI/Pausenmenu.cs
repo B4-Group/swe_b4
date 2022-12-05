@@ -63,12 +63,14 @@ public class Pausenmenu : MonoBehaviour
     }
     public void Resume()
     {
+        FindObjectOfType<AudioManager>().Play("click");
         pauseMenu.style.visibility = Visibility.Hidden;
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
     public void Pause()
     {
+        FindObjectOfType<AudioManager>().Play("pause");
         pauseMenu.style.visibility = Visibility.Visible;
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -76,20 +78,27 @@ public class Pausenmenu : MonoBehaviour
     public void NeueStarten()
     {
         Debug.Log("...NeuStarten");
+     
+        player.transform.position = origPosition;
+
+        PlayerHealth playerHealthController = FindObjectOfType<PlayerHealth>();
+        playerHealthController.ResetHealth();
+
         Stars.ResetStar();
         Timer.ResetTimer();
-        PlayerHealth.ResetHealth();
-        player.transform.position = origPosition;
+
         Resume();
     }
     public void LoadLevelauswahl()
     {
+        LevelController levelController = FindObjectOfType<LevelController>();
         Debug.Log("Loading levelauswahl");
         SceneManager.LoadScene("Levelauswahl");
         Resume();
     }
     public void HauptMenu()
     {
+        LevelController levelController = FindObjectOfType<LevelController>();
         Debug.Log("....Hauptmenü");
         SceneManager.LoadScene("MainMenu");
         Resume();

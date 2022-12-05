@@ -25,7 +25,6 @@ public class GameOver : MonoBehaviour
 
     private void OnEnable()
     {
-
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         UnityEngine.UIElements.Button neustart = root.Q<UnityEngine.UIElements.Button>("Neustart");
@@ -38,6 +37,7 @@ public class GameOver : MonoBehaviour
 
     private void mainmenu()
     {
+        LevelController levelController = FindObjectOfType<LevelController>();
         Pausenmenu obj = FindObjectOfType<Pausenmenu>();
         obj.HauptMenu();
 

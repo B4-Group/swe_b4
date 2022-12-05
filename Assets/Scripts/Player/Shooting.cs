@@ -33,7 +33,7 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         isShooting = false;
-        shootSound = FindObjectOfType<AudioManager>().getSound("shootBullet");
+        shootSound = FindObjectOfType<AudioManager>().GetSound("shootBullet");
     }
 
     // Update is called once per frame
@@ -41,6 +41,7 @@ public class Shooting : MonoBehaviour
     {
         //if (Input.GetButtonDown("Fire1") && !isShooting && !Pausenmenu.GameIsPaused)
         //{
+        //    FindObjectOfType<AudioManager>().Play("throw");
         //    StartCoroutine(Shoot());
         //}
     }
@@ -61,6 +62,7 @@ public class Shooting : MonoBehaviour
 
         }
 
+        Debug.Log("Shooting");
         isShooting = true;
         shootSound.source.Play();
         GameObject newBullet = Instantiate(bullet, Shootpoint.position, Quaternion.identity);
