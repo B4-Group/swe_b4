@@ -14,8 +14,6 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
-    private Sound stepSound;
-
     // Start is called before the first frame update
     void Start() {
     }
@@ -30,17 +28,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        stepSound = FindObjectOfType<AudioManager>().GetSound("step");
         if (movement.sqrMagnitude >= 0.01)
         {
-            if(!stepSound.source.isPlaying)
+            if(!FindObjectOfType<AudioManager>().IsPlaying("step"))
             {
-                stepSound.source.Play();
+                FindObjectOfType<AudioManager>().Play("step");
             }
         }
         else
         {
-            stepSound.source.Stop();
+            FindObjectOfType<AudioManager>().Stop("step");
         }
 
         if(movement.x == -1) {

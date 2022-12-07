@@ -8,10 +8,12 @@ public class PopupUi : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
     [SerializeField] Button closeUiButton;
+    [SerializeField] Button hintButton;
     [SerializeField] Text title;
     [SerializeField] GameObject simonSaysPanel;
     [SerializeField] GameObject calculaterPanel;
     [SerializeField] GameObject informationPanel;
+    [SerializeField] HintDialogue hintDialogue;
 
     public static event Action OnPuzzleDone;
 
@@ -24,7 +26,7 @@ public class PopupUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
     public static PopupUi Instance;
 
@@ -34,7 +36,9 @@ public class PopupUi : MonoBehaviour
         Instance = this;
         closeUiButton.onClick.RemoveAllListeners();
         closeUiButton.onClick.AddListener(Hide);
-        setQuiz(2);
+        hintButton.onClick.RemoveAllListeners();
+        hintButton.onClick.AddListener(() => { hintDialogue.toggleVisibility(); });
+        setQuiz(0);
     }
 
     public void startPuzzle()
@@ -43,11 +47,15 @@ public class PopupUi : MonoBehaviour
         Instance = this;
         closeUiButton.onClick.RemoveAllListeners();
         closeUiButton.onClick.AddListener(Hide);
+
+        hintButton.onClick.RemoveAllListeners();
+        hintButton.onClick.AddListener(() => { hintDialogue.toggleVisibility(); });
         setQuiz(0);
     }
 
     public void Hide()
     {
+        hintDialogue.closeHint();
         canvas.SetActive(false);
     }
 
@@ -59,7 +67,8 @@ public class PopupUi : MonoBehaviour
 
     public void setQuiz(int i)
     {
-        if(i == 0)
+        hintDialogue.setPuzzleType(i);
+        if (i == 0)
         {
             title.text = "Hieroglyphen Rechner";
             
