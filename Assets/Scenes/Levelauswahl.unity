@@ -386,6 +386,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb19e6af2307134784eff816e80f60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuMusic:
+    name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
   SceneList:
   - Level1
   - Level2
