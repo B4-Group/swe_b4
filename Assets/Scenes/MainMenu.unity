@@ -302,13 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b65d2f2a4645204da303aa8e16cd43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuMusic:
-    name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
 --- !u!1 &1434837899
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,3 +643,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca4fce94748ce6e478cde9316fa358c2, type: 3}
+--- !u!1001 &2646126432164074651
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302384, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646126430731302386, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}
+      propertyPath: m_Name
+      value: UIDocumentAudio
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf7ec3eecb1038c47b78405cd6a6423b, type: 3}

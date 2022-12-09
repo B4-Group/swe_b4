@@ -27,7 +27,6 @@ public class Pausenmenu : MonoBehaviour
 
         pauseMenu = root.Q<IMGUIContainer>("pauseMenu");
 
-
         resume = root.Q<Button>("resume");
         restart = root.Q<Button>("restart");
         levelAuswahl = root.Q<Button>("levelAuswahl");
@@ -64,6 +63,8 @@ public class Pausenmenu : MonoBehaviour
     public void Resume()
     {
         FindObjectOfType<AudioManager>().Play("click");
+        FindObjectOfType<SliderEvents>().SetVisible(false);
+        FindObjectOfType<SliderEvents>().visible = false;
         pauseMenu.style.visibility = Visibility.Hidden;
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -71,6 +72,7 @@ public class Pausenmenu : MonoBehaviour
     public void Pause()
     {
         FindObjectOfType<AudioManager>().Play("pause");
+        FindObjectOfType<SliderEvents>().SetVisible(true);
         pauseMenu.style.visibility = Visibility.Visible;
         Time.timeScale = 0f;
         GameIsPaused = true;

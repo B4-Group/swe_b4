@@ -8,6 +8,12 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    [Range(0f, 1f)]
+    public float sfxMaster, musicMaster;
+
+    public float prevMusicVolume;
+    public float prevSfxVolume;
+
     void Awake()
     {
         if(instance == null)
@@ -23,12 +29,12 @@ public class AudioManager : MonoBehaviour
         foreach(Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
 
-            s.source.volume = s.volume;
+            s.source.clip = s.clip;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        AdjustSoundVolume();
     }
 
     public void Play(string name)
@@ -82,5 +88,29 @@ public class AudioManager : MonoBehaviour
         {
             sound.source.Stop();
         }
+    }
+
+    public void AdjustSoundVolume()
+    {
+        foreach (Sound s in sounds)
+        {
+            if(s.isMusic)
+            {
+                s.source.volume = s.volume * musicMaster;
+            }
+            else
+            {
+                s.source.volume = s.volume * sfxMaster;
+            }
+        }
+    }
+    public float GetMusicMaster()
+    {
+        return musicMaster;
+    }
+
+    public float GetSoundMaster()
+    {
+        return sfxMaster;
     }
 }
