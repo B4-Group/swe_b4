@@ -50,15 +50,15 @@ public class LevelauswahlScript : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
-        FindObjectOfType<AudioManager>().StopSound("menuMusic");
-        FindObjectOfType<AudioManager>().Play("select");
+        FindObjectOfType<AudioManager>().Stop("menuMusic");
+        FindObjectOfType<AudioManager>().Play("click");
         Debug.Log("Loading level" + levelName);
         SceneManager.LoadScene(levelName);
     }
 
     public void LoadMainMenu()
     {
-        FindObjectOfType<AudioManager>().Play("select");
+        FindObjectOfType<AudioManager>().Play("click");
         Debug.Log("Loading main menu");
         SceneManager.LoadScene("mainMenu");
     }

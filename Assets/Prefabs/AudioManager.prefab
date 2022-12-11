@@ -93,28 +93,16 @@ MonoBehaviour:
     pitch: 0.788
     loop: 0
     source: {fileID: 0}
-  - name: enemyBreathing
-    clip: {fileID: 8300000, guid: f172c66e4f2a04e40a345d8c5235deef, type: 3}
-    volume: 0.136
-    pitch: 1.2
-    loop: 0
-    source: {fileID: 0}
-  - name: enemyDying
-    clip: {fileID: 8300000, guid: d1abd872ac092d243b00f96b956adc9e, type: 3}
-    volume: 0.136
-    pitch: 1.2
-    loop: 0
-    source: {fileID: 0}
   - name: level1Music
     clip: {fileID: 8300000, guid: 5b56dcaf053a8c74693717ab0053904e, type: 3}
-    volume: 0.207
-    pitch: 0.99
+    volume: 0.459
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: playerDying
     clip: {fileID: 8300000, guid: d1abd872ac092d243b00f96b956adc9e, type: 3}
-    volume: 0.136
-    pitch: 0.69
+    volume: 1
+    pitch: 1.5
     loop: 0
     source: {fileID: 0}
   - name: playerLoseHealth
@@ -139,5 +127,77 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0e15e2ab468dada41b12bf2eefa88e42, type: 3}
     volume: 0.44
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: mummy1
+    clip: {fileID: 8300000, guid: 0cd30e1b254918c41b83ad58f8a2e8a3, type: 3}
+    volume: 0.3
+    pitch: 1.3
+    loop: 0
+    source: {fileID: 0}
+  - name: mummy2
+    clip: {fileID: 8300000, guid: bc35d2856bebd7945a7816fb492c2af8, type: 3}
+    volume: 0.3
+    pitch: 1.3
+    loop: 0
+    source: {fileID: 0}
+  - name: mummy3
+    clip: {fileID: 8300000, guid: aeea10748a493af4097cc6e95190472b, type: 3}
+    volume: 0.3
+    pitch: 1.3
+    loop: 0
+    source: {fileID: 0}
+  - name: mummy_death
+    clip: {fileID: 8300000, guid: 1efb42877af6394458fd48b28ea096f5, type: 3}
+    volume: 0.3
+    pitch: 1.3
+    loop: 0
+    source: {fileID: 0}
+  - name: pause
+    clip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: resume
+    clip: {fileID: 8300000, guid: c5a7f6cee42abe94cb2e070479dae06e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: torch_lit
+    clip: {fileID: 8300000, guid: b5a0f8500a470ab42a3a2e13c66ce884, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: torch_extinguish
+    clip: {fileID: 8300000, guid: c30d30d263fd895479c967eeec9361c7, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: torch_burn
+    clip: {fileID: 8300000, guid: f37939c5779ba1440acfc3f181387e72, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: win
+    clip: {fileID: 8300000, guid: 27425d91170df8f45afbe166e92506a4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: lose
+    clip: {fileID: 8300000, guid: fb088aee66e78454da39d27e155fe5ca, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hurt
+    clip: {fileID: 8300000, guid: d1abd872ac092d243b00f96b956adc9e, type: 3}
+    volume: 0.5
+    pitch: 2
     loop: 0
     source: {fileID: 0}
