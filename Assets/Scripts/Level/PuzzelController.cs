@@ -15,27 +15,14 @@ using UnityEngine;
 
 public class PuzzelController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public bool isOpenPuzzelMenu;
+    [SerializeField]
+    GameObject puzzle;
 
     public void OpenPuzzel()
     {
-        if (!isOpenPuzzelMenu)
-        {
-            isOpenPuzzelMenu = true;
-            Debug.Log("open chest (Puzzelcontroller");
-
-            // Hier soll das Puzzel Popup Menu aufgerufen werden @Leon
-        }
-    }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        //isOpenPuzzelMenu = true;
+        puzzle.GetComponentInChildren<PopupUi>().startPuzzle();
+        Debug.Log("open chest (Puzzelcontroller");
+        
     }
 }
