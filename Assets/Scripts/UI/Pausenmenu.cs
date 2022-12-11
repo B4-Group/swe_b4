@@ -91,10 +91,10 @@ public class Pausenmenu : MonoBehaviour
     }
     public void LoadLevelauswahl()
     {
-        LevelController levelController = FindObjectOfType<LevelController>();
         Debug.Log("Loading levelauswahl");
-        SceneManager.LoadScene("Levelauswahl");
         Resume();
+        // Make levelauswahl visible
+        FindObjectOfType<LevelauswahlScript>().MakeVisible();
     }
     public void HauptMenu()
     {
