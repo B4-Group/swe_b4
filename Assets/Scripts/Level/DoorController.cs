@@ -7,14 +7,10 @@ public class DoorController : MonoBehaviour
 
     private Sound doorOpen, doorClose;
 
-    private void Start()
+    private void Awake()
     {
         doorOpen = FindObjectOfType<AudioManager>().GetSound("doorOpen");
         doorClose = FindObjectOfType<AudioManager>().GetSound("doorClose");
-    }
-
-    private void Awake()
-    {
         _animator = GetComponent<Animator>();
     }
 
