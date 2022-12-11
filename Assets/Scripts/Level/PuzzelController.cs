@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using PuzzleTypeNamespace;
+using System;
+
 /**
- * using UnityEngine.UI;
  * Author: Nam
  * date: 15.11.2022
  * edit: 15.11.2022
@@ -15,14 +15,33 @@ using UnityEngine;
 
 public class PuzzelController : MonoBehaviour
 {
-    [SerializeField]
-    GameObject puzzle;
+    [SerializeField] GameObject puzzle;
+    PuzzleType puzzleType;
 
-    public void OpenPuzzel()
-    {
+    private bool isPuzzleDone = false;
+
+    public static event Action OnPuzzleDone;
+
+    void Awake() {
+        // get a random puzzleNumber from PopupUi
+        puzzleType = puzzle.GetComponentInChildren<PuzzleUiController>().GetPuzzleType();
+    }
+
+    private void MarkPuzzleAsDone() {
+        isPuzzleDone = true;
+    }
+
+    public void OpenPuzzel() {
+        // if the puzzle is already done, do nothing
+        if (isPuzzleDone) { return; }
+
+        // add a listener to the puzzleDone event and open the door when the puzzle is done
+        OnPuzzleDone += gameObject.GetComponent<DoorController>().Open;
+        OnPuzzleDone += MarkPuzzleAsDone;
+
         //isOpenPuzzelMenu = true;
-        puzzle.GetComponentInChildren<PopupUi>().startPuzzle();
-        Debug.Log("open chest (Puzzelcontroller");
+        puzzle.GetComponentInChildren<PuzzleUiController>().StartPuzzle(puzzleType, OnPuzzleDone);
+        Debug.Log("open Puzzle:" + puzzleType);
         
     }
 }

@@ -189,6 +189,14 @@ PrefabInstance:
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 146419735492777130}
+    - target: {fileID: 1385616676462585204, guid: 0b2bd9b97cd2ec84191bfbd97a62d1db, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385616676462585204, guid: 0b2bd9b97cd2ec84191bfbd97a62d1db, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DoorController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1385616676462585205, guid: 0b2bd9b97cd2ec84191bfbd97a62d1db, type: 3}
       propertyPath: m_RootOrder
       value: 1
