@@ -20,5 +20,7 @@ public class LevelController : MonoBehaviour
         SceneManager.LoadScene("LevelDoneScene");
     }
 
- 
+    public void StopLevelMusic() {
+        FindObjectOfType<AudioManager>().Stop(musicName);
+    }
 }
