@@ -44,4 +44,10 @@ public class PuzzelController : MonoBehaviour
         Debug.Log("open Puzzle:" + puzzleType);
         
     }
+
+    // Remove the listener when destroyed	
+    void OnDestroy() {
+        OnPuzzleDone -= gameObject.GetComponent<DoorController>().Open;
+        OnPuzzleDone -= MarkPuzzleAsDone;
+    }
 }
