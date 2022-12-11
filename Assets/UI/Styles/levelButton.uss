@@ -1,8 +1,4 @@
 .levelButton {
-    padding-left: 72px;
-    padding-right: 72px;
-    padding-top: 72px;
-    padding-bottom: 72px;
     font-size: 27px;
-    background-color: rgba(130, 70, 70, 255);
+    background-color: rgba(130, 70, 70, 0);
 }

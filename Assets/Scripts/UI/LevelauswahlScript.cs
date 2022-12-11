@@ -16,9 +16,13 @@ public class LevelauswahlScript : MonoBehaviour
     void Start()
     {
         // Play music only if hasn't been started yet
+        try {
         if(!FindObjectOfType<AudioManager>().IsPlaying("menuMusic"))
-        {
-            FindObjectOfType<AudioManager>().Play("menuMusic");
+            {
+                FindObjectOfType<AudioManager>().Play("menuMusic");
+            }
+        } catch (System.NullReferenceException e) {
+            Debug.Log("No AudioManager found, probably in editor");
         }
 
         var root = GetComponent<UIDocument>().rootVisualElement;
@@ -28,6 +32,7 @@ public class LevelauswahlScript : MonoBehaviour
 
         // Things to do when not in game
         if(!isInGame)  {
+            Debug.Log("Levelauswahl is not in game" + isInGame);
             // Make Levelauswahl instantly visible
             root.Q<VisualElement>("Container").style.display = DisplayStyle.Flex;
 
@@ -44,11 +49,60 @@ public class LevelauswahlScript : MonoBehaviour
         // Attach every Scene (from SceneList) to the Level Container as a button
         foreach (string currentScene in SceneList)
         {
+            VisualElement currentLevelContainer = new();
+
+            Label levelText = new();
+            levelText.text = currentScene;
+            levelText.style.unityTextAlign = TextAnchor.MiddleCenter;
+            levelText.style.fontSize = 24;
+
+            currentLevelContainer.Add(levelText);
+
             Button levelButton = new();
             levelButton.clicked += () => LoadLevel(currentScene);
-            levelButton.text = currentScene;
-            levelButton.EnableInClassList("levelButton", true);
-            levelContainer.Add(levelButton);
+
+            // Add Background image to button
+            // The Image has the same name as currentScene
+            Texture2D currentThumbnail = Resources.Load<Texture2D>(currentScene);
+            Debug.Log("image: " + currentThumbnail.dimension);
+            levelButton.style.backgroundImage = new StyleBackground(currentThumbnail);
+            levelButton.style.unityBackgroundScaleMode  = ScaleMode.ScaleAndCrop;
+            levelButton.style.height = 216;
+            levelButton.style.width = 384;
+
+            currentLevelContainer.Add(levelButton);
+
+            VisualElement statsContainer = new();
+            statsContainer.style.flexDirection = FlexDirection.Row;
+            statsContainer.style.justifyContent = Justify.SpaceBetween;
+
+            VisualElement starsContainer = new();
+            starsContainer.style.flexDirection = FlexDirection.Row;
+            starsContainer.style.justifyContent = Justify.Center;
+
+            // Add stars
+            for (int i = 0; i < 3; i++)
+            {
+                Texture2D star = Resources.Load<Texture2D>("star");
+                Image starImage = new();
+                starImage.style.backgroundImage = new StyleBackground(star);
+                starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+                starImage.style.height = 32;
+                starImage.style.width = 32;
+                starsContainer.Add(starImage);
+            }
+
+            statsContainer.Add(starsContainer);
+            // Add time
+            Label timeText = new();
+            timeText.text = "00:00";
+            timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
+            timeText.style.fontSize = 24;
+            statsContainer.Add(timeText);
+
+            currentLevelContainer.Add(statsContainer);
+
+            levelContainer.Add(currentLevelContainer);
         }
     }
 
@@ -56,8 +110,6 @@ public class LevelauswahlScript : MonoBehaviour
     public void MakeVisible() {
         var root = GetComponent<UIDocument>().rootVisualElement;
         root.Q<VisualElement>("Container").style.display = DisplayStyle.Flex;
-        mainMenu.clicked += LoadMainMenu;
-        backButton.clicked += Hide;
         Time.timeScale = 0f;
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -11,16 +9,22 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        // Play music only if hasn't been started yet
-        if (!FindObjectOfType<AudioManager>().IsPlaying("menuMusic"))
-        {
-            FindObjectOfType<AudioManager>().Play("menuMusic");
+        try {
+            // Play music only if hasn't been started yet
+            if (!FindObjectOfType<AudioManager>().IsPlaying("menuMusic"))
+            {
+                FindObjectOfType<AudioManager>().Play("menuMusic");
+            }
+        } catch (System.NullReferenceException e) {
+            Debug.Log("No AudioManager found, probably in editor");
         }
+  
 
         var root = GetComponent<UIDocument>().rootVisualElement;
         startButton = root.Q<Button>("play");
         exitButton = root.Q<Button>("exit");
 
+        Debug.Log("Adding listeners to buttons");
         startButton.clicked += LoadLevelauswahl;
         exitButton.clicked += ExitGame;
     }

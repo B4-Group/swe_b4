@@ -64,7 +64,11 @@ public class Shooting : MonoBehaviour
 
         Debug.Log("Shooting");
         isShooting = true;
-        shootSound.source.Play();
+        try { 
+            shootSound.source.Play(); 
+        } catch (System.Exception e) { 
+            Debug.Log("shootSound not found"); 
+        }
         GameObject newBullet = Instantiate(bullet, Shootpoint.position, Quaternion.identity);
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * direction() * Time.fixedDeltaTime, 0f);
 
