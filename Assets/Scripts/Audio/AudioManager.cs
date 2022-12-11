@@ -45,7 +45,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        Debug.Log("Sound: " + name + " is playing.");
         s.source.Play();
     }
 
@@ -57,7 +56,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        Debug.Log("Sound: " + name + " stopped.");
         s.source.Stop();
     }
 
