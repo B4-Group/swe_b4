@@ -16,15 +16,21 @@ using System;
 public class PuzzelController : MonoBehaviour
 {
     [SerializeField] GameObject puzzle;
-    PuzzleType puzzleType;
+
+    [SerializeField]
+    PuzzleType puzzleType = PuzzleType.Information;
+
+    [SerializeField]
+    bool isDetermined = false;
 
     private bool isPuzzleDone = false;
 
     public static event Action OnPuzzleDone;
 
     void Awake() {
-        // get a random puzzleNumber from PopupUi
-        puzzleType = puzzle.GetComponentInChildren<PuzzleUiController>().GetPuzzleType();
+         // get a random puzzleNumber from PopupUi
+        if(!isDetermined)
+            puzzleType = puzzle.GetComponentInChildren<PuzzleUiController>().GetPuzzleType();
     }
 
     private void MarkPuzzleAsDone() {
