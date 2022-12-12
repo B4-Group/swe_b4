@@ -17,7 +17,7 @@ public class InformationPanelScript : MonoBehaviour
     {
         checkResultButton.onClick.AddListener(() => checkResults());
         findGameObjects();
-        questionText.text = "Wie viele" + gameobjectsToFind[0] + "gibt es in diesem Level?";
+        questionText.text = "Wie viele " + gameobjectsToFind[0] + " gibt es in diesem Level?";
     }
 
     // Update is called once per frame
@@ -39,7 +39,6 @@ public class InformationPanelScript : MonoBehaviour
 
     void findGameObjects()
     {
-       
         foreach (GameObject tmpGameobject in GameObject.FindGameObjectsWithTag(gameobjectsToFind[0]))
         {
             gameobjectAmount++;
