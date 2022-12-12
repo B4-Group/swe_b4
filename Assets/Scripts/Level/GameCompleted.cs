@@ -5,19 +5,36 @@ using UnityEngine.UIElements;
 public class GameCompleted : MonoBehaviour
 {
     public bool gameCompleted = false;
+    
+    // Current level in the game, starts at 0
     private int currentLevel;
+    
+    // Amount of levels in the game
     private const int maxLevel = 2;
 
     private void OnEnable()
     {
-        SetCurrentLevel();
-        FindObjectOfType<AudioManager>().Stop("step");
+        // Get next scene from save system
+        PlayerData data = GetComponent<SaveSystem>().LoadData();
+        // increment the level counter
+        data.currentLevel += 1;
+        // save the modified level counter back to disk
+        GetComponent<SaveSystem>().Save(data);
+        // set local property to the new level counter
+        currentLevel = data.currentLevel;
+
+        try {
+            FindObjectOfType<AudioManager>().Stop("step");
+        } catch (System.Exception e) {
+            Debug.Log("No AudioManager found, probably in editor. " + e);
+        }
+        
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         Button NextLevel = root.Q<Button>("Nextlevel");
         Button Hauptmenu = root.Q<Button>("Hauptmenu");
 
-        if ((currentLevel+1) == maxLevel) {
+        if ((currentLevel) == maxLevel) {
             NextLevel.style.display = DisplayStyle.None;
             Hauptmenu.clicked += () => mainmenu();
         } else {
@@ -25,31 +42,22 @@ public class GameCompleted : MonoBehaviour
             NextLevel.clicked += () => nextlevel();
         }
     }
-    
-    private void SetCurrentLevel()
-    {
-        PlayerData data = GetComponent<SaveSystem>().LoadData();
-        currentLevel = data.currentLevel;
-    }
 
     private void mainmenu()
     {
         SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1f;
-        gameCompleted = false;
+        Resume();
         
     }
     private void nextlevel()
     {
-        // Get next scene from save system
-        PlayerData data = GetComponent<SaveSystem>().LoadData();
-        data.currentLevel += 1;
-        GetComponent<SaveSystem>().Save(data);
-        SceneManager.LoadScene($"Level{data.currentLevel+1}");
-        Debug.Log(data.currentLevel);
-        Time.timeScale = 1f;
-        gameCompleted = false;
+        SceneManager.LoadScene($"Level{currentLevel+1}");
+        Resume();
         
     }
 
+    private void Resume() {
+        Time.timeScale = 1f;
+        gameCompleted = false;
+    }
 }
