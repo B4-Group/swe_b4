@@ -67,13 +67,19 @@ public class PuzzleUiController : MonoBehaviour
             case PuzzleType.Calculator:
                 title.text = "Hieroglyphen Rechner";
                 calculatorPanel.SetActive(true);
+                simonSaysPanel.SetActive(false);
+                informationPanel.SetActive(false);
                 break;
             case PuzzleType.SimonSays:
                 title.text = "Simon Says";
                 simonSaysPanel.SetActive(true);
+                calculatorPanel.SetActive(false);
+                informationPanel.SetActive(false);
                 break;
             case PuzzleType.Information:
                 title.text = "Informationsabfrage";
+                simonSaysPanel.SetActive(false);
+                calculatorPanel.SetActive(false);
                 informationPanel.SetActive(true);
                 break;
             default:
