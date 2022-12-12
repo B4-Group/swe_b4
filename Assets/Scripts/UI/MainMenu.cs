@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("menuMusic");
         }
 
+        FindObjectOfType<SliderEvents>().SetVisible(true);
         var root = GetComponent<UIDocument>().rootVisualElement;
         startButton = root.Q<Button>("play");
         exitButton = root.Q<Button>("exit");
