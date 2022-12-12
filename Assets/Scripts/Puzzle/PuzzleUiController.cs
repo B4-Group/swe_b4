@@ -24,7 +24,6 @@ public class PuzzleUiController : MonoBehaviour
         closeUiButton.onClick.AddListener(Hide);
         hintButton.onClick.RemoveAllListeners();
         hintButton.onClick.AddListener(() => { hintDialogue.ToggleVisibility(); });
-        SetQuiz(GetPuzzleType());
     }
 
     // Returns a random puzzle number
