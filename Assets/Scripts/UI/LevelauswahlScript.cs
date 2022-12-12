@@ -48,6 +48,8 @@ public class LevelauswahlScript : MonoBehaviour
 
         // Dynamic Levels
         levelContainer = root.Q<IMGUIContainer>("levelContainer");
+        
+        PlayerData data = FindObjectOfType<SaveSystem>().LoadData();
 
         Debug.Log("Constructing Level Container");
         // Attach every Scene (from SceneList) to the Level Container as a button
@@ -64,7 +66,15 @@ public class LevelauswahlScript : MonoBehaviour
             currentLevelContainer.Add(levelText);
 
             Button levelButton = new();
-            levelButton.clicked += () => LoadLevel(currentScene);
+
+            // Disable button if level is not unlocked
+            if((data.currentLevel+1) >= int.Parse(currentScene.Substring(5)))
+            {
+                levelButton.clicked += () => LoadLevel(currentScene);
+                
+            } else {
+                levelButton.style.opacity = 0.25f;
+            }
 
             // Add Background image to button
             // The Image has the same name as currentScene
@@ -88,7 +98,6 @@ public class LevelauswahlScript : MonoBehaviour
             int currentLevel = int.Parse(currentScene.Substring(5)) - 1;
             Debug.Log("Current Level: " + currentLevel);
             // Get Stars and Time from SaveSystem
-            PlayerData data = FindObjectOfType<SaveSystem>().LoadData();
             int stars = data.stars[currentLevel];
             float time = data.time[currentLevel];
             
