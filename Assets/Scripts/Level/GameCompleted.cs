@@ -17,7 +17,8 @@ public class GameCompleted : MonoBehaviour
         // Get next scene from save system
         PlayerData data = GetComponent<SaveSystem>().LoadData();
         // increment the level counter
-        data.currentLevel += 1;
+        if(data.currentLevel < maxLevel)
+            data.currentLevel += 1;
         // save the modified level counter back to disk
         GetComponent<SaveSystem>().Save(data);
         // set local property to the new level counter
@@ -51,7 +52,12 @@ public class GameCompleted : MonoBehaviour
     }
     private void nextlevel()
     {
-        SceneManager.LoadScene($"Level{currentLevel+1}");
+        if(currentLevel+1 > maxLevel) {
+            Debug.Log("No more levels");
+            return;
+        }
+        string nextSceneName = GetComponent<LevelController>().levels[currentLevel];
+        SceneManager.LoadScene(nextSceneName);
         Resume();
         
     }

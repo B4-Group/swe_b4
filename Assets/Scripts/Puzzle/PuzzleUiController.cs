@@ -19,6 +19,7 @@ public class PuzzleUiController : MonoBehaviour
 
     void Awake()
     {
+       
         Instance = this;
         closeUiButton.onClick.RemoveAllListeners();
         closeUiButton.onClick.AddListener(Hide);
@@ -61,6 +62,7 @@ public class PuzzleUiController : MonoBehaviour
 
     public void SetQuiz(PuzzleType puzzleType)
     {
+        canvas.SetActive(true);
         hintDialogue.SetPuzzleType(puzzleType);
 
         switch(puzzleType) {

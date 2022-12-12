@@ -9,9 +9,6 @@ public class LevelauswahlScript : MonoBehaviour
     private Button mainMenu, backButton, sceneButton;
     private IMGUIContainer levelContainer;
 
-    // Array with Scene names of Levels to show
-    private string[] SceneList = { "Level1", "Level2" };
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,12 +47,20 @@ public class LevelauswahlScript : MonoBehaviour
         levelContainer = root.Q<IMGUIContainer>("levelContainer");
         
         PlayerData data = FindObjectOfType<SaveSystem>().LoadData();
+        if(SceneManager.GetActiveScene().name == "Levelauswahl")
+            GetComponent<LevelController>().ForceRefreshLevelList();
+        else
+            FindObjectOfType<LevelController>().ForceRefreshLevelList();
+        string[] SceneList = SceneManager.GetActiveScene().name == "Levelauswahl" ?  GetComponent<LevelController>().levels : FindObjectOfType<LevelController>().levels;
+        Debug.Log("New scene list: " + string.Join(", ", SceneList));
 
         Debug.Log("Constructing Level Container");
         // Attach every Scene (from SceneList) to the Level Container as a button
         foreach (string currentScene in SceneList)
         {
             Debug.Log("Making button for " + currentScene);
+            int currentLevelNumber = SceneManager.GetActiveScene().name == "Levelauswahl" ? GetComponent<LevelController>().GetLevelNumber(currentScene) : FindObjectOfType<LevelController>().GetLevelNumber(currentScene);
+
             VisualElement currentLevelContainer = new();
 
             Label levelText = new();
@@ -68,7 +73,7 @@ public class LevelauswahlScript : MonoBehaviour
             Button levelButton = new();
 
             // Disable button if level is not unlocked
-            if((data.currentLevel+1) >= int.Parse(currentScene.Substring(5)))
+            if((data.currentLevel) >= currentLevelNumber)
             {
                 levelButton.clicked += () => LoadLevel(currentScene);
                 
@@ -79,7 +84,6 @@ public class LevelauswahlScript : MonoBehaviour
             // Add Background image to button
             // The Image has the same name as currentScene
             Texture2D currentThumbnail = Resources.Load<Texture2D>(currentScene);
-            Debug.Log("image: " + currentThumbnail.dimension);
             levelButton.style.backgroundImage = new StyleBackground(currentThumbnail);
             levelButton.style.unityBackgroundScaleMode  = ScaleMode.ScaleAndCrop;
             levelButton.style.height = 216;
@@ -95,7 +99,7 @@ public class LevelauswahlScript : MonoBehaviour
             starsContainer.style.flexDirection = FlexDirection.Row;
             starsContainer.style.justifyContent = Justify.Center;
             
-            int currentLevel = int.Parse(currentScene.Substring(5)) - 1;
+            int currentLevel = currentLevelNumber;
             Debug.Log("Current Level: " + currentLevel);
             // Get Stars and Time from SaveSystem
             int stars = data.stars[currentLevel];
