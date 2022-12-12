@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Levelauswahl.unity
     guid: c0b8c78498f68934da16231cf5153a6a
   - enabled: 1
-    path: Assets/Scenes/Levels/Level1.unity
+    path: Assets/Scenes/Levels/Tempel des Todes.unity
     guid: d4ec5a9731970ea4ea52b1dfa5f99223
   - enabled: 1
-    path: Assets/Scenes/Levels/Level2.unity
+    path: Assets/Scenes/Levels/Ruine der Angst.unity
     guid: 7d8f0e3d996fe1d42965c08bcfee8663
   - enabled: 1
     path: Assets/Scenes/LevelDoneScene.unity

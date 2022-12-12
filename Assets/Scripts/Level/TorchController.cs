@@ -16,6 +16,11 @@ public class TorchController : MonoBehaviour
         helpButton.clicked += Toggle;
     }
 
+    void OnDestroy()
+    {
+        helpButton.clicked -= Toggle;
+    }
+
     public void Toggle()
     {
         Debug.Log("Invoking Torch Toggle");
