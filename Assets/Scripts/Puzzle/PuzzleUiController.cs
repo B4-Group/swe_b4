@@ -24,6 +24,7 @@ public class PuzzleUiController : MonoBehaviour
         closeUiButton.onClick.AddListener(Hide);
         hintButton.onClick.RemoveAllListeners();
         hintButton.onClick.AddListener(() => { hintDialogue.ToggleVisibility(); });
+        SetQuiz(GetPuzzleType());
     }
 
     // Returns a random puzzle number
@@ -78,9 +79,9 @@ public class PuzzleUiController : MonoBehaviour
                 break;
             case PuzzleType.Information:
                 title.text = "Informationsabfrage";
+                informationPanel.SetActive(true);
                 simonSaysPanel.SetActive(false);
                 calculatorPanel.SetActive(false);
-                informationPanel.SetActive(true);
                 break;
             default:
                 throw new System.Exception("PuzzleType not found" + puzzleType);
