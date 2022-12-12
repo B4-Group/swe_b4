@@ -5,38 +5,31 @@ using UnityEngine.UIElements;
 public class GameCompleted : MonoBehaviour
 {
     public bool gameCompleted = false;
-
-    private int ActualLevel()
-    {
-        string actualScene = SceneManager.GetActiveScene().name;
-        return (actualScene[actualScene.Length - 1]) - '0';
-    }
-
-    private int actualLevel;
+    private int currentLevel;
     private const int maxLevel = 2;
-
 
     private void OnEnable()
     {
-         actualLevel = ActualLevel();
+        SetCurrentLevel();
         FindObjectOfType<AudioManager>().Stop("step");
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         Button NextLevel = root.Q<Button>("Nextlevel");
         Button Hauptmenu = root.Q<Button>("Hauptmenu");
 
-        Debug.Log("Aktuelles Level:" + actualLevel.ToString());
-
-        if (actualLevel == maxLevel)
-        {
+        if ((currentLevel+1) == maxLevel) {
             NextLevel.style.display = DisplayStyle.None;
             Hauptmenu.clicked += () => mainmenu();
-        }
-        else
-        {
+        } else {
             Hauptmenu.clicked += () => mainmenu();
             NextLevel.clicked += () => nextlevel();
         }
+    }
+    
+    private void SetCurrentLevel()
+    {
+        PlayerData data = GetComponent<SaveSystem>().LoadData();
+        currentLevel = data.currentLevel;
     }
 
     private void mainmenu()
@@ -48,13 +41,15 @@ public class GameCompleted : MonoBehaviour
     }
     private void nextlevel()
     {
-        if (SceneManager.GetAllScenes().Length <= 1)
-        {
-            SceneManager.LoadScene("Lade Level:" + (actualLevel + 1));
-            Debug.Log("Lade Level:" + (actualLevel + 1).ToString());
-            Time.timeScale = 1f;
-            gameCompleted = false;
-        }
+        // Get next scene from save system
+        PlayerData data = GetComponent<SaveSystem>().LoadData();
+        data.currentLevel += 1;
+        GetComponent<SaveSystem>().Save(data);
+        SceneManager.LoadScene($"Level{data.currentLevel+1}");
+        Debug.Log(data.currentLevel);
+        Time.timeScale = 1f;
+        gameCompleted = false;
+        
     }
 
 }
