@@ -75,12 +75,14 @@ public class SimonsaysScript : MonoBehaviour
 
     void done()
     {
-        if(successCounter < 5)
+        if (successCounter < 5)
         {
+            Debug.Log("in Done if1");
             load();
         }
         else
         {
+            Debug.Log("in Done else");
             PopupUI.PuzzleDone();
         }
     }
@@ -103,6 +105,7 @@ public class SimonsaysScript : MonoBehaviour
         {
             successCounter = 0;
             textResult.text = "falsch";
+            done();
         }
 
     }
