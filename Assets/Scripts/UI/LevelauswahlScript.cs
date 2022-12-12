@@ -122,7 +122,8 @@ public class LevelauswahlScript : MonoBehaviour
 
             // Add time
             Label timeText = new();
-            timeText.text = time.ToString();
+            // Format time to mm:ss
+            timeText.text = string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), Mathf.Floor(time % 60));
             timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
             timeText.style.fontSize = 24;
             statsContainer.Add(timeText);
