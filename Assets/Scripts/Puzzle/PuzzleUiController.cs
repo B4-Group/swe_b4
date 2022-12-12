@@ -29,7 +29,7 @@ public class PuzzleUiController : MonoBehaviour
     // Returns a random puzzle number
     public PuzzleType GetPuzzleType()
     {
-        return (PuzzleType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(PuzzleType)).Length);
+        return (PuzzleType)UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(PuzzleType)).Length-1);
     }
 
     public void StartPuzzle(PuzzleType puzzleType, Action OnPuzzleDone)

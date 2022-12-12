@@ -4,20 +4,21 @@ using UnityEngine.UIElements;
 
 public class GameCompleted : MonoBehaviour
 {
-    public static bool gameCompleted = false;
+    public bool gameCompleted = false;
 
-    private static int ActualLevel()
+    private int ActualLevel()
     {
         string actualScene = SceneManager.GetActiveScene().name;
         return (actualScene[actualScene.Length - 1]) - '0';
     }
 
-    private int actualLevel = ActualLevel();
+    private int actualLevel;
     private const int maxLevel = 2;
 
 
     private void OnEnable()
     {
+         actualLevel = ActualLevel();
         FindObjectOfType<AudioManager>().Stop("step");
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
@@ -40,13 +41,10 @@ public class GameCompleted : MonoBehaviour
 
     private void mainmenu()
     {
-        if (SceneManager.GetAllScenes().Length <= 1)
-        {
-            Debug.Log("....Hauptmenü");
-            SceneManager.LoadScene("MainMenu");
-            Time.timeScale = 1f;
-            gameCompleted = false;
-        }
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
+        gameCompleted = false;
+        
     }
     private void nextlevel()
     {

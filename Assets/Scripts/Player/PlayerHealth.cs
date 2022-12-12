@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public static float curHealth;
-    public static float maxHealth = 3;
+    public static int curHealth;
+    public static int maxHealth = 3;
     
 
     private Rigidbody2D rb;
@@ -121,6 +121,11 @@ public class PlayerHealth : MonoBehaviour
             m_Hearts[loop - 1].style.visibility = Visibility.Visible;
             em_Hearts[loop - 1].style.visibility = Visibility.Hidden;
         }
+    }
+
+    public int GetHealth()
+    {
+        return curHealth;
     }
 }
 

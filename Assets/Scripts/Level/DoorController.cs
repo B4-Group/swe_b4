@@ -17,9 +17,14 @@ public class DoorController : MonoBehaviour
     [ContextMenu(itemName:"OpenDoor")]
     public void Open()
     {
-        doorOpen.source.Play();
+        try {
+            doorOpen.source.Play();
+        } catch (System.Exception e) {
+            Debug.Log("I refuse to bother with this shit. Here is the error: " + e);
+        }
+        
         isOpen = true;
-        _animator.SetTrigger(name: "OpenDoor"); ;
+        _animator.SetTrigger(name: "OpenDoor");
     }
 
     [ContextMenu(itemName:"CloseDoor")]

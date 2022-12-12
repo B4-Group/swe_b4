@@ -38,6 +38,9 @@ public class LevelauswahlScript : MonoBehaviour
 
             // hide backButton
             backButton.style.display = DisplayStyle.None;
+
+            // Load Data from SaveSystem
+            GetComponent<SaveSystem>().LoadData();
         }
 
         mainMenu.clicked += LoadMainMenu;
@@ -46,9 +49,11 @@ public class LevelauswahlScript : MonoBehaviour
         // Dynamic Levels
         levelContainer = root.Q<IMGUIContainer>("levelContainer");
 
+        Debug.Log("Constructing Level Container");
         // Attach every Scene (from SceneList) to the Level Container as a button
         foreach (string currentScene in SceneList)
         {
+            Debug.Log("Making button for " + currentScene);
             VisualElement currentLevelContainer = new();
 
             Label levelText = new();
@@ -79,10 +84,18 @@ public class LevelauswahlScript : MonoBehaviour
             VisualElement starsContainer = new();
             starsContainer.style.flexDirection = FlexDirection.Row;
             starsContainer.style.justifyContent = Justify.Center;
-
+            
+            int currentLevel = int.Parse(currentScene.Substring(5)) - 1;
+            Debug.Log("Current Level: " + currentLevel);
+            // Get Stars and Time from SaveSystem
+            PlayerData data = FindObjectOfType<SaveSystem>().LoadData();
+            int stars = data.stars[currentLevel];
+            float time = data.time[currentLevel];
+            
+            Debug.Log("Current Level: " + currentLevel);
+            Debug.Log("Stars: " + stars + " Time: " + time);
             // Add stars
-            for (int i = 0; i < 3; i++)
-            {
+            for (int i = 0; i < stars; i++) {
                 Texture2D star = Resources.Load<Texture2D>("star");
                 Image starImage = new();
                 starImage.style.backgroundImage = new StyleBackground(star);
@@ -92,10 +105,24 @@ public class LevelauswahlScript : MonoBehaviour
                 starsContainer.Add(starImage);
             }
 
+            // Fill up with grey stars
+            if(stars < 3) {
+                for (int i = 0; i < 3 - stars; i++) {
+                    Texture2D star = Resources.Load<Texture2D>("starGrey");
+                    Image starImage = new();
+                    starImage.style.backgroundImage = new StyleBackground(star);
+                    starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+                    starImage.style.height = 32;
+                    starImage.style.width = 32;
+                    starsContainer.Add(starImage);
+                }
+            }
+
             statsContainer.Add(starsContainer);
+
             // Add time
             Label timeText = new();
-            timeText.text = "00:00";
+            timeText.text = time.ToString();
             timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
             timeText.style.fontSize = 24;
             statsContainer.Add(timeText);
