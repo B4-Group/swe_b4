@@ -10,15 +10,21 @@ public class GameCompleted : MonoBehaviour
     private int currentLevel;
     
     // Amount of levels in the game
-    private const int maxLevel = 2;
+    private const int maxLevel = 1;
+
+    PlayerData data;
 
     private void OnEnable()
     {
         // Get next scene from save system
-        PlayerData data = GetComponent<SaveSystem>().LoadData();
+        data = GetComponent<SaveSystem>().LoadData();
+
         // increment the level counter
-        if(data.currentLevel < maxLevel)
-            data.currentLevel += 1;
+        if(data.highestLevel < maxLevel && data.currentLevel == data.highestLevel) {
+            data.highestLevel += 1;
+        }
+            
+
         // save the modified level counter back to disk
         GetComponent<SaveSystem>().Save(data);
         // set local property to the new level counter
@@ -42,6 +48,48 @@ public class GameCompleted : MonoBehaviour
             Hauptmenu.clicked += () => mainmenu();
             NextLevel.clicked += () => nextlevel();
         }
+
+        // Add stars to the star container
+
+        // Get stars from previous level
+        int starAmount = data.stars[currentLevel];
+        float time = data.time[currentLevel];
+
+        VisualElement starsContainer = root.Q<VisualElement>("starContainer");
+
+        // Add stars
+        for (int i = 0; i < starAmount; i++) {
+            Texture2D star = Resources.Load<Texture2D>("star");
+            Image starImage = new();
+            starImage.style.backgroundImage = new StyleBackground(star);
+            starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+            starImage.style.height = 32;
+            starImage.style.width = 32;
+            starsContainer.Add(starImage);
+        }
+
+        // Fill up with grey stars
+        if(starAmount < 3) {
+            for (int i = 0; i < 3 - starAmount; i++) {
+                Texture2D star = Resources.Load<Texture2D>("starGrey");
+                Image starImage = new();
+                starImage.style.backgroundImage = new StyleBackground(star);
+                starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+                starImage.style.height = 32;
+                starImage.style.width = 32;
+                starsContainer.Add(starImage);
+            }
+        }
+
+        
+        // Add time
+        Label timeText = new();
+        // Format time to mm:ss
+        timeText.text = string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), Mathf.Floor(time % 60));
+        timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
+        timeText.style.fontSize = 24;
+        starsContainer.Add(timeText);
+
     }
 
     private void mainmenu()
@@ -56,7 +104,12 @@ public class GameCompleted : MonoBehaviour
             Debug.Log("No more levels");
             return;
         }
-        string nextSceneName = GetComponent<LevelController>().levels[currentLevel];
+        
+        // Increment current Level counter
+        data.currentLevel += 1;
+        GetComponent<SaveSystem>().Save(data);
+
+        string nextSceneName = GetComponent<LevelController>().levels[currentLevel+1];
         SceneManager.LoadScene(nextSceneName);
         Resume();
         
