@@ -11,6 +11,7 @@ TagManager:
   - BlueTorch
   - Vase
   - Chest
+  - Star
   layers:
   - Default
   - TransparentFX
