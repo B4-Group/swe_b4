@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -93,10 +91,10 @@ public class Pausenmenu : MonoBehaviour
     }
     public void LoadLevelauswahl()
     {
-        LevelController levelController = FindObjectOfType<LevelController>();
         Debug.Log("Loading levelauswahl");
-        SceneManager.LoadScene("Levelauswahl");
         Resume();
+        // Make levelauswahl visible
+        FindObjectOfType<LevelauswahlScript>().MakeVisible();
     }
     public void HauptMenu()
     {

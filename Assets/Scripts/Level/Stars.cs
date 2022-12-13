@@ -9,7 +9,7 @@ public class Stars : MonoBehaviour
     public static Button secondStar;
     public static Button thirdStar;
 
-    private static int countStars = 0;
+    public static float countStars = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -63,5 +63,9 @@ public class Stars : MonoBehaviour
         secondStar.style.visibility = Visibility.Hidden;
         thirdStar.style.visibility = Visibility.Hidden;
         countStars = 0;
+    }
+
+    public int GetStarsAmount() {
+        return countStars;
     }
 }

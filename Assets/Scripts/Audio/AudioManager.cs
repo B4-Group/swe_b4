@@ -45,20 +45,23 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        Debug.Log("Sound: " + name + " is playing.");
         s.source.Play();
     }
 
     public void Stop(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null)
-        {
-            Debug.LogWarning("Sound: " + name + " not found!");
-            return;
+        try {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (s == null)
+            {
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
+            }
+            s.source.Stop();
+        } catch(System.Exception e) {
+            Debug.Log("I don't want to mess with this, here is the error: " + e);
         }
-        Debug.Log("Sound: " + name + " stopped.");
-        s.source.Stop();
+ 
     }
 
     public bool IsPlaying(string name)

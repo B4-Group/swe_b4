@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour
     {
         timer = 0;
     }
-    public float getTimer()
+    public static float getTimer()
     {
         return timer;
     }

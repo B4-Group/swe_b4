@@ -7,23 +7,24 @@ public class DoorController : MonoBehaviour
 
     private Sound doorOpen, doorClose;
 
-    private void Start()
+    private void Awake()
     {
         doorOpen = FindObjectOfType<AudioManager>().GetSound("doorOpen");
         doorClose = FindObjectOfType<AudioManager>().GetSound("doorClose");
-    }
-
-    private void Awake()
-    {
         _animator = GetComponent<Animator>();
     }
 
     [ContextMenu(itemName:"OpenDoor")]
     public void Open()
     {
-        doorOpen.source.Play();
+        try {
+            doorOpen.source.Play();
+        } catch (System.Exception e) {
+            Debug.Log("I refuse to bother with this shit. Here is the error: " + e);
+        }
+        
         isOpen = true;
-        _animator.SetTrigger(name: "OpenDoor"); ;
+        _animator.SetTrigger(name: "OpenDoor");
     }
 
     [ContextMenu(itemName:"CloseDoor")]
