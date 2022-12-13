@@ -64,4 +64,8 @@ public class Stars : MonoBehaviour
         thirdStar.style.visibility = Visibility.Hidden;
         countStars = 0;
     }
+
+    public int GetStarsAmount() {
+        return countStars;
+    }
 }

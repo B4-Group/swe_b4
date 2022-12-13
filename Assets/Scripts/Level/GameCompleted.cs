@@ -4,35 +4,41 @@ using UnityEngine.UIElements;
 
 public class GameCompleted : MonoBehaviour
 {
-    public static bool gameCompleted = false;
-
-    private static int ActualLevel()
-    {
-        string actualScene = SceneManager.GetActiveScene().name;
-        return (actualScene[actualScene.Length - 1]) - '0';
-    }
-
-    private int actualLevel = ActualLevel();
+    public bool gameCompleted = false;
+    
+    // Current level in the game, starts at 0
+    private int currentLevel;
+    
+    // Amount of levels in the game
     private const int maxLevel = 2;
-
 
     private void OnEnable()
     {
-        FindObjectOfType<AudioManager>().Stop("step");
+        // Get next scene from save system
+        PlayerData data = GetComponent<SaveSystem>().LoadData();
+        // increment the level counter
+        if(data.currentLevel < maxLevel)
+            data.currentLevel += 1;
+        // save the modified level counter back to disk
+        GetComponent<SaveSystem>().Save(data);
+        // set local property to the new level counter
+        currentLevel = data.currentLevel;
+
+        try {
+            FindObjectOfType<AudioManager>().Stop("step");
+        } catch (System.Exception e) {
+            Debug.Log("No AudioManager found, probably in editor. " + e);
+        }
+        
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         Button NextLevel = root.Q<Button>("Nextlevel");
         Button Hauptmenu = root.Q<Button>("Hauptmenu");
 
-        Debug.Log("Aktuelles Level:" + actualLevel.ToString());
-
-        if (actualLevel == maxLevel)
-        {
+        if ((currentLevel) == maxLevel) {
             NextLevel.style.display = DisplayStyle.None;
             Hauptmenu.clicked += () => mainmenu();
-        }
-        else
-        {
+        } else {
             Hauptmenu.clicked += () => mainmenu();
             NextLevel.clicked += () => nextlevel();
         }
@@ -40,23 +46,24 @@ public class GameCompleted : MonoBehaviour
 
     private void mainmenu()
     {
-        if (SceneManager.GetAllScenes().Length <= 1)
-        {
-            Debug.Log("....Hauptmenü");
-            SceneManager.LoadScene("MainMenu");
-            Time.timeScale = 1f;
-            gameCompleted = false;
-        }
+        SceneManager.LoadScene("MainMenu");
+        Resume();
+        
     }
     private void nextlevel()
     {
-        if (SceneManager.GetAllScenes().Length <= 1)
-        {
-            SceneManager.LoadScene("Lade Level:" + (actualLevel + 1));
-            Debug.Log("Lade Level:" + (actualLevel + 1).ToString());
-            Time.timeScale = 1f;
-            gameCompleted = false;
+        if(currentLevel+1 > maxLevel) {
+            Debug.Log("No more levels");
+            return;
         }
+        string nextSceneName = GetComponent<LevelController>().levels[currentLevel];
+        SceneManager.LoadScene(nextSceneName);
+        Resume();
+        
     }
 
+    private void Resume() {
+        Time.timeScale = 1f;
+        gameCompleted = false;
+    }
 }

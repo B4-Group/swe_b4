@@ -5,8 +5,8 @@
                 <ui:Label text="Level Completed" display-tooltip-when-elided="true" style="-unity-font: resource(&apos;FlatSkin/Font/Roboto-Black&apos;); font-size: 48%; -unity-text-align: upper-center; top: 60%; color: rgba(255, 255, 255, 0.76);" />
             </ui:VisualElement>
             <ui:VisualElement style="bottom: 0; top: 50%; right: 10%; left: 10%; position: absolute; flex-direction: row; justify-content: center;">
-                <ui:Button text="Next Level" display-tooltip-when-elided="true" name="Nextlevel" class="button" />
-                <ui:Button text="Main menu" display-tooltip-when-elided="true" name="Hauptmenu" class="button" />
+                <ui:Button text="Next Level" display-tooltip-when-elided="true" name="Nextlevel" class="button" style="width: 150px; height: 75px;" />
+                <ui:Button text="Main menu" display-tooltip-when-elided="true" name="Hauptmenu" class="button" style="width: 150px; height: 75px;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:IMGUIContainer>

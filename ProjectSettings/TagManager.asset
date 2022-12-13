@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - MainTorch
   - GenerateShadowCasters
+  - BlueTorch
+  - Vase
+  - Chest
   layers:
   - Default
   - TransparentFX
