@@ -48,6 +48,10 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Return if game is in game over state
+        if(FindObjectOfType<GameOver>().gameOver)
+            return;
+            
         float hurt = anim.GetFloat("TakeDamage");
 
 

@@ -54,8 +54,12 @@ public class GameCompleted : MonoBehaviour
         // Get stars from previous level
         int starAmount = data.stars[currentLevel];
         float time = data.time[currentLevel];
+        int hearts = data.hearts[currentLevel];
 
         VisualElement starsContainer = root.Q<VisualElement>("starContainer");
+
+        // Clears starsContainer
+        starsContainer.Clear();
 
         // Add stars
         for (int i = 0; i < starAmount; i++) {
@@ -81,7 +85,30 @@ public class GameCompleted : MonoBehaviour
             }
         }
 
-        
+        // Add Hearts
+        for (int i = 0; i < hearts; i++) {
+            Texture2D heart = Resources.Load<Texture2D>("heart");
+            Image heartImage = new();
+            heartImage.style.backgroundImage = new StyleBackground(heart);
+            heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+            heartImage.style.height = 32;
+            heartImage.style.width = 32;
+            starsContainer.Add(heartImage);
+        }
+
+        // Fill up with grey hearts
+        if(hearts < 3) {
+            for (int i = 0; i < 3 - hearts; i++) {
+                Texture2D heart = Resources.Load<Texture2D>("heartGrey");
+                Image heartImage = new();
+                heartImage.style.backgroundImage = new StyleBackground(heart);
+                heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+                heartImage.style.height = 32;
+                heartImage.style.width = 32;
+                starsContainer.Add(heartImage);
+            }
+        }
+
         // Add time
         Label timeText = new();
         // Format time to mm:ss
