@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a2ddc2ba89411409234b850cf82375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: 0
 --- !u!1 &7772838247800659905
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  zombiePrefab: {fileID: 3522117701437157157, guid: aeae714ed5f204944b8f827ec2fadf5d, type: 3}
+  starPrefab: {fileID: 466348870664552316, guid: 5921e42bdc9d97b4899cee8f7a373111, type: 3}
 --- !u!114 &5934622588852472996
 MonoBehaviour:
   m_ObjectHideFlags: 0

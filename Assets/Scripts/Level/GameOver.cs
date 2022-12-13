@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 public class GameOver : MonoBehaviour
 {
 
-    public static bool gameOver = false;
+    public bool gameOver = false;
 
     private void DisableScreen()
     {
@@ -16,11 +16,6 @@ public class GameOver : MonoBehaviour
     private void Awake()
     {
         this.DisableScreen();
-    }
-
-    private void Update()
-    {
-
     }
 
     private void OnEnable()
@@ -55,7 +50,48 @@ public class GameOver : MonoBehaviour
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         root.Q("GameOver").style.display = DisplayStyle.Flex;
-        Debug.Log("GameOver");
+
+                PlayerData data = FindObjectOfType<SaveSystem>().LoadData();
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        int currentLevel = FindObjectOfType<LevelController>().GetLevelNumber(currentScene);
+        int starAmount = FindObjectOfType<Stars>().GetStarsAmount();
+        float time = FindObjectOfType<Timer>().getTimer();
+
+        VisualElement statsContainer = root.Q<VisualElement>("statsContainer");
+
+        // Add stars
+        for (int i = 0; i < starAmount; i++) {
+            Texture2D star = Resources.Load<Texture2D>("star");
+            Image starImage = new();
+            starImage.style.backgroundImage = new StyleBackground(star);
+            starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+            starImage.style.height = 32;
+            starImage.style.width = 32;
+            statsContainer.Add(starImage);
+        }
+
+        // Fill up with grey stars
+        if(starAmount < 3) {
+            for (int i = 0; i < 3 - starAmount; i++) {
+                Texture2D star = Resources.Load<Texture2D>("starGrey");
+                Image starImage = new();
+                starImage.style.backgroundImage = new StyleBackground(star);
+                starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+                starImage.style.height = 32;
+                starImage.style.width = 32;
+                statsContainer.Add(starImage);
+            }
+        }
+        
+        // Add time
+        Label timeText = new();
+        // Format time to mm:ss
+        timeText.text = string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), Mathf.Floor(time % 60));
+        timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
+        timeText.style.fontSize = 24;
+        statsContainer.Add(timeText);
+
         Time.timeScale = 0f;
         gameOver = true;
     }
