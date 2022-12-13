@@ -17,6 +17,7 @@ public class LevelController : MonoBehaviour
         try {
             // Only play if current scene is in the levels array
             if (System.Array.IndexOf(levels, SceneManager.GetActiveScene().name) != -1)
+            Debug.Log($"Playing {musicName}");
                 FindObjectOfType<AudioManager>().Play(musicName);
         } catch (System.Exception e) {
             Debug.Log("No AudioManager found, probably in editor");

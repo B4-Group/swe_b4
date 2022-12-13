@@ -14,7 +14,7 @@ public class LevelauswahlScript : MonoBehaviour
     {
         // Play music only if hasn't been started yet
         try {
-        if(!FindObjectOfType<AudioManager>().IsPlaying("menuMusic"))
+            if(SceneManager.GetActiveScene().name == "Levelauswahl" && !FindObjectOfType<AudioManager>().IsPlaying("menuMusic"))
             {
                 FindObjectOfType<AudioManager>().Play("menuMusic");
             }
