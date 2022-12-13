@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4893170371922950496}
   - component: {fileID: 4672164685008096132}
   m_Layer: 0
-  m_Name: TorchAlwaysOn
-  m_TagString: Untagged
+  m_Name: BlueTorch
+  m_TagString: BlueTorch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.782
-  m_Color: {r: 1, g: 0.6431373, b: 0.34901962, a: 1}
+  m_Color: {r: 0.36591348, g: 0.34901965, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 0.21
   m_LightVolumeIntensityEnabled: 0
