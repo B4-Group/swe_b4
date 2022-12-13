@@ -21,6 +21,9 @@ public class PuzzelController : MonoBehaviour
     PuzzleType puzzleType = PuzzleType.Information;
 
     [SerializeField]
+    InformationPuzzleType informationPuzzleType = InformationPuzzleType.BlueTorch;
+
+    [SerializeField]
     bool isDetermined = false;
 
     private bool isPuzzleDone = false;
@@ -47,6 +50,8 @@ public class PuzzelController : MonoBehaviour
 
         //isOpenPuzzelMenu = true;
         puzzle.GetComponentInChildren<PuzzleUiController>().StartPuzzle(puzzleType, OnPuzzleDone);
+        puzzle.GetComponentInChildren<InformationPanelScript>().SetInformationPuzzleType(informationPuzzleType);
+
         Debug.Log("open Puzzle:" + puzzleType);
         
     }
