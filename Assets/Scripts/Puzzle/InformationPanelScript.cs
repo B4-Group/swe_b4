@@ -47,7 +47,12 @@ public class InformationPanelScript : MonoBehaviour
         int tempResult = int.Parse(inputResult.text);
         if(tempResult == gameobjectAmount)
         {
+            FindObjectOfType<AudioManager>().Play("win");
             PopupUI.PuzzleDone();
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("wrong");
         }
     }
 }

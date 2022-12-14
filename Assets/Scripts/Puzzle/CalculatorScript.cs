@@ -60,10 +60,12 @@ public class CalculatorScript : MonoBehaviour
 
         if (tempResult1 == (Result1 / 2) && tempResult2 == ((Result1 / 2) + Result2))
         {
+            FindObjectOfType<AudioManager>().Play("win");
             PopupUI.PuzzleDone();
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("wrong");
             InputResultText.text = "Fehler";
         }
     }
