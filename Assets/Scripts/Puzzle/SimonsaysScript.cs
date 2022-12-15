@@ -120,11 +120,11 @@ public class SimonsaysScript : MonoBehaviour
                 } catch(System.Exception e) {
                     Debug.Log(e);
                 }
-                textResult.text = "Erfolgreich";
-                successCounter++;
-                textSuccessCounter.text = successCounter.ToString() + "/5";
-                done();
             }
+            textResult.text = "Erfolgreich";
+            successCounter++;
+            textSuccessCounter.text = successCounter.ToString() + "/5";
+            done();
         }
         else
         {
