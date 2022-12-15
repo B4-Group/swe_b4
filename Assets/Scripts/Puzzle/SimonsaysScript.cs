@@ -39,7 +39,11 @@ public class SimonsaysScript : MonoBehaviour
         textTimer.text = maxTime.ToString();
         if(maxTime > 4.0f)
         {
-            FindObjectOfType<AudioManager>().Play("ticktack");
+            try {
+                FindObjectOfType<AudioManager>().Play("ticktack");
+            } catch(System.Exception e) {
+                Debug.Log(e);
+            }
         }
         if (maxTime <= 0.0f)
         {
@@ -103,25 +107,36 @@ public class SimonsaysScript : MonoBehaviour
         {
             if(successCounter == 4)
             {
-                FindObjectOfType<AudioManager>().Play("win");
+                try {
+                    FindObjectOfType<AudioManager>().Play("win");
+                } catch(System.Exception e) {
+                    Debug.Log(e);
+                }
             }
             else
             {
-                FindObjectOfType<AudioManager>().Play("right");
+                try {
+                    FindObjectOfType<AudioManager>().Play("right");
+                } catch(System.Exception e) {
+                    Debug.Log(e);
+                }
+                textResult.text = "Erfolgreich";
+                successCounter++;
+                textSuccessCounter.text = successCounter.ToString() + "/5";
+                done();
             }
-            textResult.text = "Erfolgreich";
-            successCounter++;
-            textSuccessCounter.text = successCounter.ToString() + "/5";
-            done();
         }
         else
         {
-            FindObjectOfType<AudioManager>().Play("wrong");
+            try {
+                FindObjectOfType<AudioManager>().Play("wrong");
+            } catch(System.Exception e) {
+                Debug.Log(e);
+            }
             successCounter = 0;
             textResult.text = "falsch";
             done();
         }
-
     }
 
     private void randomSpriteToImage()
