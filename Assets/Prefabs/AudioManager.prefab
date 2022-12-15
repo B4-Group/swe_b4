@@ -117,8 +117,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: playerLoseHealth
     clip: {fileID: 8300000, guid: 1b159a6c1f2f16445bb0d51621553045, type: 3}
-    volume: 0.136
-    pitch: 0.69
+    volume: 0.459
+    pitch: 1.01
     loop: 0
     isMusic: 0
     source: {fileID: 0}
@@ -227,5 +227,28 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     source: {fileID: 0}
+  - name: right
+    clip: {fileID: 8300000, guid: 0f9695d8b96856847b81d5e23bb67cde, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: wrong
+    clip: {fileID: 8300000, guid: df29fd961f8ac2441a6b25f961774119, type: 3}
+    volume: 0.505
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
+  - name: ticktack
+    clip: {fileID: 8300000, guid: 2749d188797bcf4449e95eb7452cafb8, type: 3}
+    volume: 1
+    pitch: 2
+    loop: 0
+    isMusic: 0
+    source: {fileID: 0}
   sfxMaster: 1
   musicMaster: 1
+  prevMusicVolume: 0
+  prevSfxVolume: 0
