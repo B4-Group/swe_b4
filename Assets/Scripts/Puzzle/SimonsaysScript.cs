@@ -37,6 +37,14 @@ public class SimonsaysScript : MonoBehaviour
     {
         maxTime -= Time.deltaTime;
         textTimer.text = maxTime.ToString();
+        if(maxTime > 4.0f)
+        {
+            try {
+                FindObjectOfType<AudioManager>().Play("ticktack");
+            } catch(System.Exception e) {
+                Debug.Log(e);
+            }
+        }
         if (maxTime <= 0.0f)
         {
             timerEnded();
@@ -46,7 +54,7 @@ public class SimonsaysScript : MonoBehaviour
 
     void Awake()
     {
-        
+    
         Instance = this;
         for (int i = 0; i < button.Length; i++)
         {
@@ -82,6 +90,7 @@ public class SimonsaysScript : MonoBehaviour
         }
         else
         {
+
             Debug.Log("in Done else");
             PopupUI.PuzzleDone();
         }
@@ -96,6 +105,22 @@ public class SimonsaysScript : MonoBehaviour
 
         if (targetButtonId == id)
         {
+            if(successCounter == 4)
+            {
+                try {
+                    FindObjectOfType<AudioManager>().Play("win");
+                } catch(System.Exception e) {
+                    Debug.Log(e);
+                }
+            }
+            else
+            {
+                try {
+                    FindObjectOfType<AudioManager>().Play("right");
+                } catch(System.Exception e) {
+                    Debug.Log(e);
+                }
+            }
             textResult.text = "Erfolgreich";
             successCounter++;
             textSuccessCounter.text = successCounter.ToString() + "/5";
@@ -103,11 +128,15 @@ public class SimonsaysScript : MonoBehaviour
         }
         else
         {
+            try {
+                FindObjectOfType<AudioManager>().Play("wrong");
+            } catch(System.Exception e) {
+                Debug.Log(e);
+            }
             successCounter = 0;
             textResult.text = "falsch";
             done();
         }
-
     }
 
     private void randomSpriteToImage()

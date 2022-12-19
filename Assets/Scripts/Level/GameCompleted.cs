@@ -10,15 +10,21 @@ public class GameCompleted : MonoBehaviour
     private int currentLevel;
     
     // Amount of levels in the game
-    private const int maxLevel = 2;
+    private const int maxLevel = 1;
+
+    PlayerData data;
 
     private void OnEnable()
     {
         // Get next scene from save system
-        PlayerData data = GetComponent<SaveSystem>().LoadData();
+        data = GetComponent<SaveSystem>().LoadData();
+
         // increment the level counter
-        if (data.currentLevel < maxLevel)
-            data.currentLevel += 1;
+        if(data.highestLevel < maxLevel && data.currentLevel == data.highestLevel) {
+            data.highestLevel += 1;
+        }
+            
+
         // save the modified level counter back to disk
         GetComponent<SaveSystem>().Save(data);
         // set local property to the new level counter
@@ -43,74 +49,73 @@ public class GameCompleted : MonoBehaviour
             NextLevel.clicked += () => nextlevel();
         }
 
-        // Get Score data from the saved system 
-        int scoreLevel = currentLevel == maxLevel ? currentLevel - 1 : currentLevel;
-        int stars = data.stars[scoreLevel];
-        float time = data.time[scoreLevel];
-        int hearts = data.hearts[scoreLevel];
+        // Add stars to the star container
 
+        // Get stars from previous level
+        int starAmount = data.stars[currentLevel];
+        float time = data.time[currentLevel];
+        int hearts = data.hearts[currentLevel];
 
-        // Display the time take to complete the level
-        Label firstMinute = root.Q<Label>("firstMinute");
-        Label secondMinute = root.Q<Label>("secondMinute");
-        Label firstSecond = root.Q<Label>("firstSecond");
-        Label secondSecond = root.Q<Label>("secondSecond");
+        VisualElement starsContainer = root.Q<VisualElement>("starContainer");
 
-        float minute = Mathf.FloorToInt(time / 60);
-        float second = Mathf.FloorToInt(time % 60);
+        // Clears starsContainer
+        starsContainer.Clear();
 
-        string currentTime = string.Format("{00:00}{1:00}", minute, second);
-
-        firstMinute.text = currentTime[0].ToString();
-        secondMinute.text = currentTime[1].ToString();
-        firstSecond.text = currentTime[2].ToString();
-        secondSecond.text = currentTime[3].ToString();
-
-        // Display stars according the number of collected stars
-        Button firstStar = root.Q<Button>("firstScoreStar");
-        Button secondStar = root.Q<Button>("secondScoreStar");
-        Button thirdStar = root.Q<Button>("thirdScoreStar");
-
-        firstStar.style.visibility = Visibility.Hidden;
-        secondStar.style.visibility = Visibility.Hidden;
-        thirdStar.style.visibility = Visibility.Hidden;
-
-        if (stars >= 1)
-        {
-            firstStar.style.visibility = Visibility.Visible;
-        }
-        if (stars >= 2)
-        {
-            secondStar.style.visibility = Visibility.Visible;
-        }
-        if (stars >= 3)
-        {
-            thirdStar.style.visibility = Visibility.Visible;
+        // Add stars
+        for (int i = 0; i < starAmount; i++) {
+            Texture2D star = Resources.Load<Texture2D>("star");
+            Image starImage = new();
+            starImage.style.backgroundImage = new StyleBackground(star);
+            starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+            starImage.style.height = 32;
+            starImage.style.width = 32;
+            starsContainer.Add(starImage);
         }
 
-        // Display hearts according the number of leftover hearts
-        Button firstHeart = root.Q<Button>("firstScoreHeart");
-        Button secondHeart = root.Q<Button>("secondScoreHeart");
-        Button thirdHeart = root.Q<Button>("thirdScoreHeart");
-
-        firstHeart.style.visibility = Visibility.Hidden;
-        secondHeart.style.visibility = Visibility.Hidden;
-        thirdHeart.style.visibility = Visibility.Hidden;
-
-        if (hearts >= 1)
-        {
-            firstHeart.style.visibility = Visibility.Visible;
-        }
-        if (hearts >= 2)
-        {
-            secondHeart.style.visibility = Visibility.Visible;
-        }
-        if (hearts >= 3)
-        {
-            thirdHeart.style.visibility = Visibility.Visible;
+        // Fill up with grey stars
+        if(starAmount < 3) {
+            for (int i = 0; i < 3 - starAmount; i++) {
+                Texture2D star = Resources.Load<Texture2D>("starGrey");
+                Image starImage = new();
+                starImage.style.backgroundImage = new StyleBackground(star);
+                starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+                starImage.style.height = 32;
+                starImage.style.width = 32;
+                starsContainer.Add(starImage);
+            }
         }
 
-        Debug.Log("ScoreLevel: " + scoreLevel + "\nTime taken: " + currentTime + "\nStars: " + stars + "\nhearts: " + hearts);
+        // Add Hearts
+        for (int i = 0; i < hearts; i++) {
+            Texture2D heart = Resources.Load<Texture2D>("heart");
+            Image heartImage = new();
+            heartImage.style.backgroundImage = new StyleBackground(heart);
+            heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+            heartImage.style.height = 32;
+            heartImage.style.width = 32;
+            starsContainer.Add(heartImage);
+        }
+
+        // Fill up with grey hearts
+        if(hearts < 3) {
+            for (int i = 0; i < 3 - hearts; i++) {
+                Texture2D heart = Resources.Load<Texture2D>("heartGrey");
+                Image heartImage = new();
+                heartImage.style.backgroundImage = new StyleBackground(heart);
+                heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
+                heartImage.style.height = 32;
+                heartImage.style.width = 32;
+                starsContainer.Add(heartImage);
+            }
+        }
+
+        // Add time
+        Label timeText = new();
+        // Format time to mm:ss
+        timeText.text = string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), Mathf.Floor(time % 60));
+        timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
+        timeText.style.fontSize = 24;
+        starsContainer.Add(timeText);
 
     }
 
@@ -126,7 +131,12 @@ public class GameCompleted : MonoBehaviour
             Debug.Log("No more levels");
             return;
         }
-        string nextSceneName = GetComponent<LevelController>().levels[currentLevel];
+        
+        // Increment current Level counter
+        data.currentLevel += 1;
+        GetComponent<SaveSystem>().Save(data);
+
+        string nextSceneName = GetComponent<LevelController>().levels[currentLevel+1];
         SceneManager.LoadScene(nextSceneName);
         Resume();
         

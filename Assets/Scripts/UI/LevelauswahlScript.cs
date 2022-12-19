@@ -73,7 +73,7 @@ public class LevelauswahlScript : MonoBehaviour
             Button levelButton = new();
 
             // Disable button if level is not unlocked
-            if((data.currentLevel) >= currentLevelNumber)
+            if((data.highestLevel) >= currentLevelNumber)
             {
                 levelButton.clicked += () => LoadLevel(currentScene);
                 
@@ -155,7 +155,6 @@ public class LevelauswahlScript : MonoBehaviour
     }
 
     public void Hide() {
-        Debug.Log("Hiding levelauswahl");
         var root = GetComponent<UIDocument>().rootVisualElement;
         root.Q<VisualElement>("Container").style.display = DisplayStyle.None;
         Time.timeScale = 1f;
@@ -165,14 +164,25 @@ public class LevelauswahlScript : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Stop("menuMusic");
         FindObjectOfType<AudioManager>().Play("click");
-        Debug.Log("Loading level" + levelName);
+
+        // Figure out which levelNumber the levelName is
+        int levelNumber = FindObjectOfType<LevelController>().GetLevelNumber(levelName);
+
+        // Load Data from SaveSystem
+        PlayerData data = FindObjectOfType<SaveSystem>().LoadData();
+
+        // Set currentLevel to levelNumber
+        data.currentLevel = levelNumber;
+
+        // Save Data to SaveSystem
+        FindObjectOfType<SaveSystem>().Save(data);
+
         SceneManager.LoadScene(levelName);
     }
 
     public void LoadMainMenu()
     {
         FindObjectOfType<AudioManager>().Play("click");
-        Debug.Log("Loading main menu");
         SceneManager.LoadScene("mainMenu");
     }
 }

@@ -1,8 +1,8 @@
-# Software Engineering B4 Projekt Repo
+# Software Engineering B4 Project Repo
 
 ### Projektmanagement:
 * Manuel
-* Leon, 
+* Leon
 
 ### Vertriebsmanagement:
 * Amier
