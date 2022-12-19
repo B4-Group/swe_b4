@@ -17,7 +17,7 @@ public class GameCompleted : MonoBehaviour
         // Get next scene from save system
         PlayerData data = GetComponent<SaveSystem>().LoadData();
         // increment the level counter
-        if(data.currentLevel < maxLevel)
+        if (data.currentLevel < maxLevel)
             data.currentLevel += 1;
         // save the modified level counter back to disk
         GetComponent<SaveSystem>().Save(data);
@@ -29,7 +29,7 @@ public class GameCompleted : MonoBehaviour
         } catch (System.Exception e) {
             Debug.Log("No AudioManager found, probably in editor. " + e);
         }
-        
+
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         Button NextLevel = root.Q<Button>("Nextlevel");
@@ -42,6 +42,76 @@ public class GameCompleted : MonoBehaviour
             Hauptmenu.clicked += () => mainmenu();
             NextLevel.clicked += () => nextlevel();
         }
+
+        // Get Score data from the saved system 
+        int scoreLevel = currentLevel == maxLevel ? currentLevel - 1 : currentLevel;
+        int stars = data.stars[scoreLevel];
+        float time = data.time[scoreLevel];
+        int hearts = data.hearts[scoreLevel];
+
+
+        // Display the time take to complete the level
+        Label firstMinute = root.Q<Label>("firstMinute");
+        Label secondMinute = root.Q<Label>("secondMinute");
+        Label firstSecond = root.Q<Label>("firstSecond");
+        Label secondSecond = root.Q<Label>("secondSecond");
+
+        float minute = Mathf.FloorToInt(time / 60);
+        float second = Mathf.FloorToInt(time % 60);
+
+        string currentTime = string.Format("{00:00}{1:00}", minute, second);
+
+        firstMinute.text = currentTime[0].ToString();
+        secondMinute.text = currentTime[1].ToString();
+        firstSecond.text = currentTime[2].ToString();
+        secondSecond.text = currentTime[3].ToString();
+
+        // Display stars according the number of collected stars
+        Button firstStar = root.Q<Button>("firstScoreStar");
+        Button secondStar = root.Q<Button>("secondScoreStar");
+        Button thirdStar = root.Q<Button>("thirdScoreStar");
+
+        firstStar.style.visibility = Visibility.Hidden;
+        secondStar.style.visibility = Visibility.Hidden;
+        thirdStar.style.visibility = Visibility.Hidden;
+
+        if (stars >= 1)
+        {
+            firstStar.style.visibility = Visibility.Visible;
+        }
+        if (stars >= 2)
+        {
+            secondStar.style.visibility = Visibility.Visible;
+        }
+        if (stars >= 3)
+        {
+            thirdStar.style.visibility = Visibility.Visible;
+        }
+
+        // Display hearts according the number of leftover hearts
+        Button firstHeart = root.Q<Button>("firstScoreHeart");
+        Button secondHeart = root.Q<Button>("secondScoreHeart");
+        Button thirdHeart = root.Q<Button>("thirdScoreHeart");
+
+        firstHeart.style.visibility = Visibility.Hidden;
+        secondHeart.style.visibility = Visibility.Hidden;
+        thirdHeart.style.visibility = Visibility.Hidden;
+
+        if (hearts >= 1)
+        {
+            firstHeart.style.visibility = Visibility.Visible;
+        }
+        if (hearts >= 2)
+        {
+            secondHeart.style.visibility = Visibility.Visible;
+        }
+        if (hearts >= 3)
+        {
+            thirdHeart.style.visibility = Visibility.Visible;
+        }
+
+        Debug.Log("ScoreLevel: " + scoreLevel + "\nTime taken: " + currentTime + "\nStars: " + stars + "\nhearts: " + hearts);
+
     }
 
     private void mainmenu()

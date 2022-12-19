@@ -9,7 +9,7 @@ public class Stars : MonoBehaviour
     public static Button secondStar;
     public static Button thirdStar;
 
-    public static float countStars = 0;
+    public static int countStars = 0;
 
     // Start is called before the first frame update
     void Start()
