@@ -62,7 +62,7 @@ public class Shooting : MonoBehaviour
 
         }
 
-        Debug.Log("Shooting");
+        //Debug.Log("Shooting");
         isShooting = true;
         try { 
             shootSound.source.Play(); 

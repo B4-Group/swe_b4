@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4621058947458593830}
   - component: {fileID: -516448528778320971}
   - component: {fileID: 1954722298741161851}
-  - component: {fileID: 1570607264}
+  - component: {fileID: 3962481262878981592}
   m_Layer: 0
   m_Name: Enemy(StaticRoute)
   m_TagString: Untagged
@@ -52,6 +52,10 @@ MonoBehaviour:
   startHealth: 2
   hp: 2
   diePEffect: {fileID: 5466643701761102553, guid: e0f375e6679116843a1db8f430adf044, type: 3}
+  animator: {fileID: 5912762901164509900}
+  interval: 3
+  trackedTime: 0
+  dead: 0
 --- !u!50 &4621058947458593830
 Rigidbody2D:
   serializedVersion: 4
@@ -112,7 +116,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 1.07}
   m_EdgeRadius: 0
---- !u!114 &1570607264
+--- !u!114 &3962481262878981592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,6 +196,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95287027987771780, guid: 0cde60abe2092e744bd0825306cea88b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1feea8526014b2048b07d3a4aaeea3ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cde60abe2092e744bd0825306cea88b, type: 3}
 --- !u!95 &5912762901164509900 stripped

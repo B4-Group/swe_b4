@@ -103,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("hurt");
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
-        Debug.Log("player get dmg [Playerhealth]");
+        //Debug.Log("player get dmg [Playerhealth]");
     }
 
     public void Death()

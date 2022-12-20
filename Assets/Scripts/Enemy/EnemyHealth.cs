@@ -7,7 +7,7 @@ using UnityEngine;
  * using UnityEngine.UI;
  * Author: Nam
  * date: 15.11.2022
- * edit: 15.11.2022
+ * edit: 20.12.2022 Nam
  * 
  * Status: Fertig
  * Einsatz: Script muss bei Enemy vorhanden sein
@@ -33,8 +33,8 @@ public class EnemyHealth : MonoBehaviour
         {
             trackedTime = 0.0f;
             if (dead == true) { 
-                Destroy(gameObject); Debug.Log("[EH] Dead Removed"); }
-            Debug.Log("[EH] dead request");
+                Destroy(gameObject); Debug.Log("[EHealth] Dead Body Removed"); }
+            //Debug.Log("[EH] dead request");
 
         }
     }
@@ -44,7 +44,7 @@ public class EnemyHealth : MonoBehaviour
         hp -= damage;
         if (hp <= 0f)
         {
-            Debug.Log("should die");
+            //Debug.Log("should die");
             Die();
         }
         
