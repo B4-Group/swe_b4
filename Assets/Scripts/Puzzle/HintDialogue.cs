@@ -22,6 +22,7 @@ public class HintDialogue : MonoBehaviour
         okButton = root.Q<Button>("HintOkButton");
         hintText = root.Q<Label>("HintText");
 
+
         if (hintDialogue == null || okButton == null || hintText == null)
             throw new System.Exception("Missing Hint Dialogue elements in UI Document (HintDialogue: " + (hintDialogue != null ? "ok" : "missing") + ", HintOkButton: " + (okButton != null ? "ok" : "missing") + ", HintText: " + (hintText != null ? "ok" : "missing") + ")");
 
@@ -58,13 +59,13 @@ public class HintDialogue : MonoBehaviour
             switch (puzzleType)
             {
                 case PuzzleType.Calculator:
-                    hintText.text = "Um dieses Puzzle zu l�sen, musst du den Wert des gesuchten Symbols angeben. Sieh dir dazu die angegebenen Gleichungen an.\nWenn du deine Eingabe gemacht hast, klicke auf �Eingabe Pr�fen� um fortzufahren.";
+                    hintText.text = "Um dieses Puzzle zu lösen, musst du den Wert des gesuchten Symbols angeben. Sieh dir dazu die angegebenen Gleichungen an.\nWenn du deine Eingabe gemacht hast, klicke auf Eingabe Prüfen um fortzufahren.";
                     break;
                 case PuzzleType.SimonSays:
-                    hintText.text = "Um dieses Puzzle zu l�sen, musst du drei mal das richtige Symbole anklicken. Welches Symbol als n�chstes dran ist, wird dir auf der rechten Seite angezeigt.\nAchtung: du hast nur 5 Sekunden Zeit um ein Symbol auszuw�hlen!";
+                    hintText.text = "Um dieses Puzzle zu lösen, musst du drei mal das richtige Symbole anklicken. Welches Symbol als n�chstes dran ist, wird dir auf der rechten Seite angezeigt.\nAchtung: du hast nur 5 Sekunden Zeit um ein Symbol auszuwählen!";
                     break;
                 case PuzzleType.Information:
-                    hintText.text = "Um dieses Puzzle zu l�sen musst du die korrekte Antwort auf die angezeigte Frage geben. Klicke auf �Eingabe Pr�fen� wenn du deine Antwort eingegeben hast.";
+                    hintText.text = "Um dieses Puzzle zu lösen musst du die korrekte Antwort auf die angezeigte Frage geben. Klicke auf Eingabe Prüfen wenn du deine Antwort eingegeben hast.";
                     break;
                 default:
                     return;
