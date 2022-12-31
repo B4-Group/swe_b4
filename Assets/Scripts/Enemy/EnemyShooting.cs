@@ -6,9 +6,9 @@ using UnityEngine;
  * using UnityEngine.UI;
  * Author: Nam
  * date: 29.11.2022
- * edit: 29.11.2022 by Nam
+ * edit: 20.12.2022 by Nam
  * 
- * Status: Fertig
+ * Status: Baustelle
  * Explanation: Script muss bei Player vorhanden sein
  *          Erstellt neues "Prefab" Objekt: Bullet
  *          Richtung und Geschwindigkeit werden hier bearbeitet
@@ -41,6 +41,10 @@ public class EnemyShooting : MonoBehaviour
     private void FixedUpdate()
     {
         EnemyShoot();
+    }
+    void ShootTrigger()
+    {
+        animator.SetTrigger("throwing");
     }
 
     public IEnumerator EnemyShoot()

@@ -32,6 +32,7 @@ public class CalculatorScript : MonoBehaviour
     void Start()
     {
         checkResultButton.onClick.AddListener(() => CheckResults());
+        InitializeUI();
         Load();
     }
 
@@ -104,6 +105,17 @@ public class CalculatorScript : MonoBehaviour
 
         imageResult[0].sprite = randomSpritesList[0];
         imageResult[1].sprite = randomSpritesList[1];
+    }
+
+    private void InitializeUI()
+    {
+
+        inputResult[0].textComponent.alignment = TextAnchor.MiddleCenter;
+        inputResult[1].textComponent.alignment = TextAnchor.MiddleCenter;
+
+        inputResult[0].textComponent.fontSize = 20;
+        inputResult[1].textComponent.fontSize = 20;
+
     }
     private List<Sprite> CreateRandomSpriteList()
     {

@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour
             {
                 impactSoundEnemy.source.Play();
                 collisionGameObject.GetComponent<EnemyHealth>().TakeDamage(10); // damage uebergabe an den Enemy mit einem HealthController Script 
-                print("hit![Bullet]"); //consol debug
+                //print("hit![Bullet]"); //consol debug
             } else
             {
                 impactSoundWall.source.Play();
