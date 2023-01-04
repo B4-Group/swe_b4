@@ -35,7 +35,7 @@ public class GameCompleted : MonoBehaviour
         } catch (System.Exception e) {
             Debug.Log("No AudioManager found, probably in editor. " + e);
         }
-        
+
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         Button NextLevel = root.Q<Button>("Nextlevel");
@@ -67,8 +67,8 @@ public class GameCompleted : MonoBehaviour
             Image starImage = new();
             starImage.style.backgroundImage = new StyleBackground(star);
             starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-            starImage.style.height = 32;
-            starImage.style.width = 32;
+            starImage.style.height = 50;
+            starImage.style.width = 50;
             starsContainer.Add(starImage);
         }
 
@@ -79,11 +79,15 @@ public class GameCompleted : MonoBehaviour
                 Image starImage = new();
                 starImage.style.backgroundImage = new StyleBackground(star);
                 starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-                starImage.style.height = 32;
-                starImage.style.width = 32;
+                starImage.style.height = 50;
+                starImage.style.width = 50;
                 starsContainer.Add(starImage);
             }
         }
+        VisualElement heartsContainer = root.Q<VisualElement>("heartContainer");
+
+        // Clears heartsContainer
+        heartsContainer.Clear();
 
         // Add Hearts
         for (int i = 0; i < hearts; i++) {
@@ -91,9 +95,9 @@ public class GameCompleted : MonoBehaviour
             Image heartImage = new();
             heartImage.style.backgroundImage = new StyleBackground(heart);
             heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-            heartImage.style.height = 32;
-            heartImage.style.width = 32;
-            starsContainer.Add(heartImage);
+            heartImage.style.height = 50;
+            heartImage.style.width = 50;
+            heartsContainer.Add(heartImage);
         }
 
         // Fill up with grey hearts
@@ -103,11 +107,16 @@ public class GameCompleted : MonoBehaviour
                 Image heartImage = new();
                 heartImage.style.backgroundImage = new StyleBackground(heart);
                 heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-                heartImage.style.height = 32;
-                heartImage.style.width = 32;
-                starsContainer.Add(heartImage);
+                heartImage.style.height = 50;
+                heartImage.style.width = 50;
+                heartsContainer.Add(heartImage);
             }
         }
+
+        VisualElement timeContainer = root.Q<VisualElement>("timeContainer");
+
+        // Clears timeContainer
+        timeContainer.Clear();
 
         // Add time
         Label timeText = new();
@@ -115,7 +124,7 @@ public class GameCompleted : MonoBehaviour
         timeText.text = string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), Mathf.Floor(time % 60));
         timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
         timeText.style.fontSize = 24;
-        starsContainer.Add(timeText);
+        timeContainer.Add(timeText);
 
     }
 

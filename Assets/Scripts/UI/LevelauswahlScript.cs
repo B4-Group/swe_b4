@@ -26,6 +26,9 @@ public class LevelauswahlScript : MonoBehaviour
         
         mainMenu = root.Q<Button>("mainMenu");
         backButton = root.Q<Button>("back");
+        
+        mainMenu.clicked += LoadMainMenu;
+        backButton.clicked += Hide;
 
         // Things to do when not in game
         if(!isInGame)  {
@@ -33,15 +36,17 @@ public class LevelauswahlScript : MonoBehaviour
             // Make Levelauswahl instantly visible
             root.Q<VisualElement>("Container").style.display = DisplayStyle.Flex;
 
-            // hide backButton
-            backButton.style.display = DisplayStyle.None;
+            // hide mainMenu
+            mainMenu.style.display = DisplayStyle.None;
+
+            // change back button to go to main menu
+            backButton.clicked += LoadMainMenu;
 
             // Load Data from SaveSystem
             GetComponent<SaveSystem>().LoadData();
         }
 
-        mainMenu.clicked += LoadMainMenu;
-        backButton.clicked += Hide;
+        
 
         // Dynamic Levels
         levelContainer = root.Q<IMGUIContainer>("levelContainer");

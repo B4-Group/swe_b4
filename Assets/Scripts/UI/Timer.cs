@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Timer : MonoBehaviour
 {
-    private static float timer;
+    public static float timer;
 
     public static Label firstMinute;
     public static Label secondMinute;
