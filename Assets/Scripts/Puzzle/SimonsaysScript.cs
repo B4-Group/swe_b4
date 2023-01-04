@@ -30,7 +30,7 @@ public class SimonsaysScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
     // Update is called once per frame
     void Update()
@@ -54,7 +54,7 @@ public class SimonsaysScript : MonoBehaviour
 
     void Awake()
     {
-    
+        
         Instance = this;
         for (int i = 0; i < button.Length; i++)
         {
@@ -90,7 +90,10 @@ public class SimonsaysScript : MonoBehaviour
         }
         else
         {
-
+            maxTime = 10.0f;
+            textResult.text = "";
+            successCounter = 0;
+            textSuccessCounter.text = successCounter.ToString() + "/5";
             Debug.Log("in Done else");
             PopupUI.PuzzleDone();
         }
