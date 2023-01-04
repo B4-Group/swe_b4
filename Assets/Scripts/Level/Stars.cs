@@ -19,9 +19,12 @@ public class Stars : MonoBehaviour
         secondStar = root.Q<Button>("secondStar");
         thirdStar = root.Q<Button>("thirdStar");
 
-        firstStar.style.visibility = Visibility.Hidden;
-        secondStar.style.visibility = Visibility.Hidden;
-        thirdStar.style.visibility = Visibility.Hidden;
+        
+        Texture2D starGrey = Resources.Load<Texture2D>("starGrey");
+
+        firstStar.style.backgroundImage = new StyleBackground(starGrey);
+        secondStar.style.backgroundImage = new StyleBackground(starGrey);
+        thirdStar.style.backgroundImage = new StyleBackground(starGrey);
 
     }
 
@@ -43,25 +46,28 @@ public class Stars : MonoBehaviour
         countStars += 1;
         Debug.Log($"Current star count: {countStars}");
 
-        if (countStars <= 1)
+        Texture2D star = Resources.Load<Texture2D>("star");
+
+        if (countStars >= 1)
         {
-            firstStar.style.visibility = Visibility.Visible;
+            firstStar.style.backgroundImage = new StyleBackground(star);
         }
-        if (countStars == 2)
+        if (countStars >= 2)
         {
-            secondStar.style.visibility = Visibility.Visible;
+            secondStar.style.backgroundImage = new StyleBackground(star);
         }
         if (countStars >= 3)
         {
-            thirdStar.style.visibility = Visibility.Visible;
+            thirdStar.style.backgroundImage = new StyleBackground(star);
         }
     }
 
     public static void ResetStar()
     {
-        firstStar.style.visibility = Visibility.Hidden;
-        secondStar.style.visibility = Visibility.Hidden;
-        thirdStar.style.visibility = Visibility.Hidden;
+        Texture2D starGrey = Resources.Load<Texture2D>("starGrey");
+        firstStar.style.backgroundImage = new StyleBackground(starGrey);
+        secondStar.style.backgroundImage = new StyleBackground(starGrey);
+        thirdStar.style.backgroundImage = new StyleBackground(starGrey);
         countStars = 0;
     }
 
