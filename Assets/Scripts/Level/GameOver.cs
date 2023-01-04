@@ -58,7 +58,7 @@ public class GameOver : MonoBehaviour
         int starAmount = FindObjectOfType<Stars>().GetStarsAmount();
         float time = FindObjectOfType<Timer>().getTimer();
 
-        VisualElement statsContainer = root.Q<VisualElement>("statsContainer");
+        VisualElement starsContainer = root.Q<VisualElement>("starsContainer");
 
         // Add stars
         for (int i = 0; i < starAmount; i++) {
@@ -66,9 +66,9 @@ public class GameOver : MonoBehaviour
             Image starImage = new();
             starImage.style.backgroundImage = new StyleBackground(star);
             starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-            starImage.style.height = 32;
-            starImage.style.width = 32;
-            statsContainer.Add(starImage);
+            starImage.style.height = 50;
+            starImage.style.width = 50;
+            starsContainer.Add(starImage);
         }
 
         // Fill up with grey stars
@@ -78,19 +78,21 @@ public class GameOver : MonoBehaviour
                 Image starImage = new();
                 starImage.style.backgroundImage = new StyleBackground(star);
                 starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-                starImage.style.height = 32;
-                starImage.style.width = 32;
-                statsContainer.Add(starImage);
+                starImage.style.height = 50;
+                starImage.style.width = 50;
+                starsContainer.Add(starImage);
             }
         }
+
+        VisualElement timeContainer = root.Q<VisualElement>("timeContainer");
         
         // Add time
         Label timeText = new();
         // Format time to mm:ss
         timeText.text = string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), Mathf.Floor(time % 60));
         timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
-        timeText.style.fontSize = 24;
-        statsContainer.Add(timeText);
+        timeText.style.fontSize = 32;
+        timeContainer.Add(timeText);
 
         Time.timeScale = 0f;
         gameOver = true;

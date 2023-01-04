@@ -67,8 +67,8 @@ public class GameCompleted : MonoBehaviour
             Image starImage = new();
             starImage.style.backgroundImage = new StyleBackground(star);
             starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-            starImage.style.height = 32;
-            starImage.style.width = 32;
+            starImage.style.height = 50;
+            starImage.style.width = 50;
             starsContainer.Add(starImage);
         }
 
@@ -79,8 +79,8 @@ public class GameCompleted : MonoBehaviour
                 Image starImage = new();
                 starImage.style.backgroundImage = new StyleBackground(star);
                 starImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-                starImage.style.height = 32;
-                starImage.style.width = 32;
+                starImage.style.height = 50;
+                starImage.style.width = 50;
                 starsContainer.Add(starImage);
             }
         }
@@ -95,8 +95,8 @@ public class GameCompleted : MonoBehaviour
             Image heartImage = new();
             heartImage.style.backgroundImage = new StyleBackground(heart);
             heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-            heartImage.style.height = 32;
-            heartImage.style.width = 32;
+            heartImage.style.height = 50;
+            heartImage.style.width = 50;
             heartsContainer.Add(heartImage);
         }
 
@@ -107,8 +107,8 @@ public class GameCompleted : MonoBehaviour
                 Image heartImage = new();
                 heartImage.style.backgroundImage = new StyleBackground(heart);
                 heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
-                heartImage.style.height = 32;
-                heartImage.style.width = 32;
+                heartImage.style.height = 50;
+                heartImage.style.width = 50;
                 heartsContainer.Add(heartImage);
             }
         }
