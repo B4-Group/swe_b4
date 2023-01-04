@@ -84,6 +84,10 @@ public class GameCompleted : MonoBehaviour
                 starsContainer.Add(starImage);
             }
         }
+        VisualElement heartsContainer = root.Q<VisualElement>("heartContainer");
+
+        // Clears heartsContainer
+        heartsContainer.Clear();
 
         // Add Hearts
         for (int i = 0; i < hearts; i++) {
@@ -93,7 +97,7 @@ public class GameCompleted : MonoBehaviour
             heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
             heartImage.style.height = 32;
             heartImage.style.width = 32;
-            starsContainer.Add(heartImage);
+            heartsContainer.Add(heartImage);
         }
 
         // Fill up with grey hearts
@@ -105,9 +109,14 @@ public class GameCompleted : MonoBehaviour
                 heartImage.style.unityBackgroundScaleMode = ScaleMode.ScaleAndCrop;
                 heartImage.style.height = 32;
                 heartImage.style.width = 32;
-                starsContainer.Add(heartImage);
+                heartsContainer.Add(heartImage);
             }
         }
+
+        VisualElement timeContainer = root.Q<VisualElement>("timeContainer");
+
+        // Clears timeContainer
+        timeContainer.Clear();
 
         // Add time
         Label timeText = new();
@@ -115,7 +124,7 @@ public class GameCompleted : MonoBehaviour
         timeText.text = string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), Mathf.Floor(time % 60));
         timeText.style.unityTextAlign = TextAnchor.MiddleCenter;
         timeText.style.fontSize = 24;
-        starsContainer.Add(timeText);
+        timeContainer.Add(timeText);
 
     }
 
