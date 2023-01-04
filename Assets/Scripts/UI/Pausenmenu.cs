@@ -113,6 +113,7 @@ public class Pausenmenu : MonoBehaviour
         foreach(Vector3 position in zombiePositions)
         {
             GameObject zombie = Instantiate(zombiePrefab, position, Quaternion.identity);
+            zombie.tag = "Enemy";
             zombie.GetComponent<Pathfinding.AIDestinationSetter>().target = player.transform;
         }
 
