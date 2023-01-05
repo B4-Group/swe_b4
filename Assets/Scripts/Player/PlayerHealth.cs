@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -103,7 +104,7 @@ public class PlayerHealth : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("hurt");
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
-        //Debug.Log("player get dmg [Playerhealth]");
+        //Debug.Log("Player get dmg [PlayerHealth]");
     }
 
     public void Death()
@@ -130,6 +131,11 @@ public class PlayerHealth : MonoBehaviour
     public int GetHealth()
     {
         return curHealth;
+    }
+
+    public Animator GetAnim()
+    {
+        return anim;
     }
 }
 
