@@ -53,3 +53,6 @@ TagManager:
   - name: Walls
     uniqueID: 2127164447
     locked: 0
+  - name: Text
+    uniqueID: 1240149733
+    locked: 0

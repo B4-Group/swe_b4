@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -6,7 +7,7 @@ public class LevelauswahlScript : MonoBehaviour
 {
 
     [SerializeField] public bool isInGame = false;
-    private Button mainMenu, backButton, sceneButton;
+    private Button mainMenu, backButton, sceneButton, tutorialButton;
     private IMGUIContainer levelContainer;
 
     // Start is called before the first frame update
@@ -26,13 +27,14 @@ public class LevelauswahlScript : MonoBehaviour
         
         mainMenu = root.Q<Button>("mainMenu");
         backButton = root.Q<Button>("back");
+        tutorialButton = root.Q<Button>("tutorial");
         
         mainMenu.clicked += LoadMainMenu;
         backButton.clicked += Hide;
+        tutorialButton.clicked += LoadTutorial;
 
         // Things to do when not in game
         if(!isInGame)  {
-            Debug.Log("Levelauswahl is not in game" + isInGame);
             // Make Levelauswahl instantly visible
             root.Q<VisualElement>("Container").style.display = DisplayStyle.Flex;
 
@@ -57,13 +59,10 @@ public class LevelauswahlScript : MonoBehaviour
         else
             FindObjectOfType<LevelController>().ForceRefreshLevelList();
         string[] SceneList = SceneManager.GetActiveScene().name == "Levelauswahl" ?  GetComponent<LevelController>().levels : FindObjectOfType<LevelController>().levels;
-        Debug.Log("New scene list: " + string.Join(", ", SceneList));
 
-        Debug.Log("Constructing Level Container");
         // Attach every Scene (from SceneList) to the Level Container as a button
         foreach (string currentScene in SceneList)
         {
-            Debug.Log("Making button for " + currentScene);
             int currentLevelNumber = SceneManager.GetActiveScene().name == "Levelauswahl" ? GetComponent<LevelController>().GetLevelNumber(currentScene) : FindObjectOfType<LevelController>().GetLevelNumber(currentScene);
 
             VisualElement currentLevelContainer = new();
@@ -105,13 +104,10 @@ public class LevelauswahlScript : MonoBehaviour
             starsContainer.style.justifyContent = Justify.Center;
             
             int currentLevel = currentLevelNumber;
-            Debug.Log("Current Level: " + currentLevel);
             // Get Stars and Time from SaveSystem
             int stars = data.stars[currentLevel];
             float time = data.time[currentLevel];
             
-            Debug.Log("Current Level: " + currentLevel);
-            Debug.Log("Stars: " + stars + " Time: " + time);
             // Add stars
             for (int i = 0; i < stars; i++) {
                 Texture2D star = Resources.Load<Texture2D>("star");
@@ -150,6 +146,13 @@ public class LevelauswahlScript : MonoBehaviour
 
             levelContainer.Add(currentLevelContainer);
         }
+    }
+
+    private void LoadTutorial()
+    {
+        FindObjectOfType<AudioManager>().Stop("menuMusic");
+        FindObjectOfType<AudioManager>().Play("click");
+        SceneManager.LoadScene("Tutorial");
     }
 
     // Makes the Levelauswahl visible
