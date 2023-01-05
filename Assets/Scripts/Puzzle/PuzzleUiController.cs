@@ -19,12 +19,12 @@ public class PuzzleUiController : MonoBehaviour
 
     void Awake()
     {
-       
         Instance = this;
         closeUiButton.onClick.RemoveAllListeners();
         closeUiButton.onClick.AddListener(Hide);
         hintButton.onClick.RemoveAllListeners();
         hintButton.onClick.AddListener(() => { hintDialogue.ToggleVisibility(); });
+        canvas.SetActive(false);
     }
 
     // Returns a random puzzle number
