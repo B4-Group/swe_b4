@@ -13,8 +13,13 @@ using UnityEngine;
  */
 public class Trap : MonoBehaviour
 {
-       
-    
+    public Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject cGO = collision.gameObject;
@@ -23,7 +28,7 @@ public class Trap : MonoBehaviour
             if (cGO.GetComponent<PlayerHealth>() != null)
             {
                 cGO.GetComponent<PlayerHealth>().SendDamage(1); // Give damage to player from trap
-                print("hit![Trap]");                                            //Console debug
+                print("hit![Trap]");                            //Console debug
             }
         }
     }
