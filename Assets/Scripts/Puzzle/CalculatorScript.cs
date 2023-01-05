@@ -83,6 +83,13 @@ public class CalculatorScript : MonoBehaviour
 
     private void Load()
     {
+        foreach(var input in inputResult)
+        {
+            input.text = "0";
+        }
+
+        InputResultText.text = "";
+
         Result1 = Random.Range(0, maxNumber);
         if(Result1 % 2 != 0)
         {
@@ -90,9 +97,6 @@ public class CalculatorScript : MonoBehaviour
         }
 
         Result2 = Result1 + Random.Range(0, maxNumber);
-
-        Debug.Log(Result1);
-        Debug.Log(Result2);
 
         textResult1.text = Result1.ToString();
         textResult2.text = Result2.ToString();
@@ -132,5 +136,10 @@ public class CalculatorScript : MonoBehaviour
             randomCheckList.Add(randomNumber);
         }
         return tmpSpritesList;
+    }
+
+    public void Reset()
+    {
+        Load();
     }
 }

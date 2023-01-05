@@ -160,4 +160,10 @@ public class SimonsaysScript : MonoBehaviour
             randomCheckList.Add(randomNumber);
         }
     }
+
+    public void Reset() {
+        successCounter = 0;
+        textSuccessCounter.text = successCounter.ToString() + "/5";
+        load();
+    }
 }

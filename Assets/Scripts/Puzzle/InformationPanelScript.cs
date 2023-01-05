@@ -64,4 +64,8 @@ public class InformationPanelScript : MonoBehaviour
             }
         }
     }
+
+    public void Reset() {
+        inputResult.text = "";
+    }
 }
