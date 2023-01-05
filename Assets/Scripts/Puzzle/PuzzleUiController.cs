@@ -88,4 +88,13 @@ public class PuzzleUiController : MonoBehaviour
                 throw new System.Exception("PuzzleType not found" + puzzleType);
         }
     }
+
+    public void Reset() {
+        Hide();
+        simonSaysPanel.GetComponent<SimonsaysScript>().Reset();
+        calculatorPanel.GetComponent<CalculatorScript>().Reset();
+        informationPanel.GetComponent<InformationPanelScript>().Reset();
+        
+        OnPuzzleDone = null;
+    }
 }

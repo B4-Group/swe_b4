@@ -113,6 +113,7 @@ public class Pausenmenu : MonoBehaviour
         foreach(Vector3 position in zombiePositions)
         {
             GameObject zombie = Instantiate(zombiePrefab, position, Quaternion.identity);
+            zombie.tag = "Enemy";
             zombie.GetComponent<Pathfinding.AIDestinationSetter>().target = player.transform;
         }
 
@@ -127,6 +128,22 @@ public class Pausenmenu : MonoBehaviour
         {
             Instantiate(starPrefab, position, Quaternion.identity);
         }
+
+        // Reset all doors
+        DoorController[] doors = FindObjectsOfType<DoorController>();
+        foreach (DoorController door in doors)
+        {
+            door.Close();
+        }
+        // Reset puzzle doors
+        PuzzelController[] puzzelDoors = FindObjectsOfType<PuzzelController>();
+        foreach (PuzzelController puzzelDoor in puzzelDoors)
+        {
+            puzzelDoor.ResetPuzzle();
+        }
+
+        PuzzleUiController puzzleUiController = FindObjectOfType<PuzzleUiController>();
+        puzzleUiController.Reset();
 
         Stars.ResetStar();
         Timer.ResetTimer();

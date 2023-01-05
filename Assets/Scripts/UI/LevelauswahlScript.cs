@@ -78,7 +78,7 @@ public class LevelauswahlScript : MonoBehaviour
             Button levelButton = new();
 
             // Disable button if level is not unlocked
-            if((data.highestLevel) >= currentLevelNumber)
+            if((data.highestLevel) >= currentLevelNumber || (data.highestLevel == -1 && currentLevelNumber == 0))
             {
                 levelButton.clicked += () => LoadLevel(currentScene);
                 

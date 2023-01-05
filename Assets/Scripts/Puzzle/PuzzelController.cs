@@ -51,9 +51,13 @@ public class PuzzelController : MonoBehaviour
         //isOpenPuzzelMenu = true;
         puzzle.GetComponentInChildren<PuzzleUiController>().StartPuzzle(puzzleType, OnPuzzleDone);
         puzzle.GetComponentInChildren<InformationPanelScript>().SetInformationPuzzleType(informationPuzzleType);
-
-        Debug.Log("open Puzzle:" + puzzleType);
         
+    }
+
+    public void ResetPuzzle() {
+        OnPuzzleDone += gameObject.GetComponent<DoorController>().Open;
+        OnPuzzleDone += MarkPuzzleAsDone;
+        isPuzzleDone = false;
     }
 
     // Remove the listener when destroyed	

@@ -5,6 +5,7 @@ public class SaveSystem : MonoBehaviour
 {
 
     private string path = "";
+    private string filename = "SaveData.json";
 
     // Sets the path to the json file
     // If in editor, path is Assets/SaveData.json
@@ -15,9 +16,9 @@ public class SaveSystem : MonoBehaviour
 
     private void SetPath() {
         if(Application.isEditor)  {
-            path = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
+            path = Application.dataPath + Path.AltDirectorySeparatorChar + filename;
         } else {
-            path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
+            path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + filename;
         }
     }
 
