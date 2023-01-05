@@ -97,11 +97,13 @@ public class Pausenmenu : MonoBehaviour
     public void NeueStarten()
     {
         Debug.Log("...NeuStarten");
-     
+         
         player.transform.position = origPosition;
 
         PlayerHealth playerHealthController = FindObjectOfType<PlayerHealth>();
-        playerHealthController.ResetHealth();
+       
+
+        playerHealthController.Reset();
 
         // Destroy Zombies
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -133,7 +135,11 @@ public class Pausenmenu : MonoBehaviour
         DoorController[] doors = FindObjectsOfType<DoorController>();
         foreach (DoorController door in doors)
         {
-            door.Close();
+            try{
+                door.Close();
+            }catch(System.Exception e){
+                Debug.Log(e);
+            }
         }
         // Reset puzzle doors
         PuzzelController[] puzzelDoors = FindObjectsOfType<PuzzelController>();

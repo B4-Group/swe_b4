@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,9 +23,12 @@ public class PlayerHealth : MonoBehaviour
 
     private bool death_sound_played;
 
+    private float timer;
+
     // Start is called before the first frame update
     void Start()
     {
+        timer = 3.0f;
         death_sound_played = false;
         curHealth = maxHealth;
 
@@ -53,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
             return;
             
         float hurt = anim.GetFloat("TakeDamage");
-
+        
 
         //Plays the Hurting-Animation
         if (anim.GetFloat("TakeDamage") < 0 && curHealth != 0)
@@ -79,7 +83,9 @@ public class PlayerHealth : MonoBehaviour
         //Plays the Dying-Animation
         if (curHealth <= 0)
         {
-            if(!death_sound_played)
+            timer -= Time.deltaTime;
+
+            if (!death_sound_played)
             {
                 FindObjectOfType<AudioManager>().StopAll();
                 FindObjectOfType<AudioManager>().Play("lose");
@@ -103,15 +109,18 @@ public class PlayerHealth : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("hurt");
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
-        //Debug.Log("player get dmg [Playerhealth]");
+        //Debug.Log("Player get dmg [PlayerHealth]");
     }
 
     public void Death()
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsDead", true);
+        if (timer <= 0.0f)
+        {
         GameOver obj= FindObjectOfType<GameOver>();
         obj.GameOverScreen();
+        }
     }
 
     public void ResetHealth()
@@ -130,6 +139,16 @@ public class PlayerHealth : MonoBehaviour
     public int GetHealth()
     {
         return curHealth;
+    }
+
+    public Animator GetAnim()
+    {
+        return anim;
+    }
+
+    public void Reset(){
+        timer = 3.0f;
+        ResetHealth();
     }
 }
 
