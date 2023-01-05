@@ -60,6 +60,9 @@ public class GameOver : MonoBehaviour
 
         VisualElement starsContainer = root.Q<VisualElement>("starsContainer");
 
+        // Clears starsContainer
+        starsContainer.Clear();
+
         // Add stars
         for (int i = 0; i < starAmount; i++) {
             Texture2D star = Resources.Load<Texture2D>("star");
@@ -85,6 +88,9 @@ public class GameOver : MonoBehaviour
         }
 
         VisualElement timeContainer = root.Q<VisualElement>("timeContainer");
+
+        // Clears timeContainer
+        timeContainer.Clear();
         
         // Add time
         Label timeText = new();
