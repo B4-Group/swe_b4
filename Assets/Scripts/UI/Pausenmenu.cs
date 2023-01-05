@@ -97,11 +97,13 @@ public class Pausenmenu : MonoBehaviour
     public void NeueStarten()
     {
         Debug.Log("...NeuStarten");
-     
+         
         player.transform.position = origPosition;
 
         PlayerHealth playerHealthController = FindObjectOfType<PlayerHealth>();
-        playerHealthController.ResetHealth();
+       
+
+        playerHealthController.Reset();
 
         // Destroy Zombies
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Enemy");

@@ -12,6 +12,7 @@ TagManager:
   - Vase
   - Chest
   - Star
+  - Trap
   layers:
   - Default
   - TransparentFX
