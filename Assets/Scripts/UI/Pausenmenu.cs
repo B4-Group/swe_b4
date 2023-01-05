@@ -133,7 +133,11 @@ public class Pausenmenu : MonoBehaviour
         DoorController[] doors = FindObjectsOfType<DoorController>();
         foreach (DoorController door in doors)
         {
-            door.Close();
+            try{
+                door.Close();
+            }catch(System.Exception e){
+                Debug.Log(e);
+            }
         }
         // Reset puzzle doors
         PuzzelController[] puzzelDoors = FindObjectsOfType<PuzzelController>();
