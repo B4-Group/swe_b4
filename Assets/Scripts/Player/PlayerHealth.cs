@@ -145,5 +145,10 @@ public class PlayerHealth : MonoBehaviour
     {
         return anim;
     }
+
+    public void Reset(){
+        timer = 3.0f;
+        ResetHealth();
+    }
 }
 
