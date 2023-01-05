@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -6,7 +7,7 @@ public class LevelauswahlScript : MonoBehaviour
 {
 
     [SerializeField] public bool isInGame = false;
-    private Button mainMenu, backButton, sceneButton;
+    private Button mainMenu, backButton, sceneButton, tutorialButton;
     private IMGUIContainer levelContainer;
 
     // Start is called before the first frame update
@@ -26,9 +27,11 @@ public class LevelauswahlScript : MonoBehaviour
         
         mainMenu = root.Q<Button>("mainMenu");
         backButton = root.Q<Button>("back");
+        tutorialButton = root.Q<Button>("tutorial");
         
         mainMenu.clicked += LoadMainMenu;
         backButton.clicked += Hide;
+        tutorialButton.clicked += LoadTutorial;
 
         // Things to do when not in game
         if(!isInGame)  {
@@ -143,6 +146,13 @@ public class LevelauswahlScript : MonoBehaviour
 
             levelContainer.Add(currentLevelContainer);
         }
+    }
+
+    private void LoadTutorial()
+    {
+        FindObjectOfType<AudioManager>().Stop("menuMusic");
+        FindObjectOfType<AudioManager>().Play("click");
+        SceneManager.LoadScene("Tutorial");
     }
 
     // Makes the Levelauswahl visible

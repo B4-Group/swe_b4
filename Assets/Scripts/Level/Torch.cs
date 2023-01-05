@@ -4,10 +4,16 @@ using UnityEngine;
 public class Torch : MonoBehaviour
 {
     private Animator _animator;
+    
+    [SerializeField]
+    bool alwaysOn = false;
 
     private void Awake()
     {
         TorchController.OnTorchToggle += Toggle;
+
+        if(alwaysOn)
+            Toggle();
     }
 
     private void OnDestroy()

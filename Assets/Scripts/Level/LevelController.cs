@@ -13,9 +13,10 @@ public class LevelController : MonoBehaviour
         ForceRefreshLevelList();
         try {
             // Only play if current scene is in the levels array
-            if (System.Array.IndexOf(levels, SceneManager.GetActiveScene().name) != -1)
+            //if (System.Array.IndexOf(levels, SceneManager.GetActiveScene().name) != -1)
                 Time.timeScale = 1f;
                 FindObjectOfType<AudioManager>().Play(musicName);
+                FindObjectOfType<Pausenmenu>().Resume();
         } catch (System.Exception e) {
             Debug.Log("No AudioManager found, probably in editor");
         }
@@ -61,6 +62,16 @@ public class LevelController : MonoBehaviour
             GetComponent<SaveSystem>().Save(data);
 
         SceneManager.LoadScene("LevelDoneScene");
+    }
+
+    public void LoadLevelauswahl() {
+        try {
+            FindObjectOfType<AudioManager>().StopAll();
+            FindObjectOfType<AudioManager>().Play("win");
+        } catch (System.Exception e) {
+            Debug.Log("No AudioManager found, probably in editor");
+        }
+        SceneManager.LoadScene("Levelauswahl");
     }
 
     public void StopLevelMusic() {
