@@ -30,7 +30,10 @@ public class SimonsaysScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        successCounter = 0;
+        textResult.text = "";
+        textSuccessCounter.text = successCounter.ToString() + "/5";
+        done();
     }
     // Update is called once per frame
     void Update()
@@ -62,8 +65,8 @@ public class SimonsaysScript : MonoBehaviour
             button[i].onClick.AddListener(() => OnButtonClick(closureIndex));
         }
 
-        load();
         
+
     }
 
 
@@ -85,7 +88,6 @@ public class SimonsaysScript : MonoBehaviour
     {
         if (successCounter < 5)
         {
-            Debug.Log("in Done if1");
             load();
         }
         else
@@ -94,7 +96,6 @@ public class SimonsaysScript : MonoBehaviour
             textResult.text = "";
             successCounter = 0;
             textSuccessCounter.text = successCounter.ToString() + "/5";
-            Debug.Log("in Done else");
             PopupUI.PuzzleDone();
         }
     }
@@ -102,7 +103,8 @@ public class SimonsaysScript : MonoBehaviour
     public void OnButtonClick(int id)
     {
         
-        Debug.Log(id);
+        Debug.Log("clicked :" + id);
+
         Debug.Log(targetButtonId);
 
 
@@ -125,6 +127,7 @@ public class SimonsaysScript : MonoBehaviour
                 }
             }
             textResult.text = "Erfolgreich";
+            textResult.color = Color.green;
             successCounter++;
             textSuccessCounter.text = successCounter.ToString() + "/5";
             done();
@@ -137,7 +140,9 @@ public class SimonsaysScript : MonoBehaviour
                 Debug.Log(e);
             }
             successCounter = 0;
+            textSuccessCounter.text = successCounter.ToString() + "/5";
             textResult.text = "falsch";
+            textResult.color= Color.red;
             done();
         }
     }
