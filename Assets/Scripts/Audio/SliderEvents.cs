@@ -47,53 +47,38 @@ public class SliderEvents : MonoBehaviour
             labelSfx.visible = false;
         }
 
-        sliderMusic.value = audiomanager.GetMusicMaster();
-        sliderSfx.value = audiomanager.GetSoundMaster();
-
-        toggleMusic.value = audiomanager.musicMaster > 0 ? true : false;
-        toggleSfx.value = audiomanager.sfxMaster > 0 ? true : false;
+        sliderMusic.value = audiomanager.musicMaster;
+        sliderSfx.value = audiomanager.sfxMaster;
+        toggleMusic.value = audiomanager.musicEnabled;
+        toggleSfx.value = audiomanager.sfxEnabled;
 
         // Slider Music Listener
         sliderMusic.RegisterCallback<ChangeEvent<float>>((evt)=> 
         {
-            /*  4 Instruktionen: SliderMusic
-             *      - prev setzen
-             *      - musicMaster auf slider setzen
-             *      - toggle entweder an oder aus setzen
-             *      - volume anpassen
-             */
-
-            // prev = musicMaster
-            audiomanager.prevMusicVolume = audiomanager.musicMaster;
-            // musicMaster = slider
             audiomanager.musicMaster = sliderMusic.value;
-            // toggle auf an oder aus setzen
-            toggleMusic.value = audiomanager.musicMaster > 0 ? true : false;
-            // volume wird aktualisiert
             audiomanager.AdjustSoundVolume();
         });
 
         // Toggle Music Listener
         toggleMusic.RegisterCallback<ChangeEvent<bool>>((evt) =>
         {
-            // slider auf prev oder 0 setzen -> slider Listener wird aufgerufen
-            sliderMusic.value = toggleMusic.value ? audiomanager.prevMusicVolume : 0;
+            audiomanager.musicEnabled = toggleMusic.value;
+            audiomanager.enableMusic(toggleMusic.value);
             audiomanager.Play("click");
         });
 
         // s. Slider Music Listener
         sliderSfx.RegisterCallback<ChangeEvent<float>>((evt) =>
         {
-            audiomanager.prevSfxVolume = audiomanager.sfxMaster;
             audiomanager.sfxMaster = sliderSfx.value;
-            toggleSfx.value = audiomanager.sfxMaster > 0 ? true : false;
             audiomanager.AdjustSoundVolume();
         });
 
         // s. Toggle Music Listener
         toggleSfx.RegisterCallback<ChangeEvent<bool>>((evt) =>
         {
-            sliderSfx.value = toggleSfx.value ? audiomanager.prevSfxVolume : 0;
+            audiomanager.Play("click");
+            audiomanager.sfxEnabled = toggleSfx.value;
             audiomanager.Play("click");
         });
     }

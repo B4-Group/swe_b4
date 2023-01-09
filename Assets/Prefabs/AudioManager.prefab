@@ -250,5 +250,5 @@ MonoBehaviour:
     source: {fileID: 0}
   sfxMaster: 1
   musicMaster: 1
-  prevMusicVolume: 0
-  prevSfxVolume: 0
+  musicEnabled: 1
+  sfxEnabled: 1
