@@ -40,7 +40,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void FixedUpdate()
     {
-        EnemyShoot();
+        ShootTrigger();
     }
     void ShootTrigger()
     {
@@ -77,5 +77,4 @@ public class EnemyShooting : MonoBehaviour
         //animator.SetTrigger("Shooting");
 
     }
-
 }
