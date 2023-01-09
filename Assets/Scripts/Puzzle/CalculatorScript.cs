@@ -78,6 +78,7 @@ public class CalculatorScript : MonoBehaviour
             }
             
             InputResultText.text = "Fehler";
+            InputResultText.color= Color.red;
         }
     }
 
