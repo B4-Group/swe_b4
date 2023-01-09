@@ -170,8 +170,7 @@ public class LevelauswahlScript : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
-        FindObjectOfType<AudioManager>().Stop("menuMusic");
-        FindObjectOfType<AudioManager>().Play("click");
+        FindObjectOfType<AudioManager>().StopAll();
 
         // Figure out which levelNumber the levelName is
         int levelNumber = FindObjectOfType<LevelController>().GetLevelNumber(levelName);
@@ -190,6 +189,7 @@ public class LevelauswahlScript : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        FindObjectOfType<AudioManager>().StopAll();
         FindObjectOfType<AudioManager>().Play("click");
         SceneManager.LoadScene("mainMenu");
     }

@@ -165,6 +165,7 @@ public class Pausenmenu : MonoBehaviour
     }
     public void HauptMenu()
     {
+        FindObjectOfType<AudioManager>().StopAll();
         LevelController levelController = FindObjectOfType<LevelController>();
         Debug.Log("....Hauptmenü");
         SceneManager.LoadScene("MainMenu");

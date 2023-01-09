@@ -10,9 +10,7 @@ public class AudioManager : MonoBehaviour
 
     [Range(0f, 1f)]
     public float sfxMaster, musicMaster;
-
-    public float prevMusicVolume;
-    public float prevSfxVolume;
+    public bool musicEnabled, sfxEnabled;
 
     void Awake()
     {
@@ -45,7 +43,14 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        s.source.Play();
+        if(s.isMusic && musicEnabled)
+        {
+            s.source.Play();
+        }
+        else if(sfxEnabled)
+        {
+            s.source.Play();
+        }
     }
 
     public void Stop(string name)
@@ -62,6 +67,17 @@ public class AudioManager : MonoBehaviour
             Debug.Log("I don't want to mess with this, here is the error: " + e);
         }
  
+    }
+
+    public void enableMusic(bool enable)
+    {
+        foreach (Sound sound in sounds)
+        {
+            if (sound.isMusic)
+            {
+                sound.source.mute = !enable;
+            }
+        }
     }
 
     public bool IsPlaying(string name)
@@ -106,14 +122,5 @@ public class AudioManager : MonoBehaviour
                 s.source.volume = s.volume * sfxMaster;
             }
         }
-    }
-    public float GetMusicMaster()
-    {
-        return musicMaster;
-    }
-
-    public float GetSoundMaster()
-    {
-        return sfxMaster;
     }
 }
