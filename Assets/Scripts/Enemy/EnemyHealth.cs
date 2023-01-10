@@ -49,11 +49,13 @@ public class EnemyHealth : MonoBehaviour
         }
         
     }
+    // Nur Aufruf der Sterbeanimation des RIGGS, in dem Animator wird dann eine Die2 methode aufgerufen, die den Rigg löscht
     public void Die()
     {
         FindObjectOfType<AudioManager>().Play("mummy_death");
         animator.SetTrigger("dying");
         dead = true;
+        // Hie
 
     }
 }
