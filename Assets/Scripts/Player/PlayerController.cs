@@ -4,7 +4,7 @@ using UnityEngine;
 
 /**
  * Autor: Nam
- *  Dieser Script kann reintheoretisch gelöscht werden, Onfire kann man in Shooting implementieren ~ Nam
+ *  Dieser Script kann reintheoretisch gelï¿½scht werden, Onfire kann man in Shooting implementieren ~ Nam
  */
 
 public class PlayerController : MonoBehaviour
@@ -35,6 +35,5 @@ public class PlayerController : MonoBehaviour
     void OnFire() // nur animation
     {
         animator.SetTrigger("interact");
-        print("fire![Controller]");
     }
 }

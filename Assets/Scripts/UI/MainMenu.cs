@@ -25,7 +25,6 @@ public class MainMenu : MonoBehaviour
         startButton = root.Q<Button>("play");
         exitButton = root.Q<Button>("exit");
 
-        Debug.Log("Adding listeners to buttons");
         startButton.clicked += LoadLevelauswahl;
         exitButton.clicked += ExitGame;
     }
@@ -33,7 +32,6 @@ public class MainMenu : MonoBehaviour
     public void LoadLevelauswahl()
     {
         FindObjectOfType<AudioManager>().Play("click");
-        Debug.Log("Loading levelauswahl");
         SceneManager.LoadScene("Levelauswahl");
     }
 
@@ -41,7 +39,6 @@ public class MainMenu : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Stop("menuMusic");
         FindObjectOfType<AudioManager>().Play("click");
-        Debug.Log("Quit game");
         Application.Quit();
     }
 }

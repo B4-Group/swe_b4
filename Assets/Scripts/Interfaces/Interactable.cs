@@ -9,9 +9,9 @@ using UnityEngine.Events; //wichtig
  * edit: 15.11.2022#
  * 
  * Status: fertig
- * Erklärung und Einsatz: Jedes Interactable Object soll dieses Objekt als unterklasse besitzen.
+ * Erklï¿½rung und Einsatz: Jedes Interactable Object soll dieses Objekt als unterklasse besitzen.
  *                      Diese Klasse erkennt, wenn der Player in und aus der "range" reinkommt.
- *                      In der Range kann der Spieler dann "InteractKey"(im Editor einstellbar) drücken.
+ *                      In der Range kann der Spieler dann "InteractKey"(im Editor einstellbar) drï¿½cken.
  */
 
 public class Interactable : MonoBehaviour
@@ -26,7 +26,6 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
-            //Debug.Log("Player now in range");
         }
     }
 
@@ -35,14 +34,13 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = false;
-            //Debug.Log("Player now not in range");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isInRange) //sobald der Spieler in Range ist, wird die ganze zeit überprüft, ob er interactKey drückt
+        if (isInRange) //sobald der Spieler in Range ist, wird die ganze zeit ï¿½berprï¿½ft, ob er interactKey drï¿½ckt
         {
             if (Input.GetKeyDown(interactKey))
             {

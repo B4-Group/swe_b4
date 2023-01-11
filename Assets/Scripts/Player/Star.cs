@@ -15,7 +15,6 @@ public class Star : MonoBehaviour, ICollectible
 
     public void collect()
     {
-        //Debug.Log("Star collected");
         try {
             collectSound.source.Play();
         } catch(System.Exception e) {
