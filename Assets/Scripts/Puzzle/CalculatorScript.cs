@@ -52,13 +52,6 @@ public class CalculatorScript : MonoBehaviour
         int tempResult1 = int.Parse(inputResult[0].text);
         int tempResult2 = int.Parse(inputResult[1].text);
 
-        Debug.Log(tempResult1);
-        Debug.Log(tempResult2);
-
-        Debug.Log(Result1 / 2);
-        Debug.Log((Result1/ 2) + Result2);
-        
-
         if (tempResult1 == (Result1 / 2) && tempResult2 == ((Result1 / 2) + Result2))
         {
             try {

@@ -23,7 +23,6 @@ public class TorchController : MonoBehaviour
 
     public void Toggle()
     {
-        Debug.Log("Invoking Torch Toggle");
         OnTorchToggle?.Invoke();
     }
 }

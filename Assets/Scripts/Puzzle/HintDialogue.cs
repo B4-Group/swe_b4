@@ -45,7 +45,6 @@ public class HintDialogue : MonoBehaviour
     // Opens or closes a dialogue
     public void ToggleVisibility(string content = null)
     {
-        Debug.Log("Toggling hint");
         if (hintDialogue.style.visibility == Visibility.Visible) CloseHint();
         else OpenHint(content);
     }
@@ -53,7 +52,6 @@ public class HintDialogue : MonoBehaviour
     // Open a Dialogue box with content 
     public void OpenHint(string content = null)
     {
-        Debug.Log("Opening hint " + puzzleType);
         if (!init) Initialize();
         // open hint for current puzzle if no text is given
         if (content == null)

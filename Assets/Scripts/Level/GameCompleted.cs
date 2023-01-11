@@ -136,8 +136,8 @@ public class GameCompleted : MonoBehaviour
     }
     private void nextlevel()
     {
+        // No more levels
         if(currentLevel+1 > maxLevel) {
-            Debug.Log("No more levels");
             return;
         }
         
