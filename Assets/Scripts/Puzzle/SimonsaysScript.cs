@@ -41,14 +41,6 @@ public class SimonsaysScript : MonoBehaviour
     {
         maxTime -= Time.deltaTime;
         textTimer.text = maxTime.ToString();
-        if(maxTime > 4.0f)
-        {
-            try {
-                FindObjectOfType<AudioManager>().Play("ticktack");
-            } catch(System.Exception e) {
-                Debug.Log(e);
-            }
-        }
         if (maxTime <= 0.0f)
         {
             timerEnded();
