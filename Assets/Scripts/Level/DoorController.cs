@@ -37,6 +37,15 @@ public class DoorController : MonoBehaviour
         _animator.SetTrigger(name: "CloseDoor");
     }
 
+    // Used by InteractibleCircle in nomal doors
+    public void ToggleDoor() {
+        if(isOpen) {
+            Close();
+        } else {
+            Open();
+        }
+    }
+
     public void ResetTriggers() {
         _animator.ResetTrigger(name: "CloseDoor");
         _animator.ResetTrigger(name: "OpenDoor");
