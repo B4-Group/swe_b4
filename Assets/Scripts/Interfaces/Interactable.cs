@@ -44,7 +44,12 @@ public class Interactable : MonoBehaviour
         {
             if (Input.GetKeyDown(interactKey))
             {
-                interactAction.Invoke(); // fire Event
+                try {
+                    interactAction.Invoke(); // fire Event
+                }
+                catch(System.Exception e) {
+                    Debug.LogError(e);
+                }
             }
         }
     }
