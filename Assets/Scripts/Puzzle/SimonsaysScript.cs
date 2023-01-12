@@ -27,13 +27,14 @@ public class SimonsaysScript : MonoBehaviour
 
     public float maxTime = 10.0f;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        successCounter = 0;
-        textResult.text = "";
-        textSuccessCounter.text = successCounter.ToString() + "/5";
-        done();
+        resetQuiz();
+    }
+     // Start is called before the first frame update
+     void Start()
+    {
+      
     }
     // Update is called once per frame
     void Update()
@@ -57,19 +58,24 @@ public class SimonsaysScript : MonoBehaviour
 
     void Awake()
     {
-        
         Instance = this;
         for (int i = 0; i < button.Length; i++)
         {
             int closureIndex = i;
             button[i].onClick.AddListener(() => OnButtonClick(closureIndex));
         }
-
-        
-
+        successCounter = 0;
+        textResult.text = "";
+        textSuccessCounter.text = successCounter.ToString() + "/5";
+        done();
     }
-
-
+    void resetQuiz()
+    {
+        maxTime = 10.0f;
+        textResult.text = "";
+        successCounter = 0;
+        textSuccessCounter.text = successCounter.ToString() + "/5";
+    }
     void timerEnded()
     {
         load();
@@ -92,10 +98,6 @@ public class SimonsaysScript : MonoBehaviour
         }
         else
         {
-            maxTime = 10.0f;
-            textResult.text = "";
-            successCounter = 0;
-            textSuccessCounter.text = successCounter.ToString() + "/5";
             PopupUI.PuzzleDone();
         }
     }
