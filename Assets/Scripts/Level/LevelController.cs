@@ -81,9 +81,4 @@ public class LevelController : MonoBehaviour
             Debug.Log("No AudioManager found, probably in editor");
         }
     }
-
-    public string GetMusicName()
-    {
-        return musicName;
-    }
 }
