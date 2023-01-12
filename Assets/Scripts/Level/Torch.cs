@@ -25,6 +25,13 @@ public class Torch : MonoBehaviour
     {
          _animator = gameObject.GetComponent<Animator>();
         _animator.SetBool("isOn", !_animator.GetBool("isOn"));
-        FindObjectOfType<AudioManager>().Play("torch_lit");
+        if(_animator.GetBool("isOn"))
+        {
+            FindObjectOfType<AudioManager>().Play("torch_lit");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("torch_extinguish");
+        }
     }
 }

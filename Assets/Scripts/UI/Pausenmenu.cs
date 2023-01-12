@@ -153,10 +153,6 @@ public class Pausenmenu : MonoBehaviour
         Stars.ResetStar();
         Timer.ResetTimer();
 
-        FindObjectOfType<AudioManager>().StopAll();
-        string restartMusicName = FindObjectOfType<LevelController>().GetMusicName();
-        FindObjectOfType<AudioManager>().Play(restartMusicName);
-
         Resume();
     }
     public void LoadLevelauswahl()
