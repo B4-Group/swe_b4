@@ -17,6 +17,7 @@ public class DoorController : MonoBehaviour
     [ContextMenu(itemName:"OpenDoor")]
     public void Open()
     {
+        ResetTriggers();
         try {
             doorOpen.source.Play();
         } catch (System.Exception e) {
@@ -30,19 +31,19 @@ public class DoorController : MonoBehaviour
     [ContextMenu(itemName:"CloseDoor")]
     public void Close()
     {
+        ResetTriggers();
         doorClose.source.Play();
         isOpen = false;
         _animator.SetTrigger(name: "CloseDoor");
     }
 
-    public void ToggleDoor()
-    {
-        if(isOpen)
-        {
-            Close();
-        } else
-        {
-            Open();
-        }
+    public void ResetTriggers() {
+        _animator.ResetTrigger(name: "CloseDoor");
+        _animator.ResetTrigger(name: "OpenDoor");
+    }
+
+    private void OnDestroy() {
+        doorOpen.source.Stop();
+        doorClose.source.Stop();
     }
 }

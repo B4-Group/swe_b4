@@ -44,19 +44,23 @@ public class PuzzelController : MonoBehaviour
         // if the puzzle is already done, do nothing
         if (isPuzzleDone) { return; }
 
+        // Remove the listeners
+        OnPuzzleDone -= gameObject.GetComponent<DoorController>().Open;
+        OnPuzzleDone -= MarkPuzzleAsDone;
+
         // add a listener to the puzzleDone event and open the door when the puzzle is done
         OnPuzzleDone += gameObject.GetComponent<DoorController>().Open;
         OnPuzzleDone += MarkPuzzleAsDone;
 
-        //isOpenPuzzelMenu = true;
         puzzle.GetComponentInChildren<PuzzleUiController>().StartPuzzle(puzzleType, OnPuzzleDone);
-        puzzle.GetComponentInChildren<InformationPanelScript>().SetInformationPuzzleType(informationPuzzleType);
+
+        if(puzzleType == PuzzleType.Information) puzzle.GetComponentInChildren<InformationPanelScript>().SetInformationPuzzleType(informationPuzzleType);
         
     }
 
     public void ResetPuzzle() {
-        OnPuzzleDone += gameObject.GetComponent<DoorController>().Open;
-        OnPuzzleDone += MarkPuzzleAsDone;
+        OnPuzzleDone -= gameObject.GetComponent<DoorController>().Close;
+        OnPuzzleDone -= MarkPuzzleAsDone;
         isPuzzleDone = false;
     }
 
