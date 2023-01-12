@@ -28,6 +28,12 @@ public class CalculatorScript : MonoBehaviour
     int Result1;
     int Result2;
 
+
+    void OnEnable()
+    {
+        Load();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
