@@ -45,15 +45,21 @@ public class EnemyHealth : MonoBehaviour
         if (hp <= 0f)
         {
             //Debug.Log("should die");
-            Die();
+            Die1();
         }
         
     }
-    public void Die()
+    // Nur Aufruf der Sterbeanimation des RIGGS, in dem Animator wird dann eine Die2 methode aufgerufen, die den Rigg löscht
+    public void Die1()
     {
         FindObjectOfType<AudioManager>().Play("mummy_death");
         animator.SetTrigger("dying");
         dead = true;
+        // Hie
 
+    }
+    public void Die3()
+    {
+        Destroy(gameObject);
     }
 }
