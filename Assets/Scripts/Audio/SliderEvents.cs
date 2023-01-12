@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class SliderEvents : MonoBehaviour
 {
+    private VisualElement audioEinstellung;
     private Slider sliderMusic;
     private Slider sliderSfx;
     private Toggle toggleMusic;
@@ -20,6 +21,7 @@ public class SliderEvents : MonoBehaviour
         audiomanager = FindObjectOfType<AudioManager>();
         var root = GetComponent<UIDocument>().rootVisualElement;
 
+        audioEinstellung = root.Q<VisualElement>("audioEinstellung");
         sliderMusic = root.Q<Slider>("musicSlider");
         sliderSfx = root.Q<Slider>("sfxSlider");
         toggleMusic = root.Q<Toggle>("musicToggle");
@@ -30,21 +32,11 @@ public class SliderEvents : MonoBehaviour
 
         if(visible)
         {
-            sliderMusic.visible = true;
-            sliderSfx.visible = true;
-            toggleMusic.visible = true;
-            toggleSfx.visible = true;
-            labelMusic.visible = true;
-            labelSfx.visible = true;
+            audioEinstellung.style.display = DisplayStyle.Flex;
         }
         else
         {
-            sliderMusic.visible = false;
-            sliderSfx.visible = false;
-            toggleMusic.visible = false;
-            toggleSfx.visible = false;
-            labelMusic.visible = false;
-            labelSfx.visible = false;
+            audioEinstellung.style.display = DisplayStyle.None;
         }
 
         sliderMusic.value = audiomanager.musicMaster;
