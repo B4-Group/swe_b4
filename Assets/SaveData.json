@@ -1,5 +1,5 @@
 {
-    "currentLevel": 0,
+    "currentLevel": 1,
     "highestLevel": -1,
     "stars": [
         0,
@@ -10,7 +10,7 @@
         0
     ],
     "time": [
-        46.17607116699219,
+        1.3757230043411255,
         0.0
     ]
 }

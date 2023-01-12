@@ -96,7 +96,6 @@ public class Pausenmenu : MonoBehaviour
     }
     public void NeueStarten()
     {
-        Debug.Log("...NeuStarten");
          
         player.transform.position = origPosition;
 
@@ -158,7 +157,6 @@ public class Pausenmenu : MonoBehaviour
     }
     public void LoadLevelauswahl()
     {
-        Debug.Log("Loading levelauswahl");
         Resume();
         // Make levelauswahl visible
         FindObjectOfType<LevelauswahlScript>().MakeVisible();
@@ -167,7 +165,6 @@ public class Pausenmenu : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().StopAll();
         LevelController levelController = FindObjectOfType<LevelController>();
-        Debug.Log("....Hauptmenü");
         SceneManager.LoadScene("MainMenu");
         Resume();
     }

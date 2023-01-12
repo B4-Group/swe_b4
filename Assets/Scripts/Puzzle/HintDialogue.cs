@@ -59,13 +59,13 @@ public class HintDialogue : MonoBehaviour
             switch (puzzleType)
             {
                 case PuzzleType.Calculator:
-                    hintText.text = "Um dieses Puzzle zu lösen, musst du den Wert des gesuchten Symbols angeben. Sieh dir dazu die angegebenen Gleichungen an.\nWenn du deine Eingabe gemacht hast, klicke auf Eingabe Prüfen um fortzufahren.";
+                    hintText.text = "Um dieses Puzzle zu l\u00F6sen, musst du den Wert des gesuchten Symbols angeben. Sieh dir dazu die angegebenen Gleichungen an.\nWenn du deine Eingabe gemacht hast, klicke auf Eingabe Pr\u00FCfen um fortzufahren.";
                     break;
                 case PuzzleType.SimonSays:
-                    hintText.text = "Um dieses Puzzle zu lösen, musst du drei mal das richtige Symbole anklicken. Welches Symbol als n�chstes dran ist, wird dir auf der rechten Seite angezeigt.\nAchtung: du hast nur 5 Sekunden Zeit um ein Symbol auszuwählen!";
+                    hintText.text = "Um dieses Puzzle zu l\u00F6sen, musst du f\u00FCnf mal das richtige Symbole anklicken. Welches Symbol als n\u00E4chstes dran ist, wird dir auf der rechten Seite angezeigt.\nAchtung: du hast nur 10 Sekunden Zeit um ein Symbol auszuw\u00E4hlen!";
                     break;
                 case PuzzleType.Information:
-                    hintText.text = "Um dieses Puzzle zu lösen musst du die korrekte Antwort auf die angezeigte Frage geben. Klicke auf Eingabe Prüfen wenn du deine Antwort eingegeben hast.";
+                    hintText.text = "Um dieses Puzzle zu l\u00F6sen musst du die korrekte Antwort auf die angezeigte Frage geben. Klicke auf Eingabe Pr\u00FCfen wenn du deine Antwort eingegeben hast.";
                     break;
                 default:
                     return;

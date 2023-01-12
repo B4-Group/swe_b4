@@ -95,21 +95,15 @@ public class PlayerHealth : MonoBehaviour
             em_Hearts[2].style.visibility = Visibility.Visible;
             Death();
         }
-
-        //Keyboard Input -> Will be removed later
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            SendDamage();
-        }
     }
 
-    //Damages hisself with clicking on space
+    // Note: This is NOT a debug function anymore!
+    // This is actively used by other objects to damage the player
     public void SendDamage(int damageValue = 1)
     {
         FindObjectOfType<AudioManager>().Play("hurt");
         curHealth -= damageValue;
         anim.SetFloat("TakeDamage", damageValue);
-        //Debug.Log("Player get dmg [PlayerHealth]");
     }
 
     public void Death()

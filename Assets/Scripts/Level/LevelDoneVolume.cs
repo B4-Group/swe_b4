@@ -11,7 +11,6 @@ public class LevelDoneVolume : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
-            Debug.Log("Player now in range");
         }
     }
 
@@ -20,7 +19,6 @@ public class LevelDoneVolume : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = false;
-            Debug.Log("Player now not in range");
         }
     }
 

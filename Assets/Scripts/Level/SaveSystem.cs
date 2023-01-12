@@ -28,7 +28,6 @@ public class SaveSystem : MonoBehaviour
         if(path == "") SetPath();
 
         string json = JsonUtility.ToJson(playerData, true);
-        Debug.Log("Saving: " + json);
         using StreamWriter writer = new StreamWriter(path);
         writer.Write(json);
     }
@@ -43,7 +42,6 @@ public class SaveSystem : MonoBehaviour
             string json = reader.ReadToEnd();
 
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-            Debug.Log(data.ToString());
             return data;
         } catch(System.IO.FileNotFoundException) {
             Debug.Log("No save file found, creating new one");

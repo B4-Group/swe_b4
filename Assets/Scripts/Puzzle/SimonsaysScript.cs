@@ -103,10 +103,6 @@ public class SimonsaysScript : MonoBehaviour
     public void OnButtonClick(int id)
     {
         
-        Debug.Log("clicked :" + id);
-
-        Debug.Log(targetButtonId);
-
 
         if (targetButtonId == id)
         {
