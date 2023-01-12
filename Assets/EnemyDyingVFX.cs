@@ -42,7 +42,9 @@ public class EnemyDyingVFX : MonoBehaviour
         {
             Instantiate(diePEffect, transform.position, Quaternion.identity); //VFX
         }
-        FindObjectOfType<AudioManager>().Play("mummy_death");
+        //FindObjectOfType<AudioManager>().Play("mummy_death");
+        // hier soll Die1 methode in EnemyHealth aufgerufen werden
+        gameObject.GetComponentInParent<EnemyHealth>().Die3();
         Destroy(gameObject);
     }
 }

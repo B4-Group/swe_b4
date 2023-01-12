@@ -1143,7 +1143,7 @@ GameObject:
   - component: {fileID: 1215401492}
   m_Layer: 6
   m_Name: Enemy(Pathfinder)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   - {x: -0.2195549, y: -0.5103427, z: 0}
   m_ShapePathHash: -1980718469
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1596
+  m_InstanceId: -31482
 --- !u!114 &1215401492
 MonoBehaviour:
   m_ObjectHideFlags: 0
