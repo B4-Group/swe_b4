@@ -59,6 +59,12 @@ public class LevelController : MonoBehaviour
             data.time[currentLevel] = time;
             data.hearts[currentLevel] = hearts;
 
+            // update highest level if necessary
+            int highestLevel = data.highestLevel;
+            if (currentLevel > highestLevel) {
+                data.highestLevel = currentLevel;
+            }
+
             GetComponent<SaveSystem>().Save(data);
 
         SceneManager.LoadScene("LevelDoneScene");
