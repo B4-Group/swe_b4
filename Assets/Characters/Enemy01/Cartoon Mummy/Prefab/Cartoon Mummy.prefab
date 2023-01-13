@@ -9572,7 +9572,7 @@ AnimationClip:
   - time: 0.2
     functionName: EnemyShoot
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 1745102596080137470, guid: 905639e52f810444daaf3a0b95cc1290, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

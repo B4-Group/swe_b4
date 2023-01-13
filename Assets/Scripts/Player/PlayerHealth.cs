@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     
 
     private Rigidbody2D rb;
-    private Animator anim;
+    public Animator anim;
 
 
     private VisualElement m_Bar;
@@ -33,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
         curHealth = maxHealth;
 
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
 
         //Hearts
         m_Bar = GetComponent<UIDocument>().rootVisualElement.Q("healthContainer");
