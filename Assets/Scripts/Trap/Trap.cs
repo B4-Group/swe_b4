@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -13,22 +12,16 @@ using UnityEngine;
  */
 public class Trap : MonoBehaviour
 {
-    public Animator anim;
-
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         GameObject cGO = collision.gameObject;
         if (cGO.name == "Player") 
         {
             if (cGO.GetComponent<PlayerHealth>() != null)
             {
+                yield return new WaitForSeconds(0.3f);
                 cGO.GetComponent<PlayerHealth>().SendDamage(1); // Give damage to player from trap
-                print("hit![Trap]");                            //Console debug
+                
             }
         }
     }
