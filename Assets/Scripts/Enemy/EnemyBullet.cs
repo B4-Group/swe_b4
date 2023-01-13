@@ -9,8 +9,8 @@ using UnityEngine;
  * edit: 29.11.2022
  * 
  * Status: Bearbeitung
- * Einsatz: Gegner schießt copy von Bullet
- *          Gegner schießt copy von Bullet
+ * Einsatz: Gegner schieï¿½t copy von Bullet
+ *          Gegner schieï¿½t copy von Bullet
  *          
  */
 
@@ -38,7 +38,7 @@ public class EnemyBullet : MonoBehaviour
 
 
     //}
-    private void OnCollisionEnter2D(Collision2D collision) //Methode von Unity
+    public IEnumerator OnCollisionEnter2D(Collision2D collision) //Methode von Unity
     {
         GameObject collisionGameObject = collision.gameObject;
         if (collisionGameObject.name == "Player")
@@ -46,11 +46,12 @@ public class EnemyBullet : MonoBehaviour
             if (collisionGameObject.GetComponent<PlayerHealth>() != null)
             {
                 impactSoundEnemy.source.Play();
+                yield return new WaitForSeconds(0.3f);
                 collisionGameObject.GetComponent<PlayerHealth>().SendDamage(1); // damage uebergabe an den Spieler
-                print("hit![EnemyBullet]"); //consol debug
             }
             else
             {
+                Debug.LogWarning("PlayerHealth not found");
                 impactSoundWall.source.Play();
             }
             Die();

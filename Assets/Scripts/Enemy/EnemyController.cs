@@ -10,18 +10,6 @@ public class EnemyController : MonoBehaviour
 {
     public Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public IEnumerator OnCollisionEnter2D(Collision2D collision) //Methode von Unity
     {
         GameObject collisionGameObject = collision.gameObject;
@@ -31,8 +19,7 @@ public class EnemyController : MonoBehaviour
             {
                 animator.SetTrigger("hitting");
                 yield return new WaitForSeconds(1);
-                collisionGameObject.GetComponent<PlayerHealth>().SendDamage(1); // damage uebergabe an den Player 
-                print("hit![Enemy]"); //consol debug
+                collisionGameObject.GetComponent<PlayerHealth>().SendDamage(1); // damage uebergabe an den Player
 
             }
         }
