@@ -64,7 +64,8 @@ public class Pausenmenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        
+        if (Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.Space))
         {
             if (GameIsPaused)
             {
@@ -88,6 +89,9 @@ public class Pausenmenu : MonoBehaviour
     }
     public void Pause()
     {
+        if(Input.GetKeyDown(KeyCode.Space)){
+            return;
+        }
         FindObjectOfType<AudioManager>().Play("pause");
         FindObjectOfType<SliderEvents>().SetVisible(true);
         pauseMenu.style.visibility = Visibility.Visible;
