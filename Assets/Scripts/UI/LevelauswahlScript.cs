@@ -152,6 +152,7 @@ public class LevelauswahlScript : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Stop("menuMusic");
         FindObjectOfType<AudioManager>().Play("click");
+        FindObjectOfType<AudioManager>().StopAll();
         SceneManager.LoadScene("Tutorial");
     }
 
