@@ -7,6 +7,8 @@ public class TorchController : MonoBehaviour
     public static event Action OnTorchToggle;
     public Button helpButton;
 
+    private bool isOn = false;
+
     void Awake()
     {
         // get all torches ingame through tags
@@ -23,6 +25,13 @@ public class TorchController : MonoBehaviour
 
     public void Toggle()
     {
+        isOn = !isOn;
         OnTorchToggle?.Invoke();
+    }
+
+    public void ResetTorches() {
+        if(isOn) {
+            Toggle();
+        }
     }
 }

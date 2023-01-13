@@ -150,6 +150,9 @@ public class Pausenmenu : MonoBehaviour
         PuzzleUiController puzzleUiController = FindObjectOfType<PuzzleUiController>();
         puzzleUiController.Reset();
 
+        // Reset torches
+        FindObjectOfType<TorchController>().ResetTorches();
+
         Stars.ResetStar();
         Timer.ResetTimer();
 
