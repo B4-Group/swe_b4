@@ -52,7 +52,6 @@ public class InformationPanelScript : MonoBehaviour
             } catch(System.Exception e) {
                 Debug.Log(e);
             }
-            
             PopupUI.PuzzleDone();
         }
         else
