@@ -21,7 +21,7 @@ public class PuzzleUiController : MonoBehaviour
     {
         Instance = this;
         closeUiButton.onClick.RemoveAllListeners();
-        closeUiButton.onClick.AddListener(Hide);
+        closeUiButton.onClick.AddListener(Reset);
         hintButton.onClick.RemoveAllListeners();
         hintButton.onClick.AddListener(() => { hintDialogue.ToggleVisibility(); });
         canvas.SetActive(false);
@@ -39,7 +39,7 @@ public class PuzzleUiController : MonoBehaviour
         canvas.SetActive(true);
         Instance = this;
         closeUiButton.onClick.RemoveAllListeners();
-        closeUiButton.onClick.AddListener(Hide);
+        closeUiButton.onClick.AddListener(Reset);
 
         hintButton.onClick.RemoveAllListeners();
         hintButton.onClick.AddListener(() => { hintDialogue.ToggleVisibility(); });
@@ -56,8 +56,14 @@ public class PuzzleUiController : MonoBehaviour
     [ContextMenu("PuzzleDone cheat")]
     public void PuzzleDone()
     {
-        Hide();
         OnPuzzleDone.Invoke();
+        hintDialogue.CloseHint();
+        canvas.SetActive(false);
+
+        // Reset Panels
+        simonSaysPanel.GetComponent<SimonsaysScript>().Reset();
+        calculatorPanel.GetComponent<CalculatorScript>().Reset();
+        informationPanel.GetComponent<InformationPanelScript>().Reset();
     }
 
     public void SetQuiz(PuzzleType puzzleType)

@@ -28,7 +28,7 @@ public class PuzzelController : MonoBehaviour
 
     private bool isPuzzleDone = false;
 
-    public static event Action OnPuzzleDone;
+    public event Action OnPuzzleDone;
 
     void Awake() {
          // get a random puzzleNumber from PopupUi
@@ -43,11 +43,8 @@ public class PuzzelController : MonoBehaviour
     public void OpenPuzzel() {
         // if the puzzle is already done, do nothing
         if (isPuzzleDone) { return; }
-
-        // Remove the listeners
-        OnPuzzleDone -= gameObject.GetComponent<DoorController>().Open;
-        OnPuzzleDone -= MarkPuzzleAsDone;
-
+        ResetPuzzle();
+        
         // add a listener to the puzzleDone event and open the door when the puzzle is done
         OnPuzzleDone += gameObject.GetComponent<DoorController>().Open;
         OnPuzzleDone += MarkPuzzleAsDone;
