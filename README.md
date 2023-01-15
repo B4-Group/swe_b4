@@ -7,19 +7,20 @@ PyramidQuest is a game that aims to teach children educational knowledge in a pl
 * [Unity]
 
 ## Getting Started
-To get a local copy up and running follow these simple steps.
-
 ### Prerequisites
 
 You need a Windows 10 operating system or newer.
 
 ### Installation
     
- To start the Game, you need to download WinRaR. 
+### Open the Game as executable    
+ To start the Game as executable, you need to download WinRaR. 
 * [WinRar](https://www.win-rar.com/predownload.html?&L=1)
 
+to start the Game in Editor, you need to download Unity  
 
- Download the Game`[.rar]`
+
+ Download the Game `[.rar]`
 *  [PyramidQuest.rar](https://github.com/B4-Group/swe_b4/releases/download/v1.3/PyramidQuest.v1.3.rar)
 1.  Open the folder PyrmaidQuest
 2.  Click on PyramidQuest
@@ -27,9 +28,19 @@ You need a Windows 10 operating system or newer.
 
 The Game get started
 
-## Feature 
+### Open the Game in Editor
+To start the Game in Editor, you need to download Unity with the Editorversion 2021.3.13f1.
 
-See the [Lastenheft](https://drive.google.com/file/d/1Zo8HbJB4aVkVHRcmlVdS-qxpoCjMNVfY/view?usp=sharing) for a full list of proposed features.
+1. Install [UnityHub](https://store.unity.com/de/download)
+2. Open UnityHub
+3. Click on Installs
+4. Add the Version `2021.3.13f1`
+5. Go to Projects 
+6. Create a new Project 
+    6.1 Choose 2D(URP) 
+    6.2 Give your project a name 
+    Click on Create project
+
 
 ## Pictures
 
@@ -45,10 +56,6 @@ See the [Lastenheft](https://drive.google.com/file/d/1Zo8HbJB4aVkVHRcmlVdS-qxpoC
 
 
 
-## Contact
-
-SWE|B4        - [Discord](https://discord.gg/dz8ZvnhqFT)
-
-SWE Gruppe B4 - [Telegram](https://t.me/+KiS5pwEKKkxmZTNi)
+## Links
 
 Project Link  - [Github](https://github.com/B4-Group/swe_b4)
