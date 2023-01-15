@@ -36,10 +36,11 @@ To start the Game in Editor, you need to download Unity with the Editorversion 2
 3. Click on Installs
 4. Add the Version `2021.3.13f1`
 5. Go to Projects 
-6. Create a new Project 
-    6.1 Choose 2D(URP) 
-    6.2 Give your project a name 
-    Click on Create project
+6. Create a new Project
+    1. Choose 2D(URP)
+    2. Give your project a name 
+    3. Click on Create project
+    4. Drag and Drop the content of the `.zip`
 
 
 ## Pictures
