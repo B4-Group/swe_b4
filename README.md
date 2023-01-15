@@ -27,34 +27,7 @@ You need a Windows 10 operating system or newer.
 
 The Game get started
 
-## Roadmap
-
-- [ ] Level
-    - [ ] 2 Level
-    - [ ] 1 Tutorial
-- [ ] Labyrinth
-    - [ ] Shadow Caster   
-    - [ ] Enemy
-        - [ ] Static Enemy
-        - [ ] Dynamic Enemy
-    - [ ] Puzzles
-        - [ ] Simonsays 
-        - [ ] Information request
-        - [ ] Calculator
-    - [ ] Helpsystem
-    - [ ] Soundsystem
-- [ ] Scoresystem
-    - [ ] 3 Stars
-    - [ ] Timer
-- [ ] Further    
-    - [ ] Close View     
-    - [ ] Wide View
-    - [ ] Animations
-    - [ ] Traps
-
-
- 
-
+## Feature 
 
 See the [Lastenheft](https://drive.google.com/file/d/1Zo8HbJB4aVkVHRcmlVdS-qxpoCjMNVfY/view?usp=sharing) for a full list of proposed features.
 
