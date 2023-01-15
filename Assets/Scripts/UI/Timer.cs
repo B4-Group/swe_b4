@@ -5,13 +5,13 @@ using UnityEngine.UIElements;
 
 public class Timer : MonoBehaviour
 {
-    public static float timer;
+    public float timer;
 
-    public static Label firstMinute;
-    public static Label secondMinute;
-    public static Label separator;
-    public static Label firstSecond;
-    public static Label secondSecond;
+    public Label firstMinute;
+    public Label secondMinute;
+    public Label separator;
+    public Label firstSecond;
+    public Label secondSecond;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class Timer : MonoBehaviour
         secondSecond.text = currentTime[3].ToString();
     }
 
-    public static void ResetTimer()
+    public void ResetTimer()
     {
         timer = 0;
     }

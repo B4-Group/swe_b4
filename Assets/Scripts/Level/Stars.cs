@@ -5,11 +5,11 @@ using UnityEngine.UIElements;
 
 public class Stars : MonoBehaviour
 {
-    public static Button firstStar;
-    public static Button secondStar;
-    public static Button thirdStar;
+    public Button firstStar;
+    public Button secondStar;
+    public Button thirdStar;
 
-    public static int countStars = 0;
+    public int countStars = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class Stars : MonoBehaviour
         Star.OnStarCollected -= CollectedStars;
     }
 
-    public static void CollectedStars()
+    public void CollectedStars()
     {
         FindObjectOfType<AudioManager>().Play("star_collected");
         countStars += 1;
@@ -59,7 +59,7 @@ public class Stars : MonoBehaviour
         }
     }
 
-    public static void ResetStar()
+    public void ResetStar()
     {
         Texture2D starGrey = Resources.Load<Texture2D>("starGrey");
         firstStar.style.backgroundImage = new StyleBackground(starGrey);
