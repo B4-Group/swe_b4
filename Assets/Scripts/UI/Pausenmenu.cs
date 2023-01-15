@@ -156,9 +156,8 @@ public class Pausenmenu : MonoBehaviour
 
         // Reset torches
         FindObjectOfType<TorchController>().ResetTorches();
-
-        Stars.ResetStar();
-        Timer.ResetTimer();
+        FindObjectOfType<Stars>().ResetStar();
+        FindObjectOfType<Timer>().ResetTimer();
 
         FindObjectOfType<AudioManager>().StopAll();
         string restartMusicName = FindObjectOfType<LevelController>().GetMusicName();

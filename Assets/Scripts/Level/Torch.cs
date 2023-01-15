@@ -10,10 +10,10 @@ public class Torch : MonoBehaviour
 
     private void Awake()
     {
-        TorchController.OnTorchToggle += Toggle;
-
         if(alwaysOn)
             Toggle();
+        else
+            TorchController.OnTorchToggle += Toggle;
     }
 
     private void OnDestroy()
@@ -23,7 +23,7 @@ public class Torch : MonoBehaviour
 
     public void Toggle()
     {
-         _animator = gameObject.GetComponent<Animator>();
+        _animator = gameObject.GetComponent<Animator>();
         _animator.SetBool("isOn", !_animator.GetBool("isOn"));
         FindObjectOfType<AudioManager>().Play("torch_lit");
     }
