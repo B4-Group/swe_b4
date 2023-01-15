@@ -56,11 +56,13 @@ public class LevelController : MonoBehaviour
             PlayerData data = GetComponent<SaveSystem>().LoadData();
 
             // update the data with new values
-            if(stars > data.stars[currentLevel])
+            if(stars > data.stars[currentLevel] || data.stars[currentLevel] == 0)
                 data.stars[currentLevel] = stars;
-            if(time < data.time[currentLevel])
+                
+            if(time < data.time[currentLevel] || data.time[currentLevel] == 0)
                 data.time[currentLevel] = time;
-            if(hearts > data.hearts[currentLevel])
+
+            if(hearts > data.hearts[currentLevel] || data.hearts[currentLevel] == 0)
                 data.hearts[currentLevel] = hearts;
 
             // update highest level if necessary
