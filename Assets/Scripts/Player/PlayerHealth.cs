@@ -121,6 +121,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ResetHealth()
     {
+        isDead = false;
         anim.SetBool("IsDead", false);
         rb.bodyType = RigidbodyType2D.Dynamic;
         anim.Play("Idle");
