@@ -64,8 +64,8 @@ public class Pausenmenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.Space))
+        bool isPlayerDead = FindObjectOfType<PlayerHealth>().isDead;
+        if (Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.Space) && !isPlayerDead)
         {
             if (GameIsPaused)
             {
@@ -89,7 +89,7 @@ public class Pausenmenu : MonoBehaviour
     }
     public void Pause()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.Space) || FindObjectOfType<PlayerHealth>().isDead){
             return;
         }
         FindObjectOfType<AudioManager>().Play("pause");

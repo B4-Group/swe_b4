@@ -24,10 +24,12 @@ public class PlayerHealth : MonoBehaviour
     private bool death_sound_played;
 
     private float timer;
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         timer = 3.0f;
         death_sound_played = false;
         curHealth = maxHealth;
@@ -82,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
         //Plays the Dying-Animation
         if (curHealth <= 0)
         {
+            isDead = true;
             timer -= Time.deltaTime;
 
             if (!death_sound_played)
