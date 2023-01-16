@@ -19,12 +19,11 @@ The game is tested on a Windows 10 operating system.
 ### Installation
     
 #### Option A: Download and execute a prebuilt  
-1.  Download the Game latest release [PyramidQuest.rar](https://github.com/B4-Group/swe_b4/releases/download/v1.5/PyramidQuest.v1.5.rar)
+1.  [Download the latest release](https://github.com/B4-Group/swe_b4/releases)
 2.  Unzip the file
 3.  Open `PyramidQuest.exe`
 
 #### Option B: Open the Game in Editor and build it
-To start the Game in Editor, you need to download Unity with the Editorversion 2021.3.13f1.
 
 1. In UnityHub, create a new Project with the 2D(URP) template
 2. Clone the github repository into a seperate folder
