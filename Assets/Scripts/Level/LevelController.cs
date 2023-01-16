@@ -51,6 +51,11 @@ public class LevelController : MonoBehaviour
             int stars = FindObjectOfType<Stars>().GetStarsAmount();
             float time = FindObjectOfType<Timer>().getTimer();
             int hearts = FindObjectOfType<PlayerHealth>().GetHealth();
+            
+            // save these to PlayerPerfs, so that they can be accessed by the LevelDone scene
+            PlayerPrefs.SetInt("lastStars", stars);
+            PlayerPrefs.SetFloat("lastTime", time);
+            PlayerPrefs.SetInt("lastHearts", hearts);
 
             //PlayerData data = new PlayerData(stars, time, hearts, currentLevel);
             PlayerData data = GetComponent<SaveSystem>().LoadData();
