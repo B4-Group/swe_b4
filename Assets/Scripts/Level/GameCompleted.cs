@@ -23,11 +23,6 @@ public class GameCompleted : MonoBehaviour
         if(data.highestLevel < maxLevel && data.currentLevel == data.highestLevel) {
             data.highestLevel += 1;
         }
-        
-        Debug.Log("Current Level: " + data.currentLevel);
-        Debug.Log("Highest Level: " + data.highestLevel);
-        Debug.Log("Current stars: " + data.stars[data.currentLevel]);
-        Debug.Log("Current time: " + data.time[data.currentLevel]);
 
         // save the modified level counter back to disk
         GetComponent<SaveSystem>().Save(data);
@@ -54,11 +49,9 @@ public class GameCompleted : MonoBehaviour
         }
 
         // Add stars to the star container
-
-        // Get stars from previous level
-        int starAmount = data.stars[currentLevel];
-        float time = data.time[currentLevel];
-        int hearts = data.hearts[currentLevel];
+        int starAmount = PlayerPrefs.GetInt("lastStars");
+        float time = PlayerPrefs.GetFloat("lastTime");
+        int hearts = PlayerPrefs.GetInt("lastHearts");
 
         VisualElement starsContainer = root.Q<VisualElement>("starContainer");
 
